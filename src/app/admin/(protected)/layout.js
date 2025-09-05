@@ -1,10 +1,10 @@
-'use client';
+&apo:use client&apo:;
 
-import { useAuth } from '@/auth/useAuth';
-import { useRouter, usePathname } from 'next/navigation';
-import { useEffect, useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
+import { useAuth } from &apo:@/auth/useAuth&apo:;
+import { useRouter, usePathname } from &apo:next/navigation&apo:;
+import { useEffect, useState, useRef } from &apo:react&apo:;
+import { motion, AnimatePresence } from &apo:framer-motion&apo:;
+import Link from &apo:next/link&apo:;
 
 // --- Sub-Components ---
 const NavItem = ({ item, isActive, sidebarOpen }) => (
@@ -13,12 +13,12 @@ const NavItem = ({ item, isActive, sidebarOpen }) => (
       href={item.href} 
       className={`flex items-center p-3 rounded-lg transition-colors group ${
         isActive 
-          ? 'bg-indigo-600 font-semibold text-white' 
-          : 'text-indigo-100 hover:bg-indigo-800'
+          ? &apo:bg-indigo-600 font-semibold text-white&apo: 
+          : &apo:text-indigo-100 hover:bg-indigo-800&apo:
       }`}
       aria-current={isActive ? "page" : undefined}
     >
-      <span className={`${isActive ? 'text-white' : 'text-indigo-300 group-hover:text-white'} flex-shrink-0`}>
+      <span className={`${isActive ? &apo:text-white&apo: : &apo:text-indigo-300 group-hover:text-white&apo:} flex-shrink-0`}>
         {item.icon}
       </span>
       <AnimatePresence>
@@ -50,9 +50,9 @@ const UserProfile = ({ user, onLogout }) => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener(&apo:mousedown&apo:, handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener(&apo:mousedown&apo:, handleClickOutside);
     };
   }, []);
 
@@ -65,7 +65,7 @@ const UserProfile = ({ user, onLogout }) => {
         aria-expanded={dropdownOpen}
       >
         <div className="w-8 h-8 rounded-full flex items-center justify-center font-medium bg-indigo-100 text-indigo-700">
-          {user?.first_name?.charAt(0)?.toUpperCase() || user?.username?.charAt(0)?.toUpperCase() || 'A'}
+          {user?.first_name?.charAt(0)?.toUpperCase() || user?.username?.charAt(0)?.toUpperCase() || &apo:A&apo:}
         </div>
       </button>
       
@@ -118,10 +118,10 @@ export default function ProtectedAdminLayout({ children }) {
     };
     
     checkIfMobile();
-    window.addEventListener('resize', checkIfMobile);
+    window.addEventListener(&apo:resize&apo:, checkIfMobile);
     
     return () => {
-      window.removeEventListener('resize', checkIfMobile);
+      window.removeEventListener(&apo:resize&apo:, checkIfMobile);
     };
   }, []);
 
@@ -129,7 +129,7 @@ export default function ProtectedAdminLayout({ children }) {
     if (loading) return;
     
     if (!user || !user.is_superuser) {
-      router.push('/');
+      router.push(&apo:/&apo:);
     }
   }, [user, loading, router]);
 
@@ -139,8 +139,8 @@ export default function ProtectedAdminLayout({ children }) {
 
   const navItems = [
     { 
-      name: 'Dashboard', 
-      href: '/admin/dashboard', 
+      name: &apo:Dashboard&apo:, 
+      href: &apo:/admin/dashboard&apo:, 
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -148,8 +148,8 @@ export default function ProtectedAdminLayout({ children }) {
       ) 
     },
     { 
-      name: 'Django Admin', 
-      href: process.env.NEXT_PUBLIC_DJANGO_ADMIN_URL || 'http://127.0.0.1:8000/admin', 
+      name: &apo:Django Admin&apo:, 
+      href: process.env.NEXT_PUBLIC_DJANGO_ADMIN_URL || &apo:http://127.0.0.1:8000/admin&apo:, 
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -158,8 +158,8 @@ export default function ProtectedAdminLayout({ children }) {
       ) 
     },
     { 
-      name: 'Users', 
-      href: '/admin/users', 
+      name: &apo:Users&apo:, 
+      href: &apo:/admin/users&apo:, 
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -167,8 +167,8 @@ export default function ProtectedAdminLayout({ children }) {
       ) 
     },
     { 
-      name: 'Products', 
-      href: '/admin/products', 
+      name: &apo:Products&apo:, 
+      href: &apo:/admin/products&apo:, 
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -220,9 +220,9 @@ export default function ProtectedAdminLayout({ children }) {
           width: sidebarOpen ? (isMobile ? "100%" : "240px") : "80px",
           x: isMobile && !sidebarOpen ? "-100%" : 0
         }}
-        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        transition={{ type: &apo:spring&apo:, stiffness: 300, damping: 30 }}
         className={`bg-gray-900 text-white flex-shrink-0 z-50 ${
-          isMobile ? 'fixed inset-y-0 left-0 shadow-xl' : 'relative'
+          isMobile ? &apo:fixed inset-y-0 left-0 shadow-xl&apo: : &apo:relative&apo:
         }`}
       >
         <div className="h-full flex flex-col">
@@ -310,7 +310,7 @@ export default function ProtectedAdminLayout({ children }) {
               </button>
               <div className="hidden md:block">
                 <h1 className="text-lg font-semibold text-gray-900">
-                  {navItems.find(item => pathname === item.href)?.name || 'Admin Dashboard'}
+                  {navItems.find(item => pathname === item.href)?.name || &apo:Admin Dashboard&apo:}
                 </h1>
               </div>
             </div>

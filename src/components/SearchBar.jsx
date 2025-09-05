@@ -1,12 +1,12 @@
 // src/components/SearchBar.jsx
-'use client';
+&apo:use client&apo:;
 
-import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-import { FiSearch, FiX } from 'react-icons/fi';
-import { useState, useEffect } from 'react';
-import { useDebounce } from 'use-debounce';
+import { useRouter, useSearchParams, usePathname } from &apo:next/navigation&apo:;
+import { FiSearch, FiX } from &apo:react-icons/fi&apo:;
+import { useState, useEffect } from &apo:react&apo:;
+import { useDebounce } from &apo:use-debounce&apo:;
 
-export default function SearchBar({ initialValue = '', placeholder = 'Search...' }) {
+export default function SearchBar({ initialValue = &apo:&apo:, placeholder = &apo:Search...&apo: }) {
   const [searchTerm, setSearchTerm] = useState(initialValue);
   const [debouncedValue] = useDebounce(searchTerm, 500);
   const router = useRouter();
@@ -16,22 +16,22 @@ export default function SearchBar({ initialValue = '', placeholder = 'Search...'
   useEffect(() => {
     if (debouncedValue) {
       const params = new URLSearchParams(searchParams);
-      params.set('search', debouncedValue);
-      params.delete('page');
+      params.set(&apo:search&apo:, debouncedValue);
+      params.delete(&apo:page&apo:);
       router.replace(`${pathname}?${params.toString()}`);
-    } else if (searchParams.get('search')) {
+    } else if (searchParams.get(&apo:search&apo:)) {
       const params = new URLSearchParams(searchParams);
-      params.delete('search');
-      params.delete('page');
+      params.delete(&apo:search&apo:);
+      params.delete(&apo:page&apo:);
       router.replace(`${pathname}?${params.toString()}`);
     }
   }, [debouncedValue, pathname, router, searchParams]);
   
   const clearSearch = () => {
-    setSearchTerm('');
+    setSearchTerm(&apo:&apo:);
     const params = new URLSearchParams(searchParams);
-    params.delete('search');
-    params.delete('page');
+    params.delete(&apo:search&apo:);
+    params.delete(&apo:page&apo:);
     router.replace(`${pathname}?${params.toString()}`);
   };
   

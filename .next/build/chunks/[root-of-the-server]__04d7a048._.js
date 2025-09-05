@@ -171,7 +171,7 @@ function isPlainObject(value) {
    *
    * but Edge Runtime expose Object from vm, being that kind of type-checking wrongly fail.
    *
-   * It was changed to the current implementation since it's resilient to serialization.
+   * It was changed to the current implementation since it&apo:s resilient to serialization.
    */ return prototype === null || prototype.hasOwnProperty("isPrototypeOf");
 }
 }}),
@@ -490,7 +490,7 @@ var { g: global, __dirname } = __turbopack_context__;
 __turbopack_context__.s({});
 var __TURBOPACK__imported__module__$5b$turbopack$2d$node$5d2f$ipc$2f$evaluate$2e$ts__$5b$postcss$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[turbopack-node]/ipc/evaluate.ts [postcss] (ecmascript)");
 ;
-(0, __TURBOPACK__imported__module__$5b$turbopack$2d$node$5d2f$ipc$2f$evaluate$2e$ts__$5b$postcss$5d$__$28$ecmascript$29$__["run"])(()=>__turbopack_context__.r('[project]/postcss.config.mjs/transform.ts { CONFIG => "[project]/postcss.config.mjs [postcss] (ecmascript)" } [postcss] (ecmascript, async loader)')(__turbopack_context__.i));
+(0, __TURBOPACK__imported__module__$5b$turbopack$2d$node$5d2f$ipc$2f$evaluate$2e$ts__$5b$postcss$5d$__$28$ecmascript$29$__["run"])(()=>__turbopack_context__.r(&apo:[project]/postcss.config.mjs/transform.ts { CONFIG => "[project]/postcss.config.mjs [postcss] (ecmascript)" } [postcss] (ecmascript, async loader)&apo:)(__turbopack_context__.i));
 }}),
 
 };

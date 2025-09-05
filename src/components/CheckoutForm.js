@@ -1,14 +1,14 @@
 // src/components/CheckoutForm.js
 
-'use client';
+&apo:use client&apo:;
 
-import { useState } from 'react';
-import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { toast } from 'react-hot-toast';
+import { useState } from &apo:react&apo:;
+import { PaymentElement, useStripe, useElements } from &apo:@stripe/react-stripe-js&apo:;
+import { toast } from &apo:react-hot-toast&apo:;
 
 // --- START OF FIX ---
 // The component no longer needs its own form tag or onSubmit handler passed in.
-// We pass the handleSubmit function directly to the button's onClick handler.
+// We pass the handleSubmit function directly to the button&apo:s onClick handler.
 export default function CheckoutForm({ orderId }) { 
   const stripe = useStripe();
   const elements = useElements();
@@ -40,7 +40,7 @@ export default function CheckoutForm({ orderId }) {
       }
     }
     
-    // This part is only reached if there's an immediate error.
+    // This part is only reached if there&apo:s an immediate error.
     setIsLoading(false);
   };
 
@@ -61,7 +61,7 @@ export default function CheckoutForm({ orderId }) {
               Processing...
             </span>
           ) : (
-            'Pay now'
+            &apo:Pay now&apo:
           )}
         </span>
       </button>

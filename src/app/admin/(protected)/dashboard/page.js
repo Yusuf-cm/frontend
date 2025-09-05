@@ -1,27 +1,27 @@
-'use client';
+&apo:use client&apo:;
 
-import { useEffect, useState } from 'react';
-import { useAuth } from '@/auth/useAuth';
-import { getAuthenticatedApi } from '@/utils/api';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Legend } from 'recharts';
-import { motion, AnimatePresence } from 'framer-motion';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
+import { useEffect, useState } from &apo:react&apo:;
+import { useAuth } from &apo:@/auth/useAuth&apo:;
+import { getAuthenticatedApi } from &apo:@/utils/api&apo:;
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Legend } from &apo:recharts&apo:;
+import { motion, AnimatePresence } from &apo:framer-motion&apo:;
+import Skeleton from &apo:react-loading-skeleton&apo:;
+import &apo:react-loading-skeleton/dist/skeleton.css&apo:;
 
 // Enhanced Stat Card with animations
-const StatCard = ({ title, value, icon, color = 'indigo', isLoading = false }) => {
+const StatCard = ({ title, value, icon, color = &apo:indigo&apo:, isLoading = false }) => {
   const colorClasses = {
-    indigo: 'bg-indigo-500',
-    green: 'bg-green-500',
-    amber: 'bg-amber-500',
-    red: 'bg-red-500',
+    indigo: &apo:bg-indigo-500&apo:,
+    green: &apo:bg-green-500&apo:,
+    amber: &apo:bg-amber-500&apo:,
+    red: &apo:bg-red-500&apo:,
   };
   
   const textColors = {
-    indigo: 'text-indigo-600',
-    green: 'text-green-600',
-    amber: 'text-amber-600',
-    red: 'text-red-600',
+    indigo: &apo:text-indigo-600&apo:,
+    green: &apo:text-green-600&apo:,
+    amber: &apo:text-amber-600&apo:,
+    red: &apo:text-red-600&apo:,
   };
 
   if (isLoading) {
@@ -128,9 +128,9 @@ export default function AdminDashboardPage() {
   const { authTokens, setAuthTokens, logoutUser } = useAuth();
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [timeRange, setTimeRange] = useState('30');
-  const [activeTab, setActiveTab] = useState('sales');
+  const [error, setError] = useState(&apo:&apo:);
+  const [timeRange, setTimeRange] = useState(&apo:30&apo:);
+  const [activeTab, setActiveTab] = useState(&apo:sales&apo:);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const fetchStats = async (days) => {
@@ -143,13 +143,13 @@ export default function AdminDashboardPage() {
       const api = getAuthenticatedApi({ authTokens, setAuthTokens, logoutUser });
       const data = await api(`/admin/stats/?days=${days}`);
       setStats(data);
-      setError('');
+      setError(&apo:&apo:);
     } catch (err) {
       // Handle specific JSON error
-      if (err.message.includes('Unexpected token') || err.message.includes('Invalid response')) {
-        setError('Server returned invalid data format. Please check backend configuration.');
+      if (err.message.includes(&apo:Unexpected token&apo:) || err.message.includes(&apo:Invalid response&apo:)) {
+        setError(&apo:Server returned invalid data format. Please check backend configuration.&apo:);
       } else {
-        setError('Failed to load dashboard statistics. Please try again.');
+        setError(&apo:Failed to load dashboard statistics. Please try again.&apo:);
       }
       console.error("API Error:", err);
     } finally {
@@ -197,7 +197,7 @@ export default function AdminDashboardPage() {
                   </svg>
                   Loading...
                 </>
-              ) : 'Retry'}
+              ) : &apo:Retry&apo:}
             </button>
             <a 
               href="/admin/dashboard" 
@@ -222,20 +222,20 @@ export default function AdminDashboardPage() {
 
   // Format data for charts
   const salesData = stats.sales_over_time ? stats.sales_over_time.map(item => ({
-    name: new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+    name: new Date(item.date).toLocaleDateString(&apo:en-US&apo:, { month: &apo:short&apo:, day: &apo:numeric&apo: }),
     Revenue: parseFloat(item.revenue),
     Profit: parseFloat(item.profit),
   })) : [];
 
   const orderData = stats.orders_over_time ? stats.orders_over_time.map(item => ({
-    name: new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+    name: new Date(item.date).toLocaleDateString(&apo:en-US&apo:, { month: &apo:short&apo:, day: &apo:numeric&apo: }),
     Orders: parseInt(item.order_count),
     Customers: parseInt(item.customer_count),
   })) : [];
 
-  const totalRevenue = stats.total_revenue ? parseFloat(stats.total_revenue).toLocaleString('en-US') : '0';
-  const totalProfit = stats.total_profit ? parseFloat(stats.total_profit).toLocaleString('en-US') : '0';
-  const inventoryValue = stats.total_inventory_value ? parseFloat(stats.total_inventory_value).toLocaleString('en-US') : '0';
+  const totalRevenue = stats.total_revenue ? parseFloat(stats.total_revenue).toLocaleString(&apo:en-US&apo:) : &apo:0&apo:;
+  const totalProfit = stats.total_profit ? parseFloat(stats.total_profit).toLocaleString(&apo:en-US&apo:) : &apo:0&apo:;
+  const inventoryValue = stats.total_inventory_value ? parseFloat(stats.total_inventory_value).toLocaleString(&apo:en-US&apo:) : &apo:0&apo:;
   
   return (
     <div className="bg-gray-50 min-h-screen p-4 sm:p-8">
@@ -248,19 +248,19 @@ export default function AdminDashboardPage() {
           >
             Admin Dashboard
           </motion.h1>
-          <p className="text-gray-600 mt-1">Overview of your store's performance.</p>
+          <p className="text-gray-600 mt-1">Overview of your store&apo:s performance.</p>
         </div>
         
         <div className="flex flex-wrap gap-3 mt-4 sm:mt-0">
           <div className="flex space-x-1 bg-white p-1 rounded-lg shadow-sm border">
-            {[{label: '7 Days', value: '7'}, {label: '30 Days', value: '30'}, {label: '90 Days', value: '90'}].map(range => (
+            {[{label: &apo:7 Days&apo:, value: &apo:7&apo:}, {label: &apo:30 Days&apo:, value: &apo:30&apo:}, {label: &apo:90 Days&apo:, value: &apo:90&apo:}].map(range => (
               <button
                 key={range.value}
                 onClick={() => handleTimeRangeChange(range.value)}
                 className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
                   timeRange === range.value
-                    ? 'bg-indigo-600 text-white shadow'
-                    : 'text-gray-600 hover:bg-gray-100'
+                    ? &apo:bg-indigo-600 text-white shadow&apo:
+                    : &apo:text-gray-600 hover:bg-gray-100&apo:
                 }`}
               >
                 {range.label}
@@ -275,7 +275,7 @@ export default function AdminDashboardPage() {
           >
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
-              className={`h-4 w-4 mr-1 ${isRefreshing ? 'animate-spin' : ''}`} 
+              className={`h-4 w-4 mr-1 ${isRefreshing ? &apo:animate-spin&apo: : &apo:&apo:}`} 
               fill="none" 
               viewBox="0 0 24 24" 
               stroke="currentColor"
@@ -313,7 +313,7 @@ export default function AdminDashboardPage() {
         />
         <StatCard 
           title="Total Orders" 
-          value={stats.total_orders ? stats.total_orders.toLocaleString() : '0'} 
+          value={stats.total_orders ? stats.total_orders.toLocaleString() : &apo:0&apo:} 
           color="amber"
           isLoading={isRefreshing}
           icon={
@@ -344,27 +344,27 @@ export default function AdminDashboardPage() {
       >
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
           <h2 className="text-xl font-semibold text-gray-900 font-serif">
-            {activeTab === 'sales' ? 'Sales Performance' : 'Orders & Customers'} ({timeRange} Days)
+            {activeTab === &apo:sales&apo: ? &apo:Sales Performance&apo: : &apo:Orders & Customers&apo:} ({timeRange} Days)
           </h2>
           
           <div className="flex flex-wrap gap-3 mt-3 sm:mt-0">
             <div className="flex space-x-1 bg-gray-100 p-1 rounded-lg">
               <button
-                onClick={() => setActiveTab('sales')}
+                onClick={() => setActiveTab(&apo:sales&apo:)}
                 className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
-                  activeTab === 'sales'
-                    ? 'bg-indigo-600 text-white shadow'
-                    : 'text-gray-600 hover:bg-gray-200'
+                  activeTab === &apo:sales&apo:
+                    ? &apo:bg-indigo-600 text-white shadow&apo:
+                    : &apo:text-gray-600 hover:bg-gray-200&apo:
                 }`}
               >
                 Sales
               </button>
               <button
-                onClick={() => setActiveTab('orders')}
+                onClick={() => setActiveTab(&apo:orders&apo:)}
                 className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
-                  activeTab === 'orders'
-                    ? 'bg-indigo-600 text-white shadow'
-                    : 'text-gray-600 hover:bg-gray-200'
+                  activeTab === &apo:orders&apo:
+                    ? &apo:bg-indigo-600 text-white shadow&apo:
+                    : &apo:text-gray-600 hover:bg-gray-200&apo:
                 }`}
               >
                 Orders
@@ -372,7 +372,7 @@ export default function AdminDashboardPage() {
             </div>
             
             <div className="flex items-center">
-              {activeTab === 'sales' ? (
+              {activeTab === &apo:sales&apo: ? (
                 <>
                   <div className="flex items-center mr-4">
                     <div className="w-3 h-3 bg-indigo-500 rounded-full mr-2"></div>
@@ -401,7 +401,7 @@ export default function AdminDashboardPage() {
         
         <div className="h-80">
           <ResponsiveContainer width="100%" height="100%">
-            {activeTab === 'sales' ? (
+            {activeTab === &apo:sales&apo: ? (
               <AreaChart data={salesData} margin={{ top: 10, right: 30, left: 20, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
@@ -414,9 +414,9 @@ export default function AdminDashboardPage() {
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
-                <XAxis dataKey="name" tick={{ fill: '#6b7280', fontSize: 12 }} axisLine={false} tickLine={false} />
+                <XAxis dataKey="name" tick={{ fill: &apo:#6b7280&apo:, fontSize: 12 }} axisLine={false} tickLine={false} />
                 <YAxis 
-                  tick={{ fill: '#6b7280', fontSize: 12 }} 
+                  tick={{ fill: &apo:#6b7280&apo:, fontSize: 12 }} 
                   tickFormatter={(value) => `Ksh ${value >= 1000 ? `${value/1000}k` : value}`} 
                   axisLine={false} 
                   tickLine={false} 
@@ -444,9 +444,9 @@ export default function AdminDashboardPage() {
             ) : (
               <BarChart data={orderData} margin={{ top: 10, right: 30, left: 20, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
-                <XAxis dataKey="name" tick={{ fill: '#6b7280', fontSize: 12 }} axisLine={false} tickLine={false} />
+                <XAxis dataKey="name" tick={{ fill: &apo:#6b7280&apo:, fontSize: 12 }} axisLine={false} tickLine={false} />
                 <YAxis 
-                  tick={{ fill: '#6b7280', fontSize: 12 }} 
+                  tick={{ fill: &apo:#6b7280&apo:, fontSize: 12 }} 
                   axisLine={false} 
                   tickLine={false} 
                 />
@@ -466,7 +466,7 @@ export default function AdminDashboardPage() {
                 <Legend 
                   iconType="circle" 
                   iconSize={10} 
-                  wrapperStyle={{ paddingTop: '10px' }}
+                  wrapperStyle={{ paddingTop: &apo:10px&apo: }}
                   formatter={(value) => <span className="text-gray-600 text-sm">{value}</span>}
                 />
               </BarChart>
@@ -544,15 +544,15 @@ export default function AdminDashboardPage() {
                       <div className="w-24 bg-gray-200 rounded-full h-2 mr-3">
                         <div 
                           className={`h-2 rounded-full ${
-                            p.stock > 3 ? 'bg-green-500' : 
-                            p.stock > 1 ? 'bg-amber-500' : 'bg-red-500'
+                            p.stock > 3 ? &apo:bg-green-500&apo: : 
+                            p.stock > 1 ? &apo:bg-amber-500&apo: : &apo:bg-red-500&apo:
                           }`} 
                           style={{ width: `${(p.stock / 10) * 100}%` }} 
                         ></div>
                       </div>
                       <span className={`font-medium ${
-                        p.stock > 3 ? 'text-green-600' : 
-                        p.stock > 1 ? 'text-amber-600' : 'text-red-600'
+                        p.stock > 3 ? &apo:text-green-600&apo: : 
+                        p.stock > 1 ? &apo:text-amber-600&apo: : &apo:text-red-600&apo:
                       }`}>
                         {p.stock} left
                       </span>

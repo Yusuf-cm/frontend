@@ -1,4 +1,4 @@
-'use client';
+&apo:use client&apo:;
 
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/auth/useAuth";
@@ -19,7 +19,7 @@ export default function CartPage() {
   const [isRemoving, setIsRemoving] = useState(false);
   const [couponCode, setCouponCode] = useState("");
   const [appliedCoupon, setAppliedCoupon] = useState(null);
-  const [couponError, setCouponError] = useState('');
+  const [couponError, setCouponError] = useState(&apo:&apo:);
   const [isCheckingCoupon, setIsCheckingCoupon] = useState(false);
 
   // --- CORRECTED: Flat rate shipping ---
@@ -36,10 +36,10 @@ export default function CartPage() {
     }
     
     if (user) {
-      const checkoutUrl = appliedCoupon ? `/cart/checkout?coupon=${appliedCoupon.code}` : '/cart/checkout';
+      const checkoutUrl = appliedCoupon ? `/cart/checkout?coupon=${appliedCoupon.code}` : &apo:/cart/checkout&apo:;
       router.push(checkoutUrl);
     } else {
-      router.push('/login?next=/cart');
+      router.push(&apo:/login?next=/cart&apo:);
     }
   };
 
@@ -68,16 +68,16 @@ export default function CartPage() {
     }
     if (!user) {
       toast.error("You must be logged in to apply a coupon.");
-      router.push('/login?next=/cart');
+      router.push(&apo:/login?next=/cart&apo:);
       return;
     }
     setIsCheckingCoupon(true);
-    setCouponError('');
+    setCouponError(&apo:&apo:);
     
     try {
       const api = getAuthenticatedApi({ authTokens, setAuthTokens, logoutUser });
-      const response = await api('/coupons/validate/', {
-        method: 'POST',
+      const response = await api(&apo:/coupons/validate/&apo:, {
+        method: &apo:POST&apo:,
         body: JSON.stringify({ code: couponCode }),
       });
       setAppliedCoupon(response);
@@ -93,8 +93,8 @@ export default function CartPage() {
   
   const removeCoupon = () => {
     setAppliedCoupon(null);
-    setCouponCode('');
-    setCouponError('');
+    setCouponCode(&apo:&apo:);
+    setCouponError(&apo:&apo:);
     toast.success("Coupon removed.");
   };
 
@@ -122,7 +122,7 @@ export default function CartPage() {
             <div className="lg:col-span-2">
               <div className="bg-white rounded-xl shadow-sm overflow-hidden">
                 <div className="px-6 py-4 border-b border-gray-200">
-                  <h2 className="text-lg font-medium text-gray-900">{cartItems.length} {cartItems.length === 1 ? 'Item' : 'Items'} in Cart</h2>
+                  <h2 className="text-lg font-medium text-gray-900">{cartItems.length} {cartItems.length === 1 ? &apo:Item&apo: : &apo:Items&apo:} in Cart</h2>
                 </div>
                 <ul className="divide-y divide-gray-200">
                   {cartItems.map((product) => (
@@ -184,7 +184,7 @@ export default function CartPage() {
                       <label htmlFor="coupon" className="block text-sm font-medium text-gray-700 mb-2">Apply Coupon</label>
                       <div className="flex gap-2">
                         <input type="text" id="coupon" value={couponCode} onChange={(e) => setCouponCode(e.target.value)} placeholder="Enter coupon code" className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500" />
-                        <button onClick={applyCoupon} disabled={isCheckingCoupon} className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 disabled:opacity-50">{isCheckingCoupon ? <FiLoader className="animate-spin" /> : 'Apply'}</button>
+                        <button onClick={applyCoupon} disabled={isCheckingCoupon} className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 disabled:opacity-50">{isCheckingCoupon ? <FiLoader className="animate-spin" /> : &apo:Apply&apo:}</button>
                       </div>
                       {couponError && <p className="mt-2 text-sm text-red-600">{couponError}</p>}
                     </>
@@ -192,7 +192,7 @@ export default function CartPage() {
                 </div>
                 <div className="mt-8">
                   <button onClick={handleCheckout} className="w-full bg-indigo-600 border border-transparent rounded-lg shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-indigo-700">
-                    {user ? 'Proceed to Checkout' : 'Login to Checkout'}
+                    {user ? &apo:Proceed to Checkout&apo: : &apo:Login to Checkout&apo:}
                   </button>
                 </div>
               </div>

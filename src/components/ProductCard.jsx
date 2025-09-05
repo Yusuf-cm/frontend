@@ -1,17 +1,17 @@
-'use client';
+&apo:use client&apo:;
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import Image from &apo:next/image&apo:;
+import Link from &apo:next/link&apo:;
+import { motion } from &apo:framer-motion&apo:;
+import { useState } from &apo:react&apo:;
 // --- CORRECTED: Use relative paths for sibling components ---
-import AddToCartButton from '@/app/products/[id]/components/AddToCartButton';
-import WishlistButton from './WishlistButton';
+import AddToCartButton from &apo:@/app/products/[id]/components/AddToCartButton&apo:;
+import WishlistButton from &apo:./WishlistButton&apo:;
 
 export default function ProductCard({ product }) {
   const [isHovered, setIsHovered] = useState(false);
   
-  if (!product || typeof product.price === 'undefined') {
+  if (!product || typeof product.price === &apo:undefined&apo:) {
     return null; // Return nothing if product data is invalid
   }
   
@@ -33,7 +33,7 @@ export default function ProductCard({ product }) {
           {product.images?.[0] ? (
             <Image 
               src={product.images[0]} 
-              alt={product.name || 'Product Image'} 
+              alt={product.name || &apo:Product Image&apo:} 
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -53,7 +53,7 @@ export default function ProductCard({ product }) {
             )}
           </div>
           
-          <div className={`absolute top-3 left-3 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`absolute top-3 left-3 transition-opacity duration-300 ${isHovered ? &apo:opacity-100&apo: : &apo:opacity-0&apo:}`}>
             <WishlistButton productId={product.id} />
           </div>
         </div>
@@ -62,7 +62,7 @@ export default function ProductCard({ product }) {
           <h3 className="font-medium text-gray-900 group-hover:text-indigo-600 transition-colors line-clamp-1">
             {product.name}
           </h3>
-          <p className="text-sm text-gray-500 mt-1 line-clamp-1">{product.category?.name || 'Uncategorized'}</p>
+          <p className="text-sm text-gray-500 mt-1 line-clamp-1">{product.category?.name || &apo:Uncategorized&apo:}</p>
         </div>
       </Link>
       
@@ -76,7 +76,7 @@ export default function ProductCard({ product }) {
           </div>
           <div className="flex items-center">
             {[...Array(5)].map((_, i) => (
-              <svg key={i} className={`h-4 w-4 ${i < Math.round(product.rating || 0) ? 'text-yellow-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
+              <svg key={i} className={`h-4 w-4 ${i < Math.round(product.rating || 0) ? &apo:text-yellow-400&apo: : &apo:text-gray-300&apo:}`} fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
             ))}

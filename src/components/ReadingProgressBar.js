@@ -1,7 +1,7 @@
-'use client';
+&apo:use client&apo:;
 
-import { useState, useEffect } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { useState, useEffect } from &apo:react&apo:;
+import { motion, useScroll, useSpring } from &apo:framer-motion&apo:;
 
 export default function ReadingProgressBar() {
   const { scrollYProgress } = useScroll();

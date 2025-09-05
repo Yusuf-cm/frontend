@@ -1,49 +1,49 @@
-'use client';
+&apo:use client&apo:;
 
-import { useState, useEffect, useCallback } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
-import CheckoutForm from '@/components/CheckoutForm';
-import { useCart } from '@/context/CartContext';
-import { useAuth } from '@/auth/useAuth';
-import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FiArrowLeft, FiShoppingBag, FiAlertCircle, FiCheck } from 'react-icons/fi';
-import { toast } from 'react-hot-toast';
-import { kenyanCounties } from '@/utils/KenyanCounties';
-import OrderSummary from '@/components/OrderSummary';
-import { getAuthenticatedApi } from '@/utils/api';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useState, useEffect, useCallback } from &apo:react&apo:;
+import { loadStripe } from &apo:@stripe/stripe-js&apo:;
+import { Elements } from &apo:@stripe/react-stripe-js&apo:;
+import CheckoutForm from &apo:@/components/CheckoutForm&apo:;
+import { useCart } from &apo:@/context/CartContext&apo:;
+import { useAuth } from &apo:@/auth/useAuth&apo:;
+import Link from &apo:next/link&apo:;
+import { motion, AnimatePresence } from &apo:framer-motion&apo:;
+import { FiArrowLeft, FiShoppingBag, FiAlertCircle, FiCheck } from &apo:react-icons/fi&apo:;
+import { toast } from &apo:react-hot-toast&apo:;
+import { kenyanCounties } from &apo:@/utils/KenyanCounties&apo:;
+import OrderSummary from &apo:@/components/OrderSummary&apo:;
+import { getAuthenticatedApi } from &apo:@/utils/api&apo:;
+import { useSearchParams, useRouter } from &apo:next/navigation&apo:;
 
 // Load Stripe outside component
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 export default function CheckoutPage() {
-  const [clientSecret, setClientSecret] = useState('');
+  const [clientSecret, setClientSecret] = useState(&apo:&apo:);
   const [orderId, setOrderId] = useState(null);
   const { cartItems, cartTotal, removeFromCart, updateQuantity } = useCart();
   const { user, authTokens, setAuthTokens, logoutUser } = useAuth();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formError, setFormError] = useState('');
+  const [formError, setFormError] = useState(&apo:&apo:);
   const [isValidating, setIsValidating] = useState(true);
   const [validationErrors, setValidationErrors] = useState([]);
   const [step, setStep] = useState(1); // 1: Contact, 2: Shipping, 3: Payment
   const [paymentComplete, setPaymentComplete] = useState(false);
 
   const searchParams = useSearchParams();
-  const couponCode = searchParams.get('coupon');
+  const couponCode = searchParams.get(&apo:coupon&apo:);
 
   // Customer details state
   const [customerDetails, setCustomerDetails] = useState({
-    firstName: user?.first_name || '',
-    lastName: user?.last_name || '',
-    email: user?.email || '',
-    phone: '',
-    address_line_1: '',
-    address_line_2: '',
-    city: '',
-    county: ''
+    firstName: user?.first_name || &apo:&apo:,
+    lastName: user?.last_name || &apo:&apo:,
+    email: user?.email || &apo:&apo:,
+    phone: &apo:&apo:,
+    address_line_1: &apo:&apo:,
+    address_line_2: &apo:&apo:,
+    city: &apo:&apo:,
+    county: &apo:&apo:
   });
 
   // Calculate totals (for display only)
@@ -55,17 +55,17 @@ export default function CheckoutPage() {
     if (user) {
         setCustomerDetails(prev => ({
             ...prev,
-            firstName: user.first_name || '',
-            lastName: user.last_name || '',
-            email: user.email || '',
+            firstName: user.first_name || &apo:&apo:,
+            lastName: user.last_name || &apo:&apo:,
+            email: user.email || &apo:&apo:,
         }));
     }
   }, [user]);
 
   useEffect(() => {
     if (cartItems.length === 0 && !isValidating && !paymentComplete) {
-      toast.error('Your cart is empty!');
-      router.push('/products');
+      toast.error(&apo:Your cart is empty!&apo:);
+      router.push(&apo:/products&apo:);
     }
   }, [cartItems, isValidating, paymentComplete, router]);
 
@@ -73,7 +73,7 @@ export default function CheckoutPage() {
   useEffect(() => {
     if (!authTokens) {
         if (!user && !isValidating) { // Prevent redirection while auth is still loading
-             router.push('/login?next=/cart/checkout');
+             router.push(&apo:/login?next=/cart/checkout&apo:);
         }
         setIsValidating(false);
         return;
@@ -88,8 +88,8 @@ export default function CheckoutPage() {
       const productIds = cartItems.map(item => item.id);
       try {
         const api = getAuthenticatedApi({ authTokens, setAuthTokens, logoutUser });
-        const liveProducts = await api('/products/validate-cart/', {
-          method: 'POST',
+        const liveProducts = await api(&apo:/products/validate-cart/&apo:, {
+          method: &apo:POST&apo:,
           body: JSON.stringify({ product_ids: productIds }),
         });
 
@@ -107,7 +107,7 @@ export default function CheckoutPage() {
 
         if (errors.length > 0) {
           setValidationErrors(errors);
-          toast.error('Your cart was updated due to stock changes');
+          toast.error(&apo:Your cart was updated due to stock changes&apo:);
         }
       } catch (error) {
         console.error("Cart validation failed:", error);
@@ -127,15 +127,15 @@ export default function CheckoutPage() {
     const newErrors = {};
     let isValid = true;
 
-    if (!customerDetails.firstName.trim()) { newErrors.firstName = 'First name is required'; isValid = false; }
-    if (!customerDetails.lastName.trim()) { newErrors.lastName = 'Last name is required'; isValid = false; }
-    if (!/^\S+@\S+\.\S+$/.test(customerDetails.email)) { newErrors.email = 'Email is invalid'; isValid = false; }
-    if (!/^[0-9]{10,15}$/.test(customerDetails.phone)) { newErrors.phone = 'Phone number is invalid'; isValid = false; }
+    if (!customerDetails.firstName.trim()) { newErrors.firstName = &apo:First name is required&apo:; isValid = false; }
+    if (!customerDetails.lastName.trim()) { newErrors.lastName = &apo:Last name is required&apo:; isValid = false; }
+    if (!/^\S+@\S+\.\S+$/.test(customerDetails.email)) { newErrors.email = &apo:Email is invalid&apo:; isValid = false; }
+    if (!/^[0-9]{10,15}$/.test(customerDetails.phone)) { newErrors.phone = &apo:Phone number is invalid&apo:; isValid = false; }
 
     if (step >= 2) {
-      if (!customerDetails.address_line_1.trim()) { newErrors.address_line_1 = 'Address is required'; isValid = false; }
-      if (!customerDetails.city.trim()) { newErrors.city = 'City is required'; isValid = false; }
-      if (!customerDetails.county) { newErrors.county = 'County is required'; isValid = false; }
+      if (!customerDetails.address_line_1.trim()) { newErrors.address_line_1 = &apo:Address is required&apo:; isValid = false; }
+      if (!customerDetails.city.trim()) { newErrors.city = &apo:City is required&apo:; isValid = false; }
+      if (!customerDetails.county) { newErrors.county = &apo:County is required&apo:; isValid = false; }
     }
 
     setFormErrors(newErrors);
@@ -144,7 +144,7 @@ export default function CheckoutPage() {
 
   const handlePaymentIntent = async () => {
     setIsSubmitting(true);
-    setFormError('');
+    setFormError(&apo:&apo:);
 
     if (cartItems.length === 0) {
       setFormError("Your cart is empty.");
@@ -156,8 +156,8 @@ export default function CheckoutPage() {
     
     try {
       const api = getAuthenticatedApi({ authTokens, setAuthTokens, logoutUser });
-      const res = await api('/create-payment-intent/', {
-        method: 'POST',
+      const res = await api(&apo:/create-payment-intent/&apo:, {
+        method: &apo:POST&apo:,
         body: JSON.stringify({
           items: itemsForBackend,
           customer_details: customerDetails,
@@ -193,7 +193,7 @@ export default function CheckoutPage() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setCustomerDetails(prev => ({ ...prev, [name]: value }));
-    if (formErrors[name]) setFormErrors(prev => ({ ...prev, [name]: '' }));
+    if (formErrors[name]) setFormErrors(prev => ({ ...prev, [name]: &apo:&apo: }));
   };
 
   const renderStepContent = () => {
@@ -205,24 +205,24 @@ export default function CheckoutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">First Name *</label>
-                <input type="text" id="firstName" name="firstName" value={customerDetails.firstName} onChange={handleInputChange} className={`w-full px-4 py-2 border rounded-lg ${formErrors.firstName ? 'border-red-500' : 'border-gray-300'}`} />
+                <input type="text" id="firstName" name="firstName" value={customerDetails.firstName} onChange={handleInputChange} className={`w-full px-4 py-2 border rounded-lg ${formErrors.firstName ? &apo:border-red-500&apo: : &apo:border-gray-300&apo:}`} />
                 {formErrors.firstName && <p className="mt-1 text-sm text-red-600 flex items-center"><FiAlertCircle className="mr-1" /> {formErrors.firstName}</p>}
               </div>
               <div>
                 <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">Last Name *</label>
-                <input type="text" id="lastName" name="lastName" value={customerDetails.lastName} onChange={handleInputChange} className={`w-full px-4 py-2 border rounded-lg ${formErrors.lastName ? 'border-red-500' : 'border-gray-300'}`} />
+                <input type="text" id="lastName" name="lastName" value={customerDetails.lastName} onChange={handleInputChange} className={`w-full px-4 py-2 border rounded-lg ${formErrors.lastName ? &apo:border-red-500&apo: : &apo:border-gray-300&apo:}`} />
                 {formErrors.lastName && <p className="mt-1 text-sm text-red-600 flex items-center"><FiAlertCircle className="mr-1" /> {formErrors.lastName}</p>}
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
-                <input type="email" id="email" name="email" value={customerDetails.email} onChange={handleInputChange} className={`w-full px-4 py-2 border rounded-lg ${formErrors.email ? 'border-red-500' : 'border-gray-300'}`} />
+                <input type="email" id="email" name="email" value={customerDetails.email} onChange={handleInputChange} className={`w-full px-4 py-2 border rounded-lg ${formErrors.email ? &apo:border-red-500&apo: : &apo:border-gray-300&apo:}`} />
                 {formErrors.email && <p className="mt-1 text-sm text-red-600 flex items-center"><FiAlertCircle className="mr-1" /> {formErrors.email}</p>}
               </div>
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
-                <input type="tel" id="phone" name="phone" value={customerDetails.phone} onChange={handleInputChange} className={`w-full px-4 py-2 border rounded-lg ${formErrors.phone ? 'border-red-500' : 'border-gray-300'}`} placeholder="e.g. 0712345678" />
+                <input type="tel" id="phone" name="phone" value={customerDetails.phone} onChange={handleInputChange} className={`w-full px-4 py-2 border rounded-lg ${formErrors.phone ? &apo:border-red-500&apo: : &apo:border-gray-300&apo:}`} placeholder="e.g. 0712345678" />
                 {formErrors.phone && <p className="mt-1 text-sm text-red-600 flex items-center"><FiAlertCircle className="mr-1" /> {formErrors.phone}</p>}
               </div>
             </div>
@@ -234,7 +234,7 @@ export default function CheckoutPage() {
             <h2 className="text-xl font-bold text-gray-900 mb-4">Shipping Address</h2>
             <div>
               <label htmlFor="address_line_1" className="block text-sm font-medium text-gray-700 mb-1">Street Address *</label>
-              <input type="text" id="address_line_1" name="address_line_1" value={customerDetails.address_line_1} onChange={handleInputChange} className={`w-full px-4 py-2 border rounded-lg ${formErrors.address_line_1 ? 'border-red-500' : 'border-gray-300'}`} placeholder="House number and street name" />
+              <input type="text" id="address_line_1" name="address_line_1" value={customerDetails.address_line_1} onChange={handleInputChange} className={`w-full px-4 py-2 border rounded-lg ${formErrors.address_line_1 ? &apo:border-red-500&apo: : &apo:border-gray-300&apo:}`} placeholder="House number and street name" />
               {formErrors.address_line_1 && <p className="mt-1 text-sm text-red-600 flex items-center"><FiAlertCircle className="mr-1" /> {formErrors.address_line_1}</p>}
             </div>
             <div>
@@ -244,12 +244,12 @@ export default function CheckoutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-1">City *</label>
-                <input type="text" id="city" name="city" value={customerDetails.city} onChange={handleInputChange} className={`w-full px-4 py-2 border rounded-lg ${formErrors.city ? 'border-red-500' : 'border-gray-300'}`} />
+                <input type="text" id="city" name="city" value={customerDetails.city} onChange={handleInputChange} className={`w-full px-4 py-2 border rounded-lg ${formErrors.city ? &apo:border-red-500&apo: : &apo:border-gray-300&apo:}`} />
                 {formErrors.city && <p className="mt-1 text-sm text-red-600 flex items-center"><FiAlertCircle className="mr-1" /> {formErrors.city}</p>}
               </div>
               <div>
                 <label htmlFor="county" className="block text-sm font-medium text-gray-700 mb-1">County *</label>
-                <select id="county" name="county" value={customerDetails.county} onChange={handleInputChange} className={`w-full px-4 py-2 border rounded-lg ${formErrors.county ? 'border-red-500' : 'border-gray-300'}`}>
+                <select id="county" name="county" value={customerDetails.county} onChange={handleInputChange} className={`w-full px-4 py-2 border rounded-lg ${formErrors.county ? &apo:border-red-500&apo: : &apo:border-gray-300&apo:}`}>
                   <option value="">Select County</option>
                   {kenyanCounties.map(county => <option key={county} value={county}>{county}</option>)}
                 </select>
@@ -262,7 +262,7 @@ export default function CheckoutPage() {
         return clientSecret && orderId ? (
           <div>
             <h2 className="text-xl font-bold text-gray-900 mb-4">Payment Information</h2>
-            <Elements options={{ clientSecret, appearance: { theme: 'stripe' } }} stripe={stripePromise}>
+            <Elements options={{ clientSecret, appearance: { theme: &apo:stripe&apo: } }} stripe={stripePromise}>
               <CheckoutForm orderId={orderId} />
             </Elements>
           </div>
@@ -316,11 +316,11 @@ export default function CheckoutPage() {
                             <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200 -z-10"></div>
                             {[1, 2, 3].map((stepNum, index) => (
                                 <div key={stepNum} className="flex flex-col items-center relative">
-                                    <div className={`w-10 h-10 rounded-full flex items-center justify-center ${step === stepNum ? 'bg-indigo-600 text-white border-2 border-indigo-600' : step > stepNum ? 'bg-green-500 text-white border-2 border-green-500' : 'bg-white text-gray-500 border-2 border-gray-300'}`}>
+                                    <div className={`w-10 h-10 rounded-full flex items-center justify-center ${step === stepNum ? &apo:bg-indigo-600 text-white border-2 border-indigo-600&apo: : step > stepNum ? &apo:bg-green-500 text-white border-2 border-green-500&apo: : &apo:bg-white text-gray-500 border-2 border-gray-300&apo:}`}>
                                         {step > stepNum ? <FiCheck className="w-5 h-5" /> : stepNum}
                                     </div>
-                                    <span className={`mt-2 text-sm font-medium ${step === stepNum ? 'text-indigo-600' : 'text-gray-500'}`}>
-                                        {['Contact', 'Shipping', 'Payment'][index]}
+                                    <span className={`mt-2 text-sm font-medium ${step === stepNum ? &apo:text-indigo-600&apo: : &apo:text-gray-500&apo:}`}>
+                                        {[&apo:Contact&apo:, &apo:Shipping&apo:, &apo:Payment&apo:][index]}
                                     </span>
                                 </div>
                             ))}
@@ -333,8 +333,8 @@ export default function CheckoutPage() {
                                     {step > 1 && (
                                         <button type="button" onClick={() => setStep(step - 1)} className="px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50">Back</button>
                                     )}
-                                    <button type="submit" disabled={isSubmitting} className={`ml-auto px-6 py-3 font-medium rounded-lg shadow-md transition-colors ${isSubmitting ? 'bg-gray-400' : 'bg-indigo-600 text-white hover:bg-indigo-700'} disabled:cursor-not-allowed`}>
-                                        {isSubmitting ? 'Processing...' : (step === 1 ? 'Continue to Shipping' : 'Continue to Payment')}
+                                    <button type="submit" disabled={isSubmitting} className={`ml-auto px-6 py-3 font-medium rounded-lg shadow-md transition-colors ${isSubmitting ? &apo:bg-gray-400&apo: : &apo:bg-indigo-600 text-white hover:bg-indigo-700&apo:} disabled:cursor-not-allowed`}>
+                                        {isSubmitting ? &apo:Processing...&apo: : (step === 1 ? &apo:Continue to Shipping&apo: : &apo:Continue to Payment&apo:)}
                                     </button>
                                 </div>
                                 {formError && <p className="mt-4 text-red-600 text-center"><FiAlertCircle className="inline mr-2" /> {formError}</p>}

@@ -1,8 +1,8 @@
 // src/components/FilterBar.jsx
-'use client';
+&apo:use client&apo:;
 
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import Link from &apo:next/link&apo:;
+import { useSearchParams } from &apo:next/navigation&apo:;
 
 export default function FilterBar({ categories, selectedCategory }) {
   const searchParams = useSearchParams();
@@ -10,15 +10,15 @@ export default function FilterBar({ categories, selectedCategory }) {
   // Preserve other query parameters
   const createUrl = (category) => {
     const params = new URLSearchParams(searchParams);
-    params.set('category', category);
-    params.delete('page'); // Reset to first page when changing category
+    params.set(&apo:category&apo:, category);
+    params.delete(&apo:page&apo:); // Reset to first page when changing category
     return `/portfolio?${params.toString()}`;
   };
   
   const clearFilter = () => {
     const params = new URLSearchParams(searchParams);
-    params.delete('category');
-    params.delete('page'); // Reset to first page when clearing filter
+    params.delete(&apo:category&apo:);
+    params.delete(&apo:page&apo:); // Reset to first page when clearing filter
     return `/portfolio?${params.toString()}`;
   };
   
@@ -28,8 +28,8 @@ export default function FilterBar({ categories, selectedCategory }) {
         href={clearFilter()}
         className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
           !selectedCategory
-            ? 'bg-primary text-white shadow-md'
-            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            ? &apo:bg-primary text-white shadow-md&apo:
+            : &apo:bg-gray-100 text-gray-700 hover:bg-gray-200&apo:
         }`}
       >
         All Projects
@@ -41,8 +41,8 @@ export default function FilterBar({ categories, selectedCategory }) {
           href={createUrl(category.slug)}
           className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             selectedCategory === category.slug
-              ? 'bg-primary text-white shadow-md'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              ? &apo:bg-primary text-white shadow-md&apo:
+              : &apo:bg-gray-100 text-gray-700 hover:bg-gray-200&apo:
           }`}
         >
           {category.name}

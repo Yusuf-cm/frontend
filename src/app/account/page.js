@@ -1,12 +1,12 @@
-'use client';
+&apo:use client&apo:;
 
-import { useEffect, useState, useCallback } from 'react';
-import { useAuth } from '@/auth/useAuth';
-import { getAuthenticatedApi } from '@/utils/api';
-import { useRouter } from 'next/navigation';
-import { format } from 'date-fns';
-import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState, useCallback } from &apo:react&apo:;
+import { useAuth } from &apo:@/auth/useAuth&apo:;
+import { getAuthenticatedApi } from &apo:@/utils/api&apo:;
+import { useRouter } from &apo:next/navigation&apo:;
+import { format } from &apo:date-fns&apo:;
+import Link from &apo:next/link&apo:;
+import { motion, AnimatePresence } from &apo:framer-motion&apo:;
 
 // ======================== IMPROVEMENT SUMMARY ========================
 // 1. Added animations with Framer Motion for better UX
@@ -67,7 +67,7 @@ const AccountHeader = ({ user, onLogout }) => (
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4, delay: 0.4 }}
     >
-      Welcome back,{' '}
+      Welcome back,{&apo: &apo:}
       <span className="font-semibold text-indigo-600">
         {user?.first_name || user?.username}
       </span>
@@ -98,7 +98,7 @@ const OrderCard = ({ order }) => {
             Order #{order.id}
           </p>
           <p className="text-sm text-gray-500 mt-1 pl-7">
-            Placed on: {format(new Date(order.created_at), 'MMMM d, yyyy')}
+            Placed on: {format(new Date(order.created_at), &apo:MMMM d, yyyy&apo:)}
           </p>
         </div>
         <div className="flex items-center gap-3">
@@ -116,7 +116,7 @@ const OrderCard = ({ order }) => {
           <motion.div
             id={`order-details-${order.id}`}
             initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
+            animate={{ height: &apo:auto&apo:, opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
@@ -130,18 +130,18 @@ const OrderCard = ({ order }) => {
             <div className="px-6 pb-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">
               <div className="bg-indigo-50 p-3 rounded-lg">
                 <p className="font-medium text-indigo-700">Payment Method</p>
-                <p className="text-gray-700">{order.payment_method || 'Credit Card'}</p>
+                <p className="text-gray-700">{order.payment_method || &apo:Credit Card&apo:}</p>
               </div>
               <div className="bg-green-50 p-3 rounded-lg">
                 <p className="font-medium text-green-700">Delivery Status</p>
-                <p className="text-gray-700">{order.delivery_status || 'Processing'}</p>
+                <p className="text-gray-700">{order.delivery_status || &apo:Processing&apo:}</p>
               </div>
               <div className="bg-purple-50 p-3 rounded-lg">
                 <p className="font-medium text-purple-700">Estimated Delivery</p>
                 <p className="text-gray-700">
                   {order.estimated_delivery 
-                    ? format(new Date(order.estimated_delivery), 'MMM d, yyyy') 
-                    : 'Within 5 business days'}
+                    ? format(new Date(order.estimated_delivery), &apo:MMM d, yyyy&apo:) 
+                    : &apo:Within 5 business days&apo:}
                 </p>
               </div>
             </div>
@@ -155,7 +155,7 @@ const OrderCard = ({ order }) => {
 const ChevronIcon = ({ expanded }) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
-    className={`h-5 w-5 text-gray-500 transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}
+    className={`h-5 w-5 text-gray-500 transition-transform duration-300 ${expanded ? &apo:rotate-180&apo: : &apo:&apo:}`}
     viewBox="0 0 20 20" 
     fill="currentColor"
     aria-hidden="true"
@@ -173,10 +173,10 @@ const OrderIcon = () => (
 const StatusBadge = ({ paid }) => (
   <span className={`px-3 py-1 text-xs font-semibold rounded-full ${
     paid 
-      ? 'bg-green-100 text-green-800' 
-      : 'bg-yellow-100 text-yellow-800'
+      ? &apo:bg-green-100 text-green-800&apo: 
+      : &apo:bg-yellow-100 text-yellow-800&apo:
   }`}>
-    {paid ? 'Paid' : 'Pending'}
+    {paid ? &apo:Paid&apo: : &apo:Pending&apo:}
   </span>
 );
 
@@ -212,7 +212,7 @@ const ItemsSection = ({ order }) => (
       {order.items.map(item => (
         <li key={item.id} className="flex justify-between text-sm text-gray-600 bg-gray-50 rounded-lg p-3 border border-gray-100">
           <span>
-            {item.quantity} ×{' '}
+            {item.quantity} ×{&apo: &apo:}
             <Link 
               href={`/products/${item.product}`} 
               className="font-medium text-indigo-600 hover:text-indigo-800 hover:underline transition-colors"
@@ -249,7 +249,7 @@ const EmptyOrderState = () => (
     </div>
     <h3 className="text-lg font-serif font-medium text-gray-900 mb-2">No orders yet</h3>
     <p className="text-gray-500 max-w-md mx-auto mb-6">
-      You haven't placed any orders. Start shopping to see your order history here.
+      You haven&apo:t placed any orders. Start shopping to see your order history here.
     </p>
     <Link 
       href="/products" 
@@ -327,20 +327,20 @@ export default function AccountPage() {
     
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
+    const [error, setError] = useState(&apo:&apo:);
 
     const fetchOrderHistory = useCallback(async () => {
         if (!user || !authTokens) return;
         
         try {
             setLoading(true);
-            setError('');
+            setError(&apo:&apo:);
             const api = getAuthenticatedApi({ authTokens, setAuthTokens, logoutUser });
-            const data = await api('/orders/history/');
+            const data = await api(&apo:/orders/history/&apo:);
             setOrders(data);
         } catch (err) {
             console.error("Failed to fetch order history:", err);
-            setError('Could not load your order history. Please try again later.');
+            setError(&apo:Could not load your order history. Please try again later.&apo:);
         } finally {
             setLoading(false);
         }
@@ -348,7 +348,7 @@ export default function AccountPage() {
 
     useEffect(() => {
         if (!user) {
-            router.push('/login');
+            router.push(&apo:/login&apo:);
             return;
         }
         fetchOrderHistory();
@@ -356,7 +356,7 @@ export default function AccountPage() {
 
     const handleLogout = () => {
         logoutUser();
-        router.push('/');
+        router.push(&apo:/&apo:);
     };
 
     return (

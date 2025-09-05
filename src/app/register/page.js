@@ -1,25 +1,25 @@
-'use client';
-import { useState } from 'react';
-import { useAuth } from '@/auth/useAuth';
-import Link from 'next/link';
-import FormError from '@/components/FormError';
-import { FiEye, FiEyeOff, FiCheck, FiUser, FiMail, FiLock } from 'react-icons/fi';
-import PasswordStrengthBar from 'react-password-strength-bar';
+&apo:use client&apo:;
+import { useState } from &apo:react&apo:;
+import { useAuth } from &apo:@/auth/useAuth&apo:;
+import Link from &apo:next/link&apo:;
+import FormError from &apo:@/components/FormError&apo:;
+import { FiEye, FiEyeOff, FiCheck, FiUser, FiMail, FiLock } from &apo:react-icons/fi&apo:;
+import PasswordStrengthBar from &apo:react-password-strength-bar&apo:;
 
 export default function RegisterPage() {
     const [formData, setFormData] = useState({
-        username: '',
-        password: '',
-        email: '',
-        firstName: '',
-        lastName: ''
+        username: &apo:&apo:,
+        password: &apo:&apo:,
+        email: &apo:&apo:,
+        firstName: &apo:&apo:,
+        lastName: &apo:&apo:
     });
-    const [error, setError] = useState('');
+    const [error, setError] = useState(&apo:&apo:);
     const [isLoading, setIsLoading] = useState(false);
     const [usernameSuggestions, setUsernameSuggestions] = useState([]);
     const [showPassword, setShowPassword] = useState(false);
     const [acceptedTerms, setAcceptedTerms] = useState(false);
-    const [successMessage, setSuccessMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState(&apo:&apo:);
     const [passwordScore, setPasswordScore] = useState(0);
     const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -29,8 +29,8 @@ export default function RegisterPage() {
         if (!currentUsername) return;
         try {
             const res = await fetch(`${API_BASE_URL}/auth/username/suggest/`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                method: &apo:POST&apo:,
+                headers: { &apo:Content-Type&apo:: &apo:application/json&apo: },
                 body: JSON.stringify({ username: currentUsername }),
             });
             if (!res.ok) return;
@@ -48,27 +48,27 @@ export default function RegisterPage() {
             [name]: value
         }));
 
-        if (name === 'username') {
+        if (name === &apo:username&apo:) {
             setUsernameSuggestions([]);
         }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError('');
-        setSuccessMessage('');
+        setError(&apo:&apo:);
+        setSuccessMessage(&apo:&apo:);
         setIsLoading(true);
         setUsernameSuggestions([]);
 
         // Client-side validation
         if (!acceptedTerms) {
-            setError('You must accept the terms and conditions');
+            setError(&apo:You must accept the terms and conditions&apo:);
             setIsLoading(false);
             return;
         }
 
         if (passwordScore < 2) {
-            setError('Password is too weak. Please choose a stronger password.');
+            setError(&apo:Password is too weak. Please choose a stronger password.&apo:);
             setIsLoading(false);
             return;
         }
@@ -82,17 +82,17 @@ export default function RegisterPage() {
                 last_name: formData.lastName 
             });
             
-            setSuccessMessage('Account created successfully! Redirecting to login...');
+            setSuccessMessage(&apo:Account created successfully! Redirecting to login...&apo:);
             
             // Redirect to login after 3 seconds
             setTimeout(() => {
-                window.location.href = '/login';
+                window.location.href = &apo:/login&apo:;
             }, 3000);
         } catch (err) {
-            const errorMessage = err.message || 'An error occurred during registration.';
+            const errorMessage = err.message || &apo:An error occurred during registration.&apo:;
             setError(errorMessage);
 
-            if (errorMessage.toLowerCase().includes('username')) {
+            if (errorMessage.toLowerCase().includes(&apo:username&apo:)) {
                 checkUsernameAndSuggest(formData.username);
             }
         } finally {
@@ -275,8 +275,8 @@ export default function RegisterPage() {
                     disabled={isLoading || !acceptedTerms || passwordScore < 2}
                     className={`w-full py-3 px-4 rounded-lg font-bold transition-all duration-300 flex items-center justify-center
                         ${isLoading || !acceptedTerms || passwordScore < 2
-                            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                            : 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-md hover:shadow-lg'
+                            ? &apo:bg-gray-300 text-gray-500 cursor-not-allowed&apo:
+                            : &apo:bg-indigo-600 text-white hover:bg-indigo-700 shadow-md hover:shadow-lg&apo:
                         }`}
                 >
                     {isLoading ? (
@@ -288,14 +288,14 @@ export default function RegisterPage() {
                             Creating Account...
                         </>
                     ) : (
-                        'Create Account'
+                        &apo:Create Account&apo:
                     )}
                 </button>
             </form>
             
             <div className="mt-8 pt-6 border-t border-gray-200">
                 <p className="text-center text-gray-600">
-                    Already have an account?{' '}
+                    Already have an account?{&apo: &apo:}
                     <Link href="/login" className="text-indigo-600 font-medium hover:underline">
                         Sign in
                     </Link>

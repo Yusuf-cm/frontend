@@ -99,10 +99,10 @@ var _s = __turbopack_context__.k.signature();
 function LoginPage() {
     _s();
     const [formData, setFormData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
-        username: '',
-        password: ''
+        username: &quot;,
+        password: &quot;
     });
-    const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
+    const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(&quot;);
     const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [showPassword, setShowPassword] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const { loginUser } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$auth$2f$useAuth$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"])();
@@ -116,7 +116,7 @@ function LoginPage() {
                 setError('Please fill in all fields');
                 return;
             }
-            setError('');
+            setError(&quot;);
             setIsLoading(true);
             try {
                 await loginUser(formData.username, formData.password, nextUrl);
@@ -149,7 +149,7 @@ function LoginPage() {
                         [name]: value
                     })
             }["LoginPage.useCallback[handleChange]"]);
-            if (error) setError('');
+            if (error) setError(&quot;);
         }
     }["LoginPage.useCallback[handleChange]"], [
         error

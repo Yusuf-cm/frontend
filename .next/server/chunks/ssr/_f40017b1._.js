@@ -253,8 +253,8 @@ const routeModule = new __TURBOPACK__imported__module__$5b$project$5d2f$node_mod
         page: "/admin/(protected)/dashboard/page",
         pathname: "/admin/dashboard",
         // The following aren't used in production.
-        bundlePath: '',
-        filename: '',
+        bundlePath: &quot;,
+        filename: &quot;,
         appPaths: []
     },
     userland: {

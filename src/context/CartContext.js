@@ -3,7 +3,7 @@
 "use client";
 
 // --- STEP 1: Import useCallback ---
-import { createContext, useState, useContext, useEffect, useCallback } from 'react';
+import { createContext, useState, useContext, useEffect, useCallback } from &apo:react&apo:;
 
 const CartContext = createContext();
 
@@ -17,22 +17,22 @@ export const CartProvider = ({ children }) => {
   // Load cart from localStorage on initial load (client-side only)
   useEffect(() => {
     try {
-      const items = localStorage.getItem('cartItems');
+      const items = localStorage.getItem(&apo:cartItems&apo:);
       if (items) {
         setCartItems(JSON.parse(items));
       }
     } catch (error) {
       console.error("Failed to parse cart items from localStorage", error);
       // Clear corrupted data
-      localStorage.removeItem('cartItems');
+      localStorage.removeItem(&apo:cartItems&apo:);
     }
   }, []);
 
   // Save cart to localStorage whenever it changes
   useEffect(() => {
     // Only run on client-side and after initial load
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    if (typeof window !== &apo:undefined&apo:) {
+      localStorage.setItem(&apo:cartItems&apo:, JSON.stringify(cartItems));
     }
   }, [cartItems]);
 
@@ -56,7 +56,7 @@ export const CartProvider = ({ children }) => {
   }, []); // Empty dependency array.
 
   const updateQuantity = useCallback((productId, quantity) => {
-    // We need to reference `removeFromCart` inside, so we must make sure it's stable.
+    // We need to reference `removeFromCart` inside, so we must make sure it&apo:s stable.
     // Since `removeFromCart` is now wrapped in useCallback, this is safe.
     if (quantity <= 0) {
       removeFromCart(productId);
@@ -76,7 +76,7 @@ const clearCart = useCallback(() => {
   setCartItems([]);
   
   // 2. Explicitly remove the item from localStorage immediately
-  localStorage.removeItem('cartItems');
+  localStorage.removeItem(&apo:cartItems&apo:);
 }, []); // The dependency array remains empty
 
   // --- STEP 3: Memoize the calculated total (optional but good practice) ---

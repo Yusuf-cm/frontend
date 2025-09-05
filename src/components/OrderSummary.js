@@ -1,8 +1,8 @@
 // src/components/OrderSummary.js
-'use client';
+&apo:use client&apo:;
 
-import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import Image from &apo:next/image&apo:;
+import { motion, AnimatePresence } from &apo:framer-motion&apo:;
 
 export default function OrderSummary({ cartItems, subtotal, tax, shipping, total }) {
   return (

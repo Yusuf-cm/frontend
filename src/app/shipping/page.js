@@ -1,4 +1,4 @@
-import InfoPageLayout from '@/components/InfoPageLayout';
+import InfoPageLayout from &apo:@/components/InfoPageLayout&apo:;
 
 export default function ShippingPage() {
   return (
@@ -15,10 +15,10 @@ export default function ShippingPage() {
       <p>Please note that business days do not include weekends or public holidays.</p>
       
       <h2>Returns & Exchanges</h2>
-      <p>We want you to be completely satisfied with your purchase. If you're not, we're here to help.</p>
+      <p>We want you to be completely satisfied with your purchase. If you&apo:re not, we&apo:re here to help.</p>
 
       <h3>30-Day Return Policy</h3>
-      <p>You may return most new, unopened items within 30 days of delivery for a full refund. Items should be returned in their original product packaging. We'll also pay the return shipping costs if the return is a result of our error (you received an incorrect or defective item, etc.).</p>
+      <p>You may return most new, unopened items within 30 days of delivery for a full refund. Items should be returned in their original product packaging. We&apo:ll also pay the return shipping costs if the return is a result of our error (you received an incorrect or defective item, etc.).</p>
 
       <h3>How to Initiate a Return</h3>
       <p>To start a return, please contact our support team at <a href="mailto:support@ronohsdecor.com">support@ronohsdecor.com</a> with your order number and details about the product you would like to return. We will respond quickly with instructions on how to return items from your order.</p>

@@ -1,7 +1,7 @@
 // src/components/AnimatedDiv.js
-'use client';
+&apo:use client&apo:;
 
-import { motion } from 'framer-motion';
+import { motion } from &apo:framer-motion&apo:;
 
 const defaultVariants = {
   hidden: { opacity: 0, y: 20 },

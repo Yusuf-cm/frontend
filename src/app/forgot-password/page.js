@@ -1,13 +1,13 @@
-'use client';
-import { useState } from 'react';
-import Link from 'next/link';
-import { FiLock, FiMail, FiArrowLeft, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
-import { motion } from 'framer-motion';
+&apo:use client&apo:;
+import { useState } from &apo:react&apo:;
+import Link from &apo:next/link&apo:;
+import { FiLock, FiMail, FiArrowLeft, FiCheckCircle, FiAlertCircle } from &apo:react-icons/fi&apo:;
+import { motion } from &apo:framer-motion&apo:;
 
 export default function ForgotPasswordPage() {
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
-    const [error, setError] = useState('');
+    const [email, setEmail] = useState(&apo:&apo:);
+    const [message, setMessage] = useState(&apo:&apo:);
+    const [error, setError] = useState(&apo:&apo:);
     const [isLoading, setIsLoading] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -17,25 +17,25 @@ export default function ForgotPasswordPage() {
         
         // Basic email validation
         if (!/^\S+@\S+\.\S+$/.test(email)) {
-            setError('Please enter a valid email address');
+            setError(&apo:Please enter a valid email address&apo:);
             return;
         }
         
         setIsLoading(true);
-        setMessage('');
-        setError('');
+        setMessage(&apo:&apo:);
+        setError(&apo:&apo:);
         
         try {
             const res = await fetch(`${API_BASE_URL}/auth/password-reset/`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                method: &apo:POST&apo:,
+                headers: { &apo:Content-Type&apo:: &apo:application/json&apo: },
                 body: JSON.stringify({ email }),
             });
 
             const data = await res.json();
-            if (!res.ok) throw new Error(data.detail || 'Failed to send reset link. Please try again later.');
+            if (!res.ok) throw new Error(data.detail || &apo:Failed to send reset link. Please try again later.&apo:);
             
-            setMessage(data.detail || 'Password reset link sent successfully!');
+            setMessage(data.detail || &apo:Password reset link sent successfully!&apo:);
             setIsSubmitted(true);
         } catch (err) {
             setError(err.message);
@@ -45,9 +45,9 @@ export default function ForgotPasswordPage() {
     };
 
     const handleReset = () => {
-        setEmail('');
-        setMessage('');
-        setError('');
+        setEmail(&apo:&apo:);
+        setMessage(&apo:&apo:);
+        setError(&apo:&apo:);
         setIsSubmitted(false);
     };
 
@@ -109,7 +109,7 @@ export default function ForgotPasswordPage() {
                                 {error && (
                                     <motion.div
                                         initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: 'auto' }}
+                                        animate={{ opacity: 1, height: &apo:auto&apo: }}
                                         className="bg-red-50 border-l-4 border-red-500 p-4 rounded"
                                     >
                                         <div className="flex items-start">
@@ -134,7 +134,7 @@ export default function ForgotPasswordPage() {
                                             value={email}
                                             onChange={(e) => {
                                                 setEmail(e.target.value);
-                                                if (error) setError('');
+                                                if (error) setError(&apo:&apo:);
                                             }}
                                             required
                                             className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder-gray-400"
@@ -156,7 +156,7 @@ export default function ForgotPasswordPage() {
                                             Sending...
                                         </>
                                     ) : (
-                                        'Send Reset Link'
+                                        &apo:Send Reset Link&apo:
                                     )}
                                 </button>
                                 
@@ -175,7 +175,7 @@ export default function ForgotPasswordPage() {
                         <div className="mt-8 pt-6 border-t border-gray-200">
                             <p className="text-xs text-gray-500 text-center">
                                 For security reasons, password reset links expire after 1 hour.
-                                If you don't receive an email, please check your spam folder.
+                                If you don&apo:t receive an email, please check your spam folder.
                             </p>
                         </div>
                     </div>

@@ -1,13 +1,13 @@
-'use client';
+&apo:use client&apo:;
 
-import { useEffect, useState, useCallback } from 'react';
-import { useAuth } from '@/auth/useAuth';
-import { getAuthenticatedApi } from '@/utils/api';
-import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { FiHeart, FiX } from 'react-icons/fi';
-import ProductCard from '@/components/ProductCard'; // We can reuse the product card
+import { useEffect, useState, useCallback } from &apo:react&apo:;
+import { useAuth } from &apo:@/auth/useAuth&apo:;
+import { getAuthenticatedApi } from &apo:@/utils/api&apo:;
+import { useRouter } from &apo:next/navigation&apo:;
+import { motion } from &apo:framer-motion&apo:;
+import Link from &apo:next/link&apo:;
+import { FiHeart, FiX } from &apo:react-icons/fi&apo:;
+import ProductCard from &apo:@/components/ProductCard&apo:; // We can reuse the product card
 
 const WishlistPage = () => {
     const { user, authTokens, logoutUser, setAuthTokens } = useAuth();
@@ -15,20 +15,20 @@ const WishlistPage = () => {
     
     const [wishlist, setWishlist] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
+    const [error, setError] = useState(&apo:&apo:);
 
     const fetchWishlist = useCallback(async () => {
         if (!user || !authTokens) return;
 
         setLoading(true);
-        setError('');
+        setError(&apo:&apo:);
         try {
             const api = getAuthenticatedApi({ authTokens, setAuthTokens, logoutUser });
-            const data = await api('/wishlist/');
+            const data = await api(&apo:/wishlist/&apo:);
             setWishlist(data);
         } catch (err) {
             console.error("Failed to fetch wishlist:", err);
-            setError('Could not load your wishlist. Please try again later.');
+            setError(&apo:Could not load your wishlist. Please try again later.&apo:);
         } finally {
             setLoading(false);
         }
@@ -36,7 +36,7 @@ const WishlistPage = () => {
 
     useEffect(() => {
         if (!user) {
-            router.push('/login?next=/account/wishlist');
+            router.push(&apo:/login?next=/account/wishlist&apo:);
             return;
         }
         fetchWishlist();
@@ -54,14 +54,14 @@ const WishlistPage = () => {
 
         try {
             const api = getAuthenticatedApi({ authTokens, setAuthTokens, logoutUser });
-            await api('/wishlist/toggle/', {
-                method: 'POST',
+            await api(&apo:/wishlist/toggle/&apo:, {
+                method: &apo:POST&apo:,
                 body: JSON.stringify({ product_id: productId }),
             });
             // The optimistic update is now confirmed
         } catch (err) {
-            console.error('Failed to remove from wishlist:', err);
-            setError('Could not update wishlist.');
+            console.error(&apo:Failed to remove from wishlist:&apo:, err);
+            setError(&apo:Could not update wishlist.&apo:);
             // Revert UI on failure
             setWishlist(prev => ({ ...prev, products: originalProducts }));
         }

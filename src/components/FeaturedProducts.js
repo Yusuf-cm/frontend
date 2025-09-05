@@ -1,8 +1,8 @@
-'use client';
+&apo:use client&apo:;
 
-import { useState, useEffect } from 'react';
-import Carousel from './Carousel';
-import ProductCard from './ProductCard';
+import { useState, useEffect } from &apo:react&apo:;
+import Carousel from &apo:./Carousel&apo:;
+import ProductCard from &apo:./ProductCard&apo:;
 
 export default function FeaturedProducts() {
   const [products, setProducts] = useState([]);
@@ -17,7 +17,7 @@ export default function FeaturedProducts() {
         // --- END OF FIX ---
         
         if (!res.ok) {
-          throw new Error('Failed to fetch featured products');
+          throw new Error(&apo:Failed to fetch featured products&apo:);
         }
         const data = await res.json();
         

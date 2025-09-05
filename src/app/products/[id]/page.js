@@ -1,20 +1,20 @@
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
-import AddToCartButton from './components/AddToCartButton';
-import WishlistButton from '@/components/WishlistButton';
-import ShareButtons from '@/components/ShareButtons';
-import { FiCheckCircle, FiShield, FiTruck } from 'react-icons/fi';
+import Image from &apo:next/image&apo:;
+import { notFound } from &apo:next/navigation&apo:;
+import AddToCartButton from &apo:./components/AddToCartButton&apo:;
+import WishlistButton from &apo:@/components/WishlistButton&apo:;
+import ShareButtons from &apo:@/components/ShareButtons&apo:;
+import { FiCheckCircle, FiShield, FiTruck } from &apo:react-icons/fi&apo:;
 
 async function getProduct(id) {
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products/${id}/`, {
-        cache: 'no-store'
+        cache: &apo:no-store&apo:
     });
         if (!res.ok && res.status === 404) {
             return null; // Handle product not found gracefully
         }
         if (!res.ok) {
-            throw new Error('Failed to fetch product data');
+            throw new Error(&apo:Failed to fetch product data&apo:);
         }
         return res.json();
     } catch (error) {
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }) {
     const product = await getProduct(params.id);
     if (!product) {
         return {
-            title: 'Product Not Found',
+            title: &apo:Product Not Found&apo:,
         };
     }
     return {
@@ -87,7 +87,7 @@ export default async function ProductDetailPage({ params }) {
                         <div className="mt-4 flex items-center">
                             <div className="flex items-center">
                                 {[...Array(5)].map((_, i) => (
-                                    <svg key={i} className={`h-5 w-5 ${i < Math.round(product.rating || 0) ? 'text-yellow-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                                    <svg key={i} className={`h-5 w-5 ${i < Math.round(product.rating || 0) ? &apo:text-yellow-400&apo: : &apo:text-gray-300&apo:}`} fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
                                 ))}
                             </div>
                             <p className="ml-2 text-sm text-gray-500">{product.review_count} reviews</p>
@@ -111,7 +111,7 @@ export default async function ProductDetailPage({ params }) {
                         </div>
 
                         <div className="mt-6 prose prose-indigo text-gray-700">
-                           <p>{product.description || 'No description available.'}</p>
+                           <p>{product.description || &apo:No description available.&apo:}</p>
                         </div>
                         
                         <div className="mt-8">

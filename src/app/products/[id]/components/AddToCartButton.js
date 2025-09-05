@@ -1,10 +1,10 @@
-'use client'; 
+&apo:use client&apo:; 
 
 import { useCart } from "@/context/CartContext";
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
-import { FiShoppingCart, FiCheck } from 'react-icons/fi';
-import { toast } from 'react-hot-toast';
+import { motion, AnimatePresence } from &apo:framer-motion&apo:;
+import { useState } from &apo:react&apo:;
+import { FiShoppingCart, FiCheck } from &apo:react-icons/fi&apo:;
+import { toast } from &apo:react-hot-toast&apo:;
 
 export default function AddToCartButton({ product }) {
   const { addToCart } = useCart();
@@ -23,18 +23,18 @@ export default function AddToCartButton({ product }) {
       
       addToCart({
         ...product,
-        image: product.images?.[0] || '/placeholder.jpg',
+        image: product.images?.[0] || &apo:/placeholder.jpg&apo:,
         quantity: 1
       });
       
       setIsAdded(true);
-      toast.success('Added to cart!', {
-        position: 'bottom-right',
-        icon: '🛒',
+      toast.success(&apo:Added to cart!&apo:, {
+        position: &apo:bottom-right&apo:,
+        icon: &apo:🛒&apo:,
         style: {
-          background: '#4f46e5',
-          color: '#fff',
-          borderRadius: '8px'
+          background: &apo:#4f46e5&apo:,
+          color: &apo:#fff&apo:,
+          borderRadius: &apo:8px&apo:
         }
       });
       
@@ -44,7 +44,7 @@ export default function AddToCartButton({ product }) {
         setIsLoading(false);
       }, 2000);
     } catch (error) {
-      toast.error('Failed to add item');
+      toast.error(&apo:Failed to add item&apo:);
       setIsLoading(false);
     }
   };
@@ -53,7 +53,7 @@ export default function AddToCartButton({ product }) {
     <motion.button 
       whileHover={{ 
         scale: isOutOfStock ? 1 : 1.03,
-        boxShadow: isOutOfStock ? 'none' : '0px 4px 12px rgba(79, 70, 229, 0.25)'
+        boxShadow: isOutOfStock ? &apo:none&apo: : &apo:0px 4px 12px rgba(79, 70, 229, 0.25)&apo:
       }}
       whileTap={{ scale: isOutOfStock ? 1 : 0.98 }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -61,10 +61,10 @@ export default function AddToCartButton({ product }) {
       disabled={isOutOfStock || isLoading || isAdded}
       className={`mt-4 w-full py-3 px-6 rounded-lg font-bold transition-colors duration-300 flex items-center justify-center gap-2
         ${isOutOfStock 
-          ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+          ? &apo:bg-gray-300 text-gray-500 cursor-not-allowed&apo: 
           : isAdded 
-            ? 'bg-green-600 text-white' 
-            : 'bg-indigo-600 text-white hover:bg-indigo-700'
+            ? &apo:bg-green-600 text-white&apo: 
+            : &apo:bg-indigo-600 text-white hover:bg-indigo-700&apo:
         }`}
     >
       <AnimatePresence mode="wait">

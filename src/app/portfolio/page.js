@@ -2,33 +2,33 @@
 
 import PaginationControls from "@/components/PaginationControls";
 import ProjectCard from "@/components/ProjectCard"; // <-- CORRECTED IMPORT
-import { Suspense } from 'react';
-import { fetchProjectCategories } from '@/lib/data';
-import FilterBar from '@/components/FilterBar';
+import { Suspense } from &apo:react&apo:;
+import { fetchProjectCategories } from &apo:@/lib/data&apo:;
+import FilterBar from &apo:@/components/FilterBar&apo:;
 
 // The data-fetching function now accepts a page number and category
-async function getProjects({ page = '1', category = '' }) {
+async function getProjects({ page = &apo:1&apo:, category = &apo:&apo: }) {
     // The endpoint name needs to be project-categories for filtering
     const url = `http://127.0.0.1:8000/api/projects/?page=${page}${
-      category ? `&category=${category}` : ''
+      category ? `&category=${category}` : &apo:&apo:
   }`;
     
     const res = await fetch(url, { 
-        cache: 'no-store' 
+        cache: &apo:no-store&apo: 
     });
     
     if (!res.ok) {
-        throw new Error('Failed to fetch projects');
+        throw new Error(&apo:Failed to fetch projects&apo:);
     }
     
     return res.json();
 }
   
 export default async function PortfolioPage({ searchParams }) {
-    const page = searchParams.page ?? '1';
-    const category = searchParams.category ?? '';
+    const page = searchParams.page ?? &apo:1&apo:;
+    const category = searchParams.category ?? &apo:&apo:;
     
-    // Fetch the full data object which includes 'results', 'count', etc.
+    // Fetch the full data object which includes &apo:results&apo:, &apo:count&apo:, etc.
     const data = await getProjects({ page, category });
     const projects = data.results;
     
@@ -50,7 +50,7 @@ export default async function PortfolioPage({ searchParams }) {
               Spaces Reimagined
             </p>
             <p className="mt-4 max-w-2xl mx-auto text-xl text-text-light">
-              See how we've transformed spaces and brought our clients' visions to life.
+              See how we&apo:ve transformed spaces and brought our clients&apo: visions to life.
             </p>
           </div>
           

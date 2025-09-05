@@ -14,21 +14,21 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$embla$2d$car
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2d$dom$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react-dom/index.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
-'use client'; // This MUST be a client component
+&apo:use client&apo:; // This MUST be a client component
 ;
 ;
 ;
 // A simple SVG arrow component
 const Arrow = ({ direction, onClick })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
         onClick: onClick,
-        className: `absolute top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-white/80 shadow-md backdrop-blur-sm flex items-center justify-center text-gray-700 hover:bg-white transition-all z-10 ${direction === 'left' ? 'left-2' : 'right-2'}`,
-        "aria-label": direction === 'left' ? 'Previous slide' : 'Next slide',
+        className: `absolute top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-white/80 shadow-md backdrop-blur-sm flex items-center justify-center text-gray-700 hover:bg-white transition-all z-10 ${direction === &apo:left&apo: ? &apo:left-2&apo: : &apo:right-2&apo:}`,
+        "aria-label": direction === &apo:left&apo: ? &apo:Previous slide&apo: : &apo:Next slide&apo:,
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
             className: "h-6 w-6",
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: direction === 'left' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+            children: direction === &apo:left&apo: ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                 strokeLinecap: "round",
                 strokeLinejoin: "round",
                 strokeWidth: 2,
@@ -61,10 +61,10 @@ _c = Arrow;
 function Carousel({ children }) {
     _s();
     // 1. Initialize Embla Carousel
-    // The second argument is options. 'loop: true' makes it an infinite carousel.
+    // The second argument is options. &apo:loop: true&apo: makes it an infinite carousel.
     const [emblaRef, emblaApi] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$embla$2d$carousel$2d$react$2f$esm$2f$embla$2d$carousel$2d$react$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])({
         loop: true,
-        align: 'start'
+        align: &apo:start&apo:
     });
     // 2. Functions to scroll to the previous or next slide
     // We use flushSync to ensure the DOM is updated synchronously, which can
@@ -149,7 +149,7 @@ _c1 = Carousel;
 var _c, _c1;
 __turbopack_context__.k.register(_c, "Arrow");
 __turbopack_context__.k.register(_c1, "Carousel");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+if (typeof globalThis.$RefreshHelpers$ === &apo:object&apo: && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
@@ -170,7 +170,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$ico
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-hot-toast/dist/index.mjs [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
-'use client';
+&apo:use client&apo:;
 ;
 ;
 ;
@@ -190,17 +190,17 @@ function AddToCartButton({ product }) {
             await new Promise((resolve)=>setTimeout(resolve, 500));
             addToCart({
                 ...product,
-                image: product.images?.[0] || '/placeholder.jpg',
+                image: product.images?.[0] || &apo:/placeholder.jpg&apo:,
                 quantity: 1
             });
             setIsAdded(true);
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success('Added to cart!', {
-                position: 'bottom-right',
-                icon: '🛒',
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success(&apo:Added to cart!&apo:, {
+                position: &apo:bottom-right&apo:,
+                icon: &apo:🛒&apo:,
                 style: {
-                    background: '#4f46e5',
-                    color: '#fff',
-                    borderRadius: '8px'
+                    background: &apo:#4f46e5&apo:,
+                    color: &apo:#fff&apo:,
+                    borderRadius: &apo:8px&apo:
                 }
             });
             // Reset after 2 seconds
@@ -209,14 +209,14 @@ function AddToCartButton({ product }) {
                 setIsLoading(false);
             }, 2000);
         } catch (error) {
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error('Failed to add item');
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error(&apo:Failed to add item&apo:);
             setIsLoading(false);
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
         whileHover: {
             scale: isOutOfStock ? 1 : 1.03,
-            boxShadow: isOutOfStock ? 'none' : '0px 4px 12px rgba(79, 70, 229, 0.25)'
+            boxShadow: isOutOfStock ? &apo:none&apo: : &apo:0px 4px 12px rgba(79, 70, 229, 0.25)&apo:
         },
         whileTap: {
             scale: isOutOfStock ? 1 : 0.98
@@ -229,7 +229,7 @@ function AddToCartButton({ product }) {
         onClick: handleAddToCart,
         disabled: isOutOfStock || isLoading || isAdded,
         className: `mt-4 w-full py-3 px-6 rounded-lg font-bold transition-colors duration-300 flex items-center justify-center gap-2
-        ${isOutOfStock ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : isAdded ? 'bg-green-600 text-white' : 'bg-indigo-600 text-white hover:bg-indigo-700'}`,
+        ${isOutOfStock ? &apo:bg-gray-300 text-gray-500 cursor-not-allowed&apo: : isAdded ? &apo:bg-green-600 text-white&apo: : &apo:bg-indigo-600 text-white hover:bg-indigo-700&apo:}`,
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
             mode: "wait",
             children: isAdded ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].span, {
@@ -336,7 +336,7 @@ _s(AddToCartButton, "fPYSWvNIqB8Y4C2WvbD3C0fNyQ0=", false, function() {
 _c = AddToCartButton;
 var _c;
 __turbopack_context__.k.register(_c, "AddToCartButton");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+if (typeof globalThis.$RefreshHelpers$ === &apo:object&apo: && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
@@ -381,9 +381,9 @@ const getAuthenticatedApi = ({ authTokens, setAuthTokens, logoutUser })=>{
                 isRefreshing = true;
                 try {
                     const response = await fetch(`${API_BASE_URL}/api/auth/token/refresh/`, {
-                        method: 'POST',
+                        method: &apo:POST&apo:,
                         headers: {
-                            'Content-Type': 'application/json'
+                            &apo:Content-Type&apo:: &apo:application/json&apo:
                         },
                         body: JSON.stringify({
                             refresh: currentAuthTokens.refresh
@@ -391,16 +391,16 @@ const getAuthenticatedApi = ({ authTokens, setAuthTokens, logoutUser })=>{
                     });
                     const newTokens = await response.json();
                     if (!response.ok) {
-                        throw new Error(newTokens.detail || 'Refresh token is invalid');
+                        throw new Error(newTokens.detail || &apo:Refresh token is invalid&apo:);
                     }
-                    localStorage.setItem('authTokens', JSON.stringify(newTokens));
+                    localStorage.setItem(&apo:authTokens&apo:, JSON.stringify(newTokens));
                     setAuthTokens(newTokens);
                     currentAuthTokens = newTokens; // Update for the current request
                     processQueue(null, newTokens); // Resolve waiting requests with the new token
                 } catch (refreshError) {
                     processQueue(refreshError, null); // Reject waiting requests
                     logoutUser();
-                    throw new Error('Your session has expired. Please log in again.');
+                    throw new Error(&apo:Your session has expired. Please log in again.&apo:);
                 } finally{
                     isRefreshing = false;
                 }
@@ -416,15 +416,15 @@ const getAuthenticatedApi = ({ authTokens, setAuthTokens, logoutUser })=>{
                     currentAuthTokens = newTokens; // Update tokens for this queued request
                 } catch (error) {
                     // This will be called if the original refresh request failed
-                    throw new Error('Session refresh failed. Please log in again.');
+                    throw new Error(&apo:Session refresh failed. Please log in again.&apo:);
                 }
             }
         }
         // By this point, currentAuthTokens is guaranteed to be valid.
         // All requests (original and queued) will execute this final part.
         const headers = {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${currentAuthTokens.access}`,
+            &apo:Content-Type&apo:: &apo:application/json&apo:,
+            &apo:Authorization&apo:: `Bearer ${currentAuthTokens.access}`,
             ...options.headers
         };
         const fullUrl = `${API_BASE_URL}/api${url}`;
@@ -433,15 +433,15 @@ const getAuthenticatedApi = ({ authTokens, setAuthTokens, logoutUser })=>{
             headers
         });
         if (!response.ok) {
-            const contentType = response.headers.get('content-type');
+            const contentType = response.headers.get(&apo:content-type&apo:);
             const errorText = await response.text();
             if (response.status === 401) {
                 logoutUser();
             }
-            if (contentType && contentType.includes('application/json')) {
+            if (contentType && contentType.includes(&apo:application/json&apo:)) {
                 try {
                     const errorJson = JSON.parse(errorText);
-                    throw new Error(errorJson.detail || 'An API error occurred.');
+                    throw new Error(errorJson.detail || &apo:An API error occurred.&apo:);
                 } catch (e) {
                     throw new Error(`Server returned an invalid response: ${errorText.slice(0, 150)}...`);
                 }
@@ -458,7 +458,7 @@ const getAuthenticatedApi = ({ authTokens, setAuthTokens, logoutUser })=>{
 };
 const getApi = async (url, options = {})=>{
     const headers = {
-        'Content-Type': 'application/json',
+        &apo:Content-Type&apo:: &apo:application/json&apo:,
         ...options.headers
     };
     const fullUrl = `${API_BASE_URL}/api${url}`;
@@ -473,7 +473,7 @@ const getApi = async (url, options = {})=>{
     if (response.status === 204) return null;
     return response.json();
 };
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+if (typeof globalThis.$RefreshHelpers$ === &apo:object&apo: && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
@@ -494,7 +494,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navi
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
-'use client';
+&apo:use client&apo:;
 ;
 ;
 ;
@@ -511,7 +511,7 @@ function WishlistButton({ productId, className }) {
         e.stopPropagation();
         if (!user) {
             __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error("Please log in to use the wishlist.");
-            router.push('/login?next=' + window.location.pathname);
+            router.push(&apo:/login?next=&apo: + window.location.pathname);
             return;
         }
         const api = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getAuthenticatedApi"])({
@@ -520,8 +520,8 @@ function WishlistButton({ productId, className }) {
             logoutUser
         });
         try {
-            const response = await api('/wishlist/toggle/', {
-                method: 'POST',
+            const response = await api(&apo:/wishlist/toggle/&apo:, {
+                method: &apo:POST&apo:,
                 body: JSON.stringify({
                     product_id: productId
                 })
@@ -531,7 +531,7 @@ function WishlistButton({ productId, className }) {
                     ...prevUser,
                     wishlist: response.wishlist
                 }));
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success(response.action === 'added' ? 'Added to wishlist!' : 'Removed from wishlist');
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success(response.action === &apo:added&apo: ? &apo:Added to wishlist!&apo: : &apo:Removed from wishlist&apo:);
         } catch (error) {
             __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error("Could not update your wishlist.");
             console.error(error);
@@ -546,9 +546,9 @@ function WishlistButton({ productId, className }) {
         },
         onClick: handleWishlistToggle,
         className: `flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md transition-colors ${className}`,
-        "aria-label": isInWishlist ? 'Remove from wishlist' : 'Add to wishlist',
+        "aria-label": isInWishlist ? &apo:Remove from wishlist&apo: : &apo:Add to wishlist&apo:,
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fi$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FiHeart"], {
-            className: `h-5 w-5 transition-all ${isInWishlist ? 'text-red-500 fill-current' : 'text-gray-600 hover:text-red-500'}`
+            className: `h-5 w-5 transition-all ${isInWishlist ? &apo:text-red-500 fill-current&apo: : &apo:text-gray-600 hover:text-red-500&apo:}`
         }, void 0, false, {
             fileName: "[project]/src/components/WishlistButton.jsx",
             lineNumber: 55,
@@ -569,7 +569,7 @@ _s(WishlistButton, "LeSdHg8qsTSrNLe8MoRelPt5qz4=", false, function() {
 _c = WishlistButton;
 var _c;
 __turbopack_context__.k.register(_c, "WishlistButton");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+if (typeof globalThis.$RefreshHelpers$ === &apo:object&apo: && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
@@ -591,7 +591,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$products$2f5b$
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$WishlistButton$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/WishlistButton.jsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
-'use client';
+&apo:use client&apo:;
 ;
 ;
 ;
@@ -601,7 +601,7 @@ var _s = __turbopack_context__.k.signature();
 function ProductCard({ product }) {
     _s();
     const [isHovered, setIsHovered] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    if (!product || typeof product.price === 'undefined') {
+    if (!product || typeof product.price === &apo:undefined&apo:) {
         return null; // Return nothing if product data is invalid
     }
     const price = parseFloat(product.price);
@@ -632,7 +632,7 @@ function ProductCard({ product }) {
                         children: [
                             product.images?.[0] ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                 src: product.images[0],
-                                alt: product.name || 'Product Image',
+                                alt: product.name || &apo:Product Image&apo:,
                                 fill: true,
                                 className: "object-cover transition-transform duration-300 group-hover:scale-105",
                                 sizes: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -681,7 +681,7 @@ function ProductCard({ product }) {
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: `absolute top-3 left-3 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`,
+                                className: `absolute top-3 left-3 transition-opacity duration-300 ${isHovered ? &apo:opacity-100&apo: : &apo:opacity-0&apo:}`,
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$WishlistButton$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                     productId: product.id
                                 }, void 0, false, {
@@ -713,7 +713,7 @@ function ProductCard({ product }) {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-sm text-gray-500 mt-1 line-clamp-1",
-                                children: product.category?.name || 'Uncategorized'
+                                children: product.category?.name || &apo:Uncategorized&apo:
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ProductCard.jsx",
                                 lineNumber: 65,
@@ -774,7 +774,7 @@ function ProductCard({ product }) {
                                     [
                                         ...Array(5)
                                     ].map((_, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                            className: `h-4 w-4 ${i < Math.round(product.rating || 0) ? 'text-yellow-400' : 'text-gray-300'}`,
+                                            className: `h-4 w-4 ${i < Math.round(product.rating || 0) ? &apo:text-yellow-400&apo: : &apo:text-gray-300&apo:}`,
                                             fill: "currentColor",
                                             viewBox: "0 0 20 20",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -837,7 +837,7 @@ _s(ProductCard, "FPQn8a98tPjpohC7NUYORQR8GJE=");
 _c = ProductCard;
 var _c;
 __turbopack_context__.k.register(_c, "ProductCard");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+if (typeof globalThis.$RefreshHelpers$ === &apo:object&apo: && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
@@ -856,7 +856,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Carouse
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ProductCard$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ProductCard.jsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
-'use client';
+&apo:use client&apo:;
 ;
 ;
 ;
@@ -873,7 +873,7 @@ function FeaturedProducts() {
                     const res = await fetch(`${API_URL}/products/featured/`);
                     // --- END OF FIX ---
                     if (!res.ok) {
-                        throw new Error('Failed to fetch featured products');
+                        throw new Error(&apo:Failed to fetch featured products&apo:);
                     }
                     const data = await res.json();
                     if (Array.isArray(data)) {
@@ -1006,7 +1006,7 @@ _s(FeaturedProducts, "KWid68LpBxbFhyja5dauhUIHvyY=");
 _c = FeaturedProducts;
 var _c;
 __turbopack_context__.k.register(_c, "FeaturedProducts");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+if (typeof globalThis.$RefreshHelpers$ === &apo:object&apo: && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
@@ -1021,7 +1021,7 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-client] (ecmascript)");
-'use client';
+&apo:use client&apo:;
 ;
 ;
 const defaultVariants = {
@@ -1057,7 +1057,7 @@ function AnimatedDiv({ children, className, variants = defaultVariants, transiti
 _c = AnimatedDiv;
 var _c;
 __turbopack_context__.k.register(_c, "AnimatedDiv");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+if (typeof globalThis.$RefreshHelpers$ === &apo:object&apo: && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
@@ -1073,13 +1073,13 @@ __turbopack_context__.s({
     "sortAndMapPluginToOptions": (()=>sortAndMapPluginToOptions)
 });
 function isObject(subject) {
-    return Object.prototype.toString.call(subject) === '[object Object]';
+    return Object.prototype.toString.call(subject) === &apo:[object Object]&apo:;
 }
 function isRecord(subject) {
     return isObject(subject) || Array.isArray(subject);
 }
 function canUseDOM() {
-    return !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+    return !!(typeof window !== &apo:undefined&apo: && window.document && window.document.createElement);
 }
 function areOptionsEqual(optionsA, optionsB) {
     const optionsAKeys = Object.keys(optionsA);
@@ -1091,7 +1091,7 @@ function areOptionsEqual(optionsA, optionsB) {
     return optionsAKeys.every((key)=>{
         const valueA = optionsA[key];
         const valueB = optionsB[key];
-        if (typeof valueA === 'function') return `${valueA}` === `${valueB}`;
+        if (typeof valueA === &apo:function&apo:) return `${valueA}` === `${valueB}`;
         if (!isRecord(valueA) || !isRecord(valueB)) return valueA === valueB;
         return areOptionsEqual(valueA, valueB);
     });
@@ -1120,16 +1120,16 @@ __turbopack_context__.s({
     "default": (()=>EmblaCarousel)
 });
 function isNumber(subject) {
-    return typeof subject === 'number';
+    return typeof subject === &apo:number&apo:;
 }
 function isString(subject) {
-    return typeof subject === 'string';
+    return typeof subject === &apo:string&apo:;
 }
 function isBoolean(subject) {
-    return typeof subject === 'boolean';
+    return typeof subject === &apo:boolean&apo:;
 }
 function isObject(subject) {
-    return Object.prototype.toString.call(subject) === '[object Object]';
+    return Object.prototype.toString.call(subject) === &apo:[object Object]&apo:;
 }
 function mathAbs(n) {
     return Math.abs(n);
@@ -1182,7 +1182,7 @@ function objectsMergeDeep(objectA, objectB) {
     }, {});
 }
 function isMouseEvent(evt, ownerWindow) {
-    return typeof ownerWindow.MouseEvent !== 'undefined' && evt instanceof ownerWindow.MouseEvent;
+    return typeof ownerWindow.MouseEvent !== &apo:undefined&apo: && evt instanceof ownerWindow.MouseEvent;
 }
 function Alignment(align, viewSize) {
     const predefined = {
@@ -1214,7 +1214,7 @@ function EventStore() {
         passive: true
     }) {
         let removeListener;
-        if ('addEventListener' in node) {
+        if (&apo:addEventListener&apo: in node) {
             node.addEventListener(type, handler, options);
             removeListener = ()=>node.removeEventListener(type, handler, options);
         } else {
@@ -1241,7 +1241,7 @@ function Animations(ownerDocument, ownerWindow, update, render) {
     let accumulatedTime = 0;
     let animationId = 0;
     function init() {
-        documentVisibleHandler.add(ownerDocument, 'visibilitychange', ()=>{
+        documentVisibleHandler.add(ownerDocument, &apo:visibilitychange&apo:, ()=>{
             if (ownerDocument.hidden) reset();
         });
     }
@@ -1294,10 +1294,10 @@ function Animations(ownerDocument, ownerWindow, update, render) {
     return self;
 }
 function Axis(axis, contentDirection) {
-    const isRightToLeft = contentDirection === 'rtl';
-    const isVertical = axis === 'y';
-    const scroll = isVertical ? 'y' : 'x';
-    const cross = isVertical ? 'x' : 'y';
+    const isRightToLeft = contentDirection === &apo:rtl&apo:;
+    const isVertical = axis === &apo:y&apo:;
+    const scroll = isVertical ? &apo:y&apo: : &apo:x&apo:;
+    const cross = isVertical ? &apo:x&apo: : &apo:y&apo:;
     const sign = !isVertical && isRightToLeft ? -1 : 1;
     const startEdge = getStartEdge();
     const endEdge = getEndEdge();
@@ -1306,12 +1306,12 @@ function Axis(axis, contentDirection) {
         return isVertical ? height : width;
     }
     function getStartEdge() {
-        if (isVertical) return 'top';
-        return isRightToLeft ? 'right' : 'left';
+        if (isVertical) return &apo:top&apo:;
+        return isRightToLeft ? &apo:right&apo: : &apo:left&apo:;
     }
     function getEndEdge() {
-        if (isVertical) return 'bottom';
-        return isRightToLeft ? 'left' : 'right';
+        if (isVertical) return &apo:bottom&apo:;
+        return isRightToLeft ? &apo:left&apo: : &apo:right&apo:;
     }
     function direction(n) {
         return n * sign;
@@ -1388,9 +1388,9 @@ function Counter(max, start, loop) {
 function DragHandler(axis, rootNode, ownerDocument, ownerWindow, target, dragTracker, location, animation, scrollTo, scrollBody, scrollTarget, index, eventHandler, percentOfView, dragFree, dragThreshold, skipSnaps, baseFriction, watchDrag) {
     const { cross: crossAxis, direction } = axis;
     const focusNodes = [
-        'INPUT',
-        'SELECT',
-        'TEXTAREA'
+        &apo:INPUT&apo:,
+        &apo:SELECT&apo:,
+        &apo:TEXTAREA&apo:
     ];
     const nonPassiveEvent = {
         passive: false
@@ -1420,7 +1420,7 @@ function DragHandler(axis, rootNode, ownerDocument, ownerWindow, target, dragTra
             if (isBoolean(watchDrag) || watchDrag(emblaApi, evt)) down(evt);
         }
         const node = rootNode;
-        initEvents.add(node, 'dragstart', (evt)=>evt.preventDefault(), nonPassiveEvent).add(node, 'touchmove', ()=>undefined, nonPassiveEvent).add(node, 'touchend', ()=>undefined).add(node, 'touchstart', downIfAllowed).add(node, 'mousedown', downIfAllowed).add(node, 'touchcancel', up).add(node, 'contextmenu', up).add(node, 'click', click, true);
+        initEvents.add(node, &apo:dragstart&apo:, (evt)=>evt.preventDefault(), nonPassiveEvent).add(node, &apo:touchmove&apo:, ()=>undefined, nonPassiveEvent).add(node, &apo:touchend&apo:, ()=>undefined).add(node, &apo:touchstart&apo:, downIfAllowed).add(node, &apo:mousedown&apo:, downIfAllowed).add(node, &apo:touchcancel&apo:, up).add(node, &apo:contextmenu&apo:, up).add(node, &apo:click&apo:, click, true);
     }
     function destroy() {
         initEvents.clear();
@@ -1428,15 +1428,15 @@ function DragHandler(axis, rootNode, ownerDocument, ownerWindow, target, dragTra
     }
     function addDragEvents() {
         const node = isMouse ? ownerDocument : rootNode;
-        dragEvents.add(node, 'touchmove', move, nonPassiveEvent).add(node, 'touchend', up).add(node, 'mousemove', move, nonPassiveEvent).add(node, 'mouseup', up);
+        dragEvents.add(node, &apo:touchmove&apo:, move, nonPassiveEvent).add(node, &apo:touchend&apo:, up).add(node, &apo:mousemove&apo:, move, nonPassiveEvent).add(node, &apo:mouseup&apo:, up);
     }
     function isFocusNode(node) {
-        const nodeName = node.nodeName || '';
+        const nodeName = node.nodeName || &apo:&apo:;
         return focusNodes.includes(nodeName);
     }
     function forceBoost() {
         const boost = dragFree ? freeForceBoost : snapForceBoost;
-        const type = isMouse ? 'mouse' : 'touch';
+        const type = isMouse ? &apo:mouse&apo: : &apo:touch&apo:;
         return boost[type];
     }
     function allowedForce(force, targetChanged) {
@@ -1460,7 +1460,7 @@ function DragHandler(axis, rootNode, ownerDocument, ownerWindow, target, dragTra
         addDragEvents();
         startScroll = dragTracker.readPoint(evt);
         startCross = dragTracker.readPoint(evt, crossAxis);
-        eventHandler.emit('pointerDown');
+        eventHandler.emit(&apo:pointerDown&apo:);
     }
     function move(evt) {
         const isTouchEvt = !isMouseEvent(evt, ownerWindow);
@@ -1495,7 +1495,7 @@ function DragHandler(axis, rootNode, ownerDocument, ownerWindow, target, dragTra
         scrollBody.useDuration(speed).useFriction(friction);
         scrollTo.distance(force, !dragFree);
         isMouse = false;
-        eventHandler.emit('pointerUp');
+        eventHandler.emit(&apo:pointerUp&apo:);
     }
     function click(evt) {
         if (preventClick) {
@@ -1523,7 +1523,7 @@ function DragTracker(axis, ownerWindow) {
     }
     function readPoint(evt, evtAxis) {
         const property = evtAxis || axis.scroll;
-        const coord = `client${property === 'x' ? 'X' : 'Y'}`;
+        const coord = `client${property === &apo:x&apo: ? &apo:X&apo: : &apo:Y&apo:}`;
         return (isMouseEvent(evt, ownerWindow) ? evt : evt.touches[0])[coord];
     }
     function pointerDown(evt) {
@@ -1607,7 +1607,7 @@ function ResizeHandler(container, eventHandler, ownerWindow, slides, axis, watch
                 const diffSize = mathAbs(newSize - lastSize);
                 if (diffSize >= 0.5) {
                     emblaApi.reInit();
-                    eventHandler.emit('resize');
+                    eventHandler.emit(&apo:resize&apo:);
                     break;
                 }
             }
@@ -1712,7 +1712,7 @@ function ScrollBounds(limit, location, target, scrollBody, percentOfView) {
     }
     function constrain(pointerDown) {
         if (!shouldConstrain()) return;
-        const edge = limit.reachedMin(location.get()) ? 'min' : 'max';
+        const edge = limit.reachedMin(location.get()) ? &apo:min&apo: : &apo:max&apo:;
         const diffToEdge = mathAbs(limit[edge] - location.get());
         const diffToTarget = target.get() - location.get();
         const friction = frictionLimit.constrain(diffToEdge / edgeOffsetTolerance);
@@ -1764,7 +1764,7 @@ function ScrollContain(viewSize, contentSize, snapsAligned, containScroll, pixel
         if (contentSize <= viewSize + pixelTolerance) return [
             scrollBounds.max
         ];
-        if (containScroll === 'keepSnaps') return snapsBounded;
+        if (containScroll === &apo:keepSnaps&apo:) return snapsBounded;
         const { min, max } = scrollContainLimit;
         return snapsBounded.slice(min, max);
     }
@@ -1841,7 +1841,7 @@ function SlideRegistry(containSnaps, containScroll, scrollSnaps, scrollContainLi
     const slideRegistry = createSlideRegistry();
     function createSlideRegistry() {
         const groupedSlideIndexes = groupSlides(slideIndexes);
-        const doNotContain = !containSnaps || containScroll === 'keepSnaps';
+        const doNotContain = !containSnaps || containScroll === &apo:keepSnaps&apo:;
         if (scrollSnaps.length === 1) return [
             slideIndexes
         ];
@@ -1941,7 +1941,7 @@ function ScrollTo(animation, indexCurrent, indexPrevious, scrollBody, scrollTarg
         if (indexDiff) {
             indexPrevious.set(indexCurrent.get());
             indexCurrent.set(target.index);
-            eventHandler.emit('select');
+            eventHandler.emit(&apo:select&apo:);
         }
     }
     function distance(n, snap) {
@@ -1971,17 +1971,17 @@ function SlideFocus(root, slides, slideRegistry, scrollTo, scrollBody, eventStor
             const nowTime = new Date().getTime();
             const diffTime = nowTime - lastTabPressTime;
             if (diffTime > 10) return;
-            eventHandler.emit('slideFocusStart');
+            eventHandler.emit(&apo:slideFocusStart&apo:);
             root.scrollLeft = 0;
             const group = slideRegistry.findIndex((group)=>group.includes(index));
             if (!isNumber(group)) return;
             scrollBody.useDuration(0);
             scrollTo.index(group, 0);
-            eventHandler.emit('slideFocus');
+            eventHandler.emit(&apo:slideFocus&apo:);
         }
-        eventStore.add(document, 'keydown', registerTabPress, false);
+        eventStore.add(document, &apo:keydown&apo:, registerTabPress, false);
         slides.forEach((slide, slideIndex)=>{
-            eventStore.add(slide, 'focus', (evt)=>{
+            eventStore.add(slide, &apo:focus&apo:, (evt)=>{
                 if (isBoolean(watchFocus) || watchFocus(emblaApi, evt)) {
                     defaultCallback(slideIndex);
                 }
@@ -1989,7 +1989,7 @@ function SlideFocus(root, slides, slideRegistry, scrollTo, scrollBody, eventStor
         });
     }
     function registerTabPress(event) {
-        if (event.code === 'Tab') lastTabPressTime = new Date().getTime();
+        if (event.code === &apo:Tab&apo:) lastTabPressTime = new Date().getTime();
     }
     const self = {
         init
@@ -2022,7 +2022,7 @@ function Vector1D(initialValue) {
     return self;
 }
 function Translate(axis, container) {
-    const translate = axis.scroll === 'x' ? x : y;
+    const translate = axis.scroll === &apo:x&apo: ? x : y;
     const containerStyle = container.style;
     let previousTarget = null;
     let disabled = false;
@@ -2044,8 +2044,8 @@ function Translate(axis, container) {
     }
     function clear() {
         if (disabled) return;
-        containerStyle.transform = '';
-        if (!container.getAttribute('style')) container.removeAttribute('style');
+        containerStyle.transform = &apo:&apo:;
+        if (!container.getAttribute(&apo:style&apo:)) container.removeAttribute(&apo:style&apo:);
     }
     const self = {
         clear,
@@ -2083,7 +2083,7 @@ function SlideLooper(axis, viewSize, contentSize, slideSizes, slideSizesWithGaps
         return indexes.map((index)=>{
             const initial = isEndEdge ? 0 : -contentSize;
             const altered = isEndEdge ? contentSize : 0;
-            const boundEdge = isEndEdge ? 'end' : 'start';
+            const boundEdge = isEndEdge ? &apo:end&apo: : &apo:start&apo:;
             const loopPoint = slideBounds[index][boundEdge];
             return {
                 index,
@@ -2137,9 +2137,9 @@ function SlidesHandler(container, eventHandler, watchSlides) {
         if (!watchSlides) return;
         function defaultCallback(mutations) {
             for (const mutation of mutations){
-                if (mutation.type === 'childList') {
+                if (mutation.type === &apo:childList&apo:) {
                     emblaApi.reInit();
-                    eventHandler.emit('slidesChanged');
+                    eventHandler.emit(&apo:slidesChanged&apo:);
                     break;
                 }
             }
@@ -2179,7 +2179,7 @@ function SlidesInView(container, slides, eventHandler, threshold) {
             });
             inViewCache = null;
             notInViewCache = null;
-            eventHandler.emit('slidesInView');
+            eventHandler.emit(&apo:slidesInView&apo:);
         }, {
             root: container.parentElement,
             threshold
@@ -2325,8 +2325,8 @@ function Engine(root, container, slides, ownerDocument, ownerWindow, options, ev
             slideLooper.loop();
         }
         translate.to(offsetLocation.get());
-        if (hasSettledAndIdle) eventHandler.emit('settle');
-        if (!hasSettled) eventHandler.emit('scroll');
+        if (hasSettledAndIdle) eventHandler.emit(&apo:settle&apo:);
+        if (!hasSettled) eventHandler.emit(&apo:scroll&apo:);
     };
     const animation = Animations(ownerDocument, ownerWindow, ()=>update(engine), (alpha)=>render(engine, alpha));
     // Shared
@@ -2425,12 +2425,12 @@ function EventHandler() {
     return self;
 }
 const defaultOptions = {
-    align: 'center',
-    axis: 'x',
+    align: &apo:center&apo:,
+    axis: &apo:x&apo:,
     container: null,
     slides: null,
-    containScroll: 'trimSnaps',
-    direction: 'ltr',
+    containScroll: &apo:trimSnaps&apo:,
+    direction: &apo:ltr&apo:,
     slidesToScroll: 1,
     inViewThreshold: 0,
     breakpoints: {},
@@ -2528,7 +2528,7 @@ function EmblaCarousel(root, userOptions, userPlugins) {
         optionsMediaQueries([
             optionsBase,
             ...pluginList.map(({ options })=>options)
-        ]).forEach((query)=>mediaHandlers.add(query, 'change', reActivate));
+        ]).forEach((query)=>mediaHandlers.add(query, &apo:change&apo:, reActivate));
         if (!options.active) return;
         engine.translate.to(engine.location.get());
         engine.animation.init();
@@ -2547,7 +2547,7 @@ function EmblaCarousel(root, userOptions, userPlugins) {
         activate(mergeOptions({
             startIndex
         }, withOptions), withPlugins);
-        eventHandler.emit('reInit');
+        eventHandler.emit(&apo:reInit&apo:);
     }
     function deActivate() {
         engine.dragHandler.destroy();
@@ -2566,7 +2566,7 @@ function EmblaCarousel(root, userOptions, userPlugins) {
         destroyed = true;
         mediaHandlers.clear();
         deActivate();
-        eventHandler.emit('destroy');
+        eventHandler.emit(&apo:destroy&apo:);
         eventHandler.clear();
     }
     function scrollTo(index, jump, direction) {
@@ -2647,7 +2647,7 @@ function EmblaCarousel(root, userOptions, userPlugins) {
         slidesNotInView
     };
     activate(userOptions, userPlugins);
-    setTimeout(()=>eventHandler.emit('init'), 0);
+    setTimeout(()=>eventHandler.emit(&apo:init&apo:), 0);
     return self;
 }
 EmblaCarousel.globalOptions = undefined;

@@ -1754,7 +1754,7 @@
     background-image: linear-gradient(var(--tw-gradient-stops));
   }
 
-  .bg-\[url\(\'\/pattern\.svg\'\)\] {
+  .bg-\[url\(\&apo:\/pattern\.svg\&apo:\)\] {
     background-image: url("/pattern.svg");
   }
 

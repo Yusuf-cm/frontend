@@ -133,7 +133,7 @@ function esmImport(sourceModule, id) {
     if (module.error) throw module.error;
     // any ES module has to have `module.namespaceObject` defined.
     if (module.namespaceObject) return module.namespaceObject;
-    // only ESM can be an async module, so we don't need to worry about exports being a promise here.
+    // only ESM can be an async module, so we don&apo:t need to worry about exports being a promise here.
     const raw = module.exports;
     return module.namespaceObject = interopEsm(raw, createNS(raw), raw && raw.__esModule);
 }
@@ -155,7 +155,7 @@ function commonJsRequire(sourceModule, id) {
         if (hasOwnProperty.call(map, id)) {
             return map[id].module();
         }
-        const e = new Error(`Cannot find module '${id}'`);
+        const e = new Error(`Cannot find module &apo:${id}&apo:`);
         e.code = "MODULE_NOT_FOUND";
         throw e;
     }
@@ -166,7 +166,7 @@ function commonJsRequire(sourceModule, id) {
         if (hasOwnProperty.call(map, id)) {
             return map[id].id();
         }
-        const e = new Error(`Cannot find module '${id}'`);
+        const e = new Error(`Cannot find module &apo:${id}&apo:`);
         e.code = "MODULE_NOT_FOUND";
         throw e;
     };
@@ -308,7 +308,7 @@ function asyncModule(module, body, hasAwait) {
  * runtime function to generate context-agnostic urls between different rendering context, i.e ssr / client to avoid
  * hydration mismatch.
  *
- * This is based on webpack's existing implementation:
+ * This is based on webpack&apo:s existing implementation:
  * https://github.com/webpack/webpack/blob/87660921808566ef3b8796f8df61bd79fc026108/lib/runtime/RelativeUrlRuntimeModule.js
  */ const relativeURL = function relativeURL(inputUrl) {
     const realUrl = new URL(inputUrl, "x:/");
@@ -336,7 +336,7 @@ relativeURL.prototype = URL.prototype;
     throw new Error("dynamic usage of require is not supported");
 }
 /* eslint-disable @typescript-eslint/no-unused-vars */ /// <reference path="../shared/runtime-utils.ts" />
-/// A 'base' utilities to support runtime can have externals.
+/// A &apo:base&apo: utilities to support runtime can have externals.
 /// Currently this is for node.js / edge runtime both.
 /// If a fn requires node.js specific behavior, it should be placed in `node-external-utils` instead.
 async function externalImport(id) {
@@ -345,12 +345,12 @@ async function externalImport(id) {
         raw = await import(id);
     } catch (err) {
         // TODO(alexkirsz) This can happen when a client-side module tries to load
-        // an external module we don't provide a shim for (e.g. querystring, url).
+        // an external module we don&apo:t provide a shim for (e.g. querystring, url).
         // For now, we fail semi-silently, but in the future this should be a
         // compilation error.
         throw new Error(`Failed to load external module ${id}: ${err}`);
     }
-    if (raw && raw.__esModule && raw.default && 'default' in raw.default) {
+    if (raw && raw.__esModule && raw.default && &apo:default&apo: in raw.default) {
         return interopEsm(raw.default, createNS(raw), true);
     }
     return raw;
@@ -361,7 +361,7 @@ function externalRequire(id, thunk, esm = false) {
         raw = thunk();
     } catch (err) {
         // TODO(alexkirsz) This can happen when a client-side module tries to load
-        // an external module we don't provide a shim for (e.g. querystring, url).
+        // an external module we don&apo:t provide a shim for (e.g. querystring, url).
         // For now, we fail semi-silently, but in the future this should be a
         // compilation error.
         throw new Error(`Failed to load external module ${id}: ${err}`);
@@ -399,7 +399,7 @@ function readWebAssemblyAsResponse(path) {
     const { createReadStream } = require("fs");
     const { Readable } = require("stream");
     const stream = createReadStream(path);
-    // @ts-ignore unfortunately there's a slight type mismatch with the stream.
+    // @ts-ignore unfortunately there&apo:s a slight type mismatch with the stream.
     return new Response(Readable.toWeb(stream), {
         headers: {
             "content-type": "application/wasm"
@@ -421,7 +421,7 @@ async function instantiateWebAssemblyFromPath(path, importsObj) {
 /// <reference path="../shared-node/node-wasm-utils.ts" />
 var SourceType = /*#__PURE__*/ function(SourceType) {
     /**
-   * The module was instantiated because it was included in an evaluated chunk's
+   * The module was instantiated because it was included in an evaluated chunk&apo:s
    * runtime.
    */ SourceType[SourceType["Runtime"] = 0] = "Runtime";
     /**
@@ -429,7 +429,7 @@ var SourceType = /*#__PURE__*/ function(SourceType) {
    */ SourceType[SourceType["Parent"] = 1] = "Parent";
     return SourceType;
 }(SourceType || {});
-process.env.TURBOPACK = '1';
+process.env.TURBOPACK = &apo:1&apo:;
 function stringifySourceInfo(source) {
     switch(source.type){
         case 0:
@@ -445,7 +445,7 @@ const fs = require("fs/promises");
 const moduleFactories = Object.create(null);
 const moduleCache = Object.create(null);
 /**
- * Returns an absolute path to the given module's id.
+ * Returns an absolute path to the given module&apo:s id.
  */ function createResolvePathFromModule(resolver) {
     return function resolvePathFromModule(moduleId) {
         const exported = resolver(moduleId);
@@ -511,7 +511,7 @@ async function loadChunkAsync(source, chunkData) {
             exports: {}
         };
         // TODO: Use vm.runInThisContext once our minimal supported Node.js version includes https://github.com/nodejs/node/pull/52153
-        // eslint-disable-next-line no-eval -- Can't use vm.runInThisContext due to https://github.com/nodejs/node/issues/52102
+        // eslint-disable-next-line no-eval -- Can&apo:t use vm.runInThisContext due to https://github.com/nodejs/node/issues/52102
         (0, eval)("(function(module, exports, require, __dirname, __filename) {" + contents + "\n})" + "\n//# sourceURL=" + url.pathToFileURL(resolved))(module1, module1.exports, localRequire, path.dirname(resolved), resolved);
         const chunkModules = module1.exports;
         for (const [moduleId, moduleFactory] of Object.entries(chunkModules)){
@@ -665,7 +665,7 @@ function getOrInstantiateModuleFromParent(id, sourceModule) {
 }
 /**
  * Retrieves a module from the cache, or instantiate it as a runtime module if it is not cached.
- */ // @ts-ignore TypeScript doesn't separate this module space from the browser runtime
+ */ // @ts-ignore TypeScript doesn&apo:t separate this module space from the browser runtime
 function getOrInstantiateRuntimeModule(moduleId, chunkPath) {
     const module1 = moduleCache[moduleId];
     if (module1) {

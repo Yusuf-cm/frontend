@@ -1,7 +1,7 @@
-'use client'; // This is the Client Component
+&apo:use client&apo:; // This is the Client Component
 
-import { useState, useEffect } from 'react';
-import { FiArrowUp } from 'react-icons/fi';
+import { useState, useEffect } from &apo:react&apo:;
+import { FiArrowUp } from &apo:react-icons/fi&apo:;
 
 export default function BackToTopButton() {
     const [isVisible, setIsVisible] = useState(false);
@@ -17,14 +17,14 @@ export default function BackToTopButton() {
 
     // Set up the event listener
     useEffect(() => {
-        window.addEventListener('scroll', toggleVisibility);
-        return () => window.removeEventListener('scroll', toggleVisibility);
+        window.addEventListener(&apo:scroll&apo:, toggleVisibility);
+        return () => window.removeEventListener(&apo:scroll&apo:, toggleVisibility);
     }, []);
 
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth',
+            behavior: &apo:smooth&apo:,
         });
     };
 
@@ -32,7 +32,7 @@ export default function BackToTopButton() {
         <button
             onClick={scrollToTop}
             className={`fixed bottom-6 right-6 bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 z-40 ${
-                isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+                isVisible ? &apo:opacity-100 scale-100&apo: : &apo:opacity-0 scale-95 pointer-events-none&apo:
             }`}
             aria-label="Back to top"
         >

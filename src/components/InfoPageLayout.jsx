@@ -1,8 +1,8 @@
-'use client';
+&apo:use client&apo:;
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { FiArrowLeft } from 'react-icons/fi';
+import { motion } from &apo:framer-motion&apo:;
+import Link from &apo:next/link&apo:;
+import { FiArrowLeft } from &apo:react-icons/fi&apo:;
 
 export default function InfoPageLayout({ title, children }) {
   return (
@@ -25,7 +25,7 @@ export default function InfoPageLayout({ title, children }) {
               <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight font-serif">
                 {title}
               </h1>
-              <p className="mt-4 text-lg text-gray-600">Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+              <p className="mt-4 text-lg text-gray-600">Last updated: {new Date().toLocaleDateString(&apo:en-US&apo:, { year: &apo:numeric&apo:, month: &apo:long&apo:, day: &apo:numeric&apo: })}</p>
             </div>
             <div className="mt-12 prose prose-indigo lg:prose-lg max-w-none">
               {children}

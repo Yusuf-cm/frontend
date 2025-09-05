@@ -1,8 +1,8 @@
-'use client';
+&apo:use client&apo:;
 
-import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-import { FiFilter, FiX, FiChevronDown, FiChevronUp } from 'react-icons/fi';
-import { useState } from 'react';
+import { useRouter, useSearchParams, usePathname } from &apo:next/navigation&apo:;
+import { FiFilter, FiX, FiChevronDown, FiChevronUp } from &apo:react-icons/fi&apo:;
+import { useState } from &apo:react&apo:;
 
 export default function ProductFilters({ 
   categories, 
@@ -21,14 +21,14 @@ export default function ProductFilters({
     const params = new URLSearchParams(searchParams);
     
     Object.entries(updates).forEach(([key, value]) => {
-      if (value === null || value === '') {
+      if (value === null || value === &apo:&apo:) {
         params.delete(key);
       } else {
         params.set(key, value);
       }
     });
     
-    params.delete('page');
+    params.delete(&apo:page&apo:);
     return `${pathname}?${params.toString()}`;
   };
   
@@ -46,13 +46,13 @@ export default function ProductFilters({
         params.append(`filter_${filterKey}`, valueToToggle);
     }
 
-    params.delete('page');
+    params.delete(&apo:page&apo:);
     router.replace(`${pathname}?${params.toString()}`);
   };
   
   const clearFilters = () => {
     const params = new URLSearchParams();
-    if (searchParams.get('search')) params.set('search', searchParams.get('search'));
+    if (searchParams.get(&apo:search&apo:)) params.set(&apo:search&apo:, searchParams.get(&apo:search&apo:));
     router.replace(`${pathname}?${params.toString()}`);
   };
   
@@ -140,28 +140,28 @@ const FilterContent = ({ categories, attributes, selectedCategory, selectedSort,
   return (
     <div className="space-y-8">
       <div>
-        <button onClick={() => toggleSection('category')} className="flex items-center justify-between w-full mb-3">
+        <button onClick={() => toggleSection(&apo:category&apo:)} className="flex items-center justify-between w-full mb-3">
           <h4 className="font-medium text-gray-900">Category</h4>
           {openSections.category ? <FiChevronUp className="h-5 w-5 text-gray-400" /> : <FiChevronDown className="h-5 w-5 text-gray-400" />}
         </button>
         {openSections.category && (
           <div className="space-y-2 pl-1">
-            <a href={createUrl({ category: '' })} className={`block py-1 text-sm ${!selectedCategory ? 'text-indigo-600 font-medium' : 'text-gray-600 hover:text-gray-900'}`}>All Categories</a>
+            <a href={createUrl({ category: &apo:&apo: })} className={`block py-1 text-sm ${!selectedCategory ? &apo:text-indigo-600 font-medium&apo: : &apo:text-gray-600 hover:text-gray-900&apo:}`}>All Categories</a>
             {categories.map(category => (
-              <a key={category.slug} href={createUrl({ category: category.slug })} className={`block py-1 text-sm ${selectedCategory === category.slug ? 'text-indigo-600 font-medium' : 'text-gray-600 hover:text-gray-900'}`}>{category.name}</a>
+              <a key={category.slug} href={createUrl({ category: category.slug })} className={`block py-1 text-sm ${selectedCategory === category.slug ? &apo:text-indigo-600 font-medium&apo: : &apo:text-gray-600 hover:text-gray-900&apo:}`}>{category.name}</a>
             ))}
           </div>
         )}
       </div>
       <div>
-        <button onClick={() => toggleSection('sort')} className="flex items-center justify-between w-full mb-3">
+        <button onClick={() => toggleSection(&apo:sort&apo:)} className="flex items-center justify-between w-full mb-3">
           <h4 className="font-medium text-gray-900">Sort By</h4>
           {openSections.sort ? <FiChevronUp className="h-5 w-5 text-gray-400" /> : <FiChevronDown className="h-5 w-5 text-gray-400" />}
         </button>
         {openSections.sort && (
           <div className="space-y-2 pl-1">
-            {[{ value: '', label: 'Featured' }, { value: 'created_at', label: 'Newest' }, { value: 'price', label: 'Price: Low to High' }, { value: '-price', label: 'Price: High to Low' }].map(option => (
-              <a key={option.value} href={createUrl({ ordering: option.value })} className={`block py-1 text-sm ${selectedSort === option.value ? 'text-indigo-600 font-medium' : 'text-gray-600 hover:text-gray-900'}`}>{option.label}</a>
+            {[{ value: &apo:&apo:, label: &apo:Featured&apo: }, { value: &apo:created_at&apo:, label: &apo:Newest&apo: }, { value: &apo:price&apo:, label: &apo:Price: Low to High&apo: }, { value: &apo:-price&apo:, label: &apo:Price: High to Low&apo: }].map(option => (
+              <a key={option.value} href={createUrl({ ordering: option.value })} className={`block py-1 text-sm ${selectedSort === option.value ? &apo:text-indigo-600 font-medium&apo: : &apo:text-gray-600 hover:text-gray-900&apo:}`}>{option.label}</a>
             ))}
           </div>
         )}

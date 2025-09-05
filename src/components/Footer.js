@@ -1,10 +1,10 @@
 // src/components/Footer.js
-'use client';
+&apo:use client&apo:;
 
-import Link from 'next/link';
-import { FiInstagram, FiFacebook, FiTwitter, FiYoutube, FiMapPin, FiPhone, FiMail } from 'react-icons/fi';
-import BackToTopButton from './BackToTopButton';
-import NewsletterForm from './NewsletterForm';
+import Link from &apo:next/link&apo:;
+import { FiInstagram, FiFacebook, FiTwitter, FiYoutube, FiMapPin, FiPhone, FiMail } from &apo:react-icons/fi&apo:;
+import BackToTopButton from &apo:./BackToTopButton&apo:;
+import NewsletterForm from &apo:./NewsletterForm&apo:;
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -75,7 +75,7 @@ export default function Footer() {
         
         <div className="mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-wrap justify-center gap-4">
-            {['visa', 'mastercard', 'paypal', 'mpesa'].map((method) => (
+            {[&apo:visa&apo:, &apo:mastercard&apo:, &apo:paypal&apo:, &apo:mpesa&apo:].map((method) => (
               <div key={method} className="bg-gray-800 rounded-lg h-10 w-16 flex items-center justify-center">
                 <span className="text-xs font-semibold uppercase text-gray-400">{method}</span>
               </div>

@@ -1,5 +1,5 @@
-import InfoPageLayout from '@/components/InfoPageLayout';
-import { FiChevronDown } from 'react-icons/fi';
+import InfoPageLayout from &apo:@/components/InfoPageLayout&apo:;
+import { FiChevronDown } from &apo:react-icons/fi&apo:;
 
 const faqs = [
   {
@@ -8,7 +8,7 @@ const faqs = [
   },
   {
     question: "What is your return policy?",
-    answer: "You can return most new, unopened items within 30 days of delivery for a full refund. We'll also pay the return shipping costs if the return is a result of our error (you received an incorrect or defective item, etc.)."
+    answer: "You can return most new, unopened items within 30 days of delivery for a full refund. We&apo:ll also pay the return shipping costs if the return is a result of our error (you received an incorrect or defective item, etc.)."
   },
   {
     question: "Do you offer international shipping?",
@@ -16,11 +16,11 @@ const faqs = [
   },
   {
     question: "How can I track my order?",
-    answer: "Once your order has shipped, you will receive an email with your tracking number and a link to the courier's website where you can track your package."
+    answer: "Once your order has shipped, you will receive an email with your tracking number and a link to the courier&apo:s website where you can track your package."
   },
   {
     question: "Do you offer interior design services?",
-    answer: "Yes, we do! We offer a range of services from simple consultations to full-scale project management. Please visit our 'Services' page or contact us for more information."
+    answer: "Yes, we do! We offer a range of services from simple consultations to full-scale project management. Please visit our &apo:Services&apo: page or contact us for more information."
   },
 ];
 

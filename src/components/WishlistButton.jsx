@@ -1,11 +1,11 @@
-'use client';
+&apo:use client&apo:;
 
 import { useAuth } from "@/auth/useAuth";
 import { getAuthenticatedApi } from "@/utils/api";
 import { FiHeart } from "react-icons/fi";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { motion } from 'framer-motion';
+import { motion } from &apo:framer-motion&apo:;
 
 export default function WishlistButton({ productId, className }) {
     const { user, authTokens, setAuthTokens, logoutUser, setUser } = useAuth();
@@ -19,15 +19,15 @@ export default function WishlistButton({ productId, className }) {
 
         if (!user) {
             toast.error("Please log in to use the wishlist.");
-            router.push('/login?next=' + window.location.pathname);
+            router.push(&apo:/login?next=&apo: + window.location.pathname);
             return;
         }
 
         const api = getAuthenticatedApi({ authTokens, setAuthTokens, logoutUser });
 
         try {
-            const response = await api('/wishlist/toggle/', {
-                method: 'POST',
+            const response = await api(&apo:/wishlist/toggle/&apo:, {
+                method: &apo:POST&apo:,
                 body: JSON.stringify({ product_id: productId }),
             });
             
@@ -37,7 +37,7 @@ export default function WishlistButton({ productId, className }) {
                 wishlist: response.wishlist
             }));
             
-            toast.success(response.action === 'added' ? 'Added to wishlist!' : 'Removed from wishlist');
+            toast.success(response.action === &apo:added&apo: ? &apo:Added to wishlist!&apo: : &apo:Removed from wishlist&apo:);
         } catch (error) {
             toast.error("Could not update your wishlist.");
             console.error(error);
@@ -50,13 +50,13 @@ export default function WishlistButton({ productId, className }) {
             whileTap={{ scale: 0.9 }}
             onClick={handleWishlistToggle}
             className={`flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md transition-colors ${className}`}
-            aria-label={isInWishlist ? 'Remove from wishlist' : 'Add to wishlist'}
+            aria-label={isInWishlist ? &apo:Remove from wishlist&apo: : &apo:Add to wishlist&apo:}
         >
             <FiHeart 
                 className={`h-5 w-5 transition-all ${
                     isInWishlist 
-                        ? 'text-red-500 fill-current' 
-                        : 'text-gray-600 hover:text-red-500'
+                        ? &apo:text-red-500 fill-current&apo: 
+                        : &apo:text-gray-600 hover:text-red-500&apo:
                 }`} 
             />
         </motion.button>

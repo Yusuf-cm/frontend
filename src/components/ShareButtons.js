@@ -1,18 +1,18 @@
-'use client'; // This is the crucial directive that makes it a Client Component
+&apo:use client&apo:; // This is the crucial directive that makes it a Client Component
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from &apo:react&apo:;
 
 export default function ShareButtons({ title, url }) {
     if (!url) return null;
-    const [currentUrl, setCurrentUrl] = useState('');
+    const [currentUrl, setCurrentUrl] = useState(&apo:&apo:);
 
     // This effect runs only on the client-side, after the component has mounted
     useEffect(() => {
-        // Now it's safe to access window.location.href
+        // Now it&apo:s safe to access window.location.href
         setCurrentUrl(window.location.href);
     }, []);
 
-    // If the URL hasn't been set yet (during server render or initial client load),
+    // If the URL hasn&apo:t been set yet (during server render or initial client load),
     // we can return nothing or a placeholder to avoid errors.
     if (!currentUrl) {
         return null;

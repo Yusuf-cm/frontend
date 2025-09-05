@@ -29,7 +29,7 @@ export const kenyanCounties = [
     "Meru",
     "Migori",
     "Mombasa",
-    "Murang'a",
+    "Murang&apo:a",
     "Nairobi",
     "Nakuru",
     "Nandi",

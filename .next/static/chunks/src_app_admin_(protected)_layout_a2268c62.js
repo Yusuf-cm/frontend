@@ -18,7 +18,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$mo
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature();
-'use client';
+&apo:use client&apo:;
 ;
 ;
 ;
@@ -28,11 +28,11 @@ var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.sign
 const NavItem = ({ item, isActive, sidebarOpen })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
             href: item.href,
-            className: `flex items-center p-3 rounded-lg transition-colors group ${isActive ? 'bg-indigo-600 font-semibold text-white' : 'text-indigo-100 hover:bg-indigo-800'}`,
+            className: `flex items-center p-3 rounded-lg transition-colors group ${isActive ? &apo:bg-indigo-600 font-semibold text-white&apo: : &apo:text-indigo-100 hover:bg-indigo-800&apo:}`,
             "aria-current": isActive ? "page" : undefined,
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                    className: `${isActive ? 'text-white' : 'text-indigo-300 group-hover:text-white'} flex-shrink-0`,
+                    className: `${isActive ? &apo:text-white&apo: : &apo:text-indigo-300 group-hover:text-white&apo:} flex-shrink-0`,
                     children: item.icon
                 }, void 0, false, {
                     fileName: "[project]/src/app/admin/(protected)/layout.js",
@@ -94,10 +94,10 @@ const UserProfile = ({ user, onLogout })=>{
                     }
                 }
             }["UserProfile.useEffect.handleClickOutside"];
-            document.addEventListener('mousedown', handleClickOutside);
+            document.addEventListener(&apo:mousedown&apo:, handleClickOutside);
             return ({
                 "UserProfile.useEffect": ()=>{
-                    document.removeEventListener('mousedown', handleClickOutside);
+                    document.removeEventListener(&apo:mousedown&apo:, handleClickOutside);
                 }
             })["UserProfile.useEffect"];
         }
@@ -113,7 +113,7 @@ const UserProfile = ({ user, onLogout })=>{
                 "aria-expanded": dropdownOpen,
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "w-8 h-8 rounded-full flex items-center justify-center font-medium bg-indigo-100 text-indigo-700",
-                    children: user?.first_name?.charAt(0)?.toUpperCase() || user?.username?.charAt(0)?.toUpperCase() || 'A'
+                    children: user?.first_name?.charAt(0)?.toUpperCase() || user?.username?.charAt(0)?.toUpperCase() || &apo:A&apo:
                 }, void 0, false, {
                     fileName: "[project]/src/app/admin/(protected)/layout.js",
                     lineNumber: 67,
@@ -240,10 +240,10 @@ function ProtectedAdminLayout({ children }) {
                 }
             }["ProtectedAdminLayout.useEffect.checkIfMobile"];
             checkIfMobile();
-            window.addEventListener('resize', checkIfMobile);
+            window.addEventListener(&apo:resize&apo:, checkIfMobile);
             return ({
                 "ProtectedAdminLayout.useEffect": ()=>{
-                    window.removeEventListener('resize', checkIfMobile);
+                    window.removeEventListener(&apo:resize&apo:, checkIfMobile);
                 }
             })["ProtectedAdminLayout.useEffect"];
         }
@@ -252,7 +252,7 @@ function ProtectedAdminLayout({ children }) {
         "ProtectedAdminLayout.useEffect": ()=>{
             if (loading) return;
             if (!user || !user.is_superuser) {
-                router.push('/');
+                router.push(&apo:/&apo:);
             }
         }
     }["ProtectedAdminLayout.useEffect"], [
@@ -265,8 +265,8 @@ function ProtectedAdminLayout({ children }) {
     };
     const navItems = [
         {
-            name: 'Dashboard',
-            href: '/admin/dashboard',
+            name: &apo:Dashboard&apo:,
+            href: &apo:/admin/dashboard&apo:,
             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                 className: "w-5 h-5",
                 fill: "none",
@@ -289,8 +289,8 @@ function ProtectedAdminLayout({ children }) {
             }, this)
         },
         {
-            name: 'Django Admin',
-            href: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_DJANGO_ADMIN_URL || 'http://127.0.0.1:8000/admin',
+            name: &apo:Django Admin&apo:,
+            href: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_DJANGO_ADMIN_URL || &apo:http://127.0.0.1:8000/admin&apo:,
             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                 className: "w-5 h-5",
                 fill: "none",
@@ -325,8 +325,8 @@ function ProtectedAdminLayout({ children }) {
             }, this)
         },
         {
-            name: 'Users',
-            href: '/admin/users',
+            name: &apo:Users&apo:,
+            href: &apo:/admin/users&apo:,
             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                 className: "w-5 h-5",
                 fill: "none",
@@ -349,8 +349,8 @@ function ProtectedAdminLayout({ children }) {
             }, this)
         },
         {
-            name: 'Products',
-            href: '/admin/products',
+            name: &apo:Products&apo:,
+            href: &apo:/admin/products&apo:,
             icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                 className: "w-5 h-5",
                 fill: "none",
@@ -455,11 +455,11 @@ function ProtectedAdminLayout({ children }) {
                     x: isMobile && !sidebarOpen ? "-100%" : 0
                 },
                 transition: {
-                    type: 'spring',
+                    type: &apo:spring&apo:,
                     stiffness: 300,
                     damping: 30
                 },
-                className: `bg-gray-900 text-white flex-shrink-0 z-50 ${isMobile ? 'fixed inset-y-0 left-0 shadow-xl' : 'relative'}`,
+                className: `bg-gray-900 text-white flex-shrink-0 z-50 ${isMobile ? &apo:fixed inset-y-0 left-0 shadow-xl&apo: : &apo:relative&apo:}`,
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "h-full flex flex-col",
                     children: [
@@ -685,7 +685,7 @@ function ProtectedAdminLayout({ children }) {
                                             className: "hidden md:block",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                                 className: "text-lg font-semibold text-gray-900",
-                                                children: navItems.find((item)=>pathname === item.href)?.name || 'Admin Dashboard'
+                                                children: navItems.find((item)=>pathname === item.href)?.name || &apo:Admin Dashboard&apo:
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/admin/(protected)/layout.js",
                                                 lineNumber: 312,
@@ -828,7 +828,7 @@ var _c, _c1, _c2;
 __turbopack_context__.k.register(_c, "NavItem");
 __turbopack_context__.k.register(_c1, "UserProfile");
 __turbopack_context__.k.register(_c2, "ProtectedAdminLayout");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+if (typeof globalThis.$RefreshHelpers$ === &apo:object&apo: && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),

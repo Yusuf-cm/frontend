@@ -1,55 +1,55 @@
 // src/app/layout.js
 
-import { Playfair_Display, Lato } from 'next/font/google';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { AuthProvider } from '@/auth/AuthContext';
-import { CartProvider } from '@/context/CartContext';
-import './globals.css';
-import { Toaster } from 'react-hot-toast';
-import NextTopLoader from 'nextjs-toploader';
-import Script from 'next/script';
-import BackToTopButton from '@/components/BackToTopButton';
+import { Playfair_Display, Lato } from &apo:next/font/google&apo:;
+import Header from &apo:@/components/Header&apo:;
+import Footer from &apo:@/components/Footer&apo:;
+import { AuthProvider } from &apo:@/auth/AuthContext&apo:;
+import { CartProvider } from &apo:@/context/CartContext&apo:;
+import &apo:./globals.css&apo:;
+import { Toaster } from &apo:react-hot-toast&apo:;
+import NextTopLoader from &apo:nextjs-toploader&apo:;
+import Script from &apo:next/script&apo:;
+import BackToTopButton from &apo:@/components/BackToTopButton&apo:;
 
 // Fonts
 const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap',
-  weight: ['400', '700', '900'],
+  subsets: [&apo:latin&apo:],
+  variable: &apo:--font-playfair&apo:,
+  display: &apo:swap&apo:,
+  weight: [&apo:400&apo:, &apo:700&apo:, &apo:900&apo:],
 });
 
 const lato = Lato({
-  subsets: ['latin'],
-  variable: '--font-lato',
-  weight: ['400', '700'],
-  display: 'swap',
+  subsets: [&apo:latin&apo:],
+  variable: &apo:--font-lato&apo:,
+  weight: [&apo:400&apo:, &apo:700&apo:],
+  display: &apo:swap&apo:,
 });
 
 // Metadata (used automatically in <head>)
 export const metadata = {
-  title: 'Ronohs Decor',
-  description: 'Transforming Spaces and Elevating Lifestyles with curated home decor and expert interior design services.',
+  title: &apo:Ronohs Decor&apo:,
+  description: &apo:Transforming Spaces and Elevating Lifestyles with curated home decor and expert interior design services.&apo:,
   openGraph: {
-    title: 'Ronohs Decor',
-    description: 'Transforming Spaces and Elevating Lifestyles with curated home decor and expert interior design services.',
-    url: 'https://ronohsdecor.com',
-    siteName: 'Ronohs Decor',
+    title: &apo:Ronohs Decor&apo:,
+    description: &apo:Transforming Spaces and Elevating Lifestyles with curated home decor and expert interior design services.&apo:,
+    url: &apo:https://ronohsdecor.com&apo:,
+    siteName: &apo:Ronohs Decor&apo:,
     images: [
       {
-        url: 'https://ronohsdecor.com/og-image.jpg',
+        url: &apo:https://ronohsdecor.com/og-image.jpg&apo:,
         width: 1200,
         height: 630,
       },
     ],
-    locale: 'en_US',
-    type: 'website',
+    locale: &apo:en_US&apo:,
+    type: &apo:website&apo:,
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Ronohs Decor',
-    description: 'Transforming Spaces and Elevating Lifestyles',
-    images: ['https://ronohsdecor.com/twitter-image.jpg'],
+    card: &apo:summary_large_image&apo:,
+    title: &apo:Ronohs Decor&apo:,
+    description: &apo:Transforming Spaces and Elevating Lifestyles&apo:,
+    images: [&apo:https://ronohsdecor.com/twitter-image.jpg&apo:],
   },
 };
 
@@ -66,8 +66,8 @@ export default function RootLayout({ children }) {
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXXXX');
+            gtag(&apo:js&apo:, new Date());
+            gtag(&apo:config&apo:, &apo:G-XXXXXXXXXX&apo:);
           `}
         </Script>
 
@@ -111,23 +111,23 @@ export default function RootLayout({ children }) {
           toastOptions={{
             duration: 5000,
             style: {
-              borderRadius: '8px',
-              background: '#4f46e5',
-              color: '#fff',
+              borderRadius: &apo:8px&apo:,
+              background: &apo:#4f46e5&apo:,
+              color: &apo:#fff&apo:,
               fontWeight: 500,
             },
             success: {
               style: {
-                background: '#4f46e5',
+                background: &apo:#4f46e5&apo:,
               },
               iconTheme: {
-                primary: '#fff',
-                secondary: '#4f46e5',
+                primary: &apo:#fff&apo:,
+                secondary: &apo:#4f46e5&apo:,
               },
             },
             error: {
               style: {
-                background: '#ef4444',
+                background: &apo:#ef4444&apo:,
               },
             },
           }}

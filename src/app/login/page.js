@@ -1,47 +1,47 @@
-'use client';
+&apo:use client&apo:;
 
-import { useState, useCallback } from 'react';
-import { useAuth } from '@/auth/useAuth';
-import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
-import FormError from '@/components/FormError';
-import { FiUser, FiLock, FiEye, FiEyeOff, FiArrowLeft, FiLogIn, FiMail } from 'react-icons/fi';
+import { useState, useCallback } from &apo:react&apo:;
+import { useAuth } from &apo:@/auth/useAuth&apo:;
+import Link from &apo:next/link&apo:;
+import { useRouter, useSearchParams } from &apo:next/navigation&apo:;
+import FormError from &apo:@/components/FormError&apo:;
+import { FiUser, FiLock, FiEye, FiEyeOff, FiArrowLeft, FiLogIn, FiMail } from &apo:react-icons/fi&apo:;
 import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { motion } from 'framer-motion';
-import { toast } from 'react-hot-toast';
+import { motion } from &apo:framer-motion&apo:;
+import { toast } from &apo:react-hot-toast&apo:;
 
 export default function LoginPage() {
     const [formData, setFormData] = useState({
-        username: '',
-        password: ''
+        username: &apo:&apo:,
+        password: &apo:&apo:
     });
-    const [error, setError] = useState('');
+    const [error, setError] = useState(&apo:&apo:);
     const [isLoading, setIsLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     
     const { loginUser } = useAuth();
     const router = useRouter();
     const searchParams = useSearchParams();
-    const nextUrl = searchParams.get('next');
+    const nextUrl = searchParams.get(&apo:next&apo:);
 
     const handleSubmit = useCallback(async (e) => {
         e.preventDefault();
         
         if (!formData.username.trim() || !formData.password.trim()) {
-            setError('Please fill in all fields');
+            setError(&apo:Please fill in all fields&apo:);
             return;
         }
         
-        setError('');
+        setError(&apo:&apo:);
         setIsLoading(true);
         
         try {
             await loginUser(formData.username, formData.password, nextUrl);
-            toast.success('Login successful!');
+            toast.success(&apo:Login successful!&apo:);
         } catch (err) {
-            setError(err.message || 'An unknown error occurred. Please try again.');
-            toast.error('Login failed. Please check your credentials.');
+            setError(err.message || &apo:An unknown error occurred. Please try again.&apo:);
+            toast.error(&apo:Login failed. Please check your credentials.&apo:);
         } finally {
             setIsLoading(false);
         }
@@ -57,7 +57,7 @@ export default function LoginPage() {
             ...prev,
             [name]: value
         }));
-        if (error) setError('');
+        if (error) setError(&apo:&apo:);
     }, [error]);
 
     return (
@@ -194,8 +194,8 @@ export default function LoginPage() {
                                 disabled={isLoading}
                                 className={`w-full py-3 px-4 rounded-lg font-bold transition-all duration-300 flex items-center justify-center
                                     ${isLoading
-                                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                                        : 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-md hover:shadow-lg'
+                                        ? &apo:bg-gray-300 text-gray-500 cursor-not-allowed&apo:
+                                        : &apo:bg-indigo-600 text-white hover:bg-indigo-700 shadow-md hover:shadow-lg&apo:
                                     }`}
                                 whileHover={{ scale: isLoading ? 1 : 1.02 }}
                                 whileTap={{ scale: isLoading ? 1 : 0.98 }}
@@ -216,7 +216,7 @@ export default function LoginPage() {
                                         Signing in...
                                     </>
                                 ) : (
-                                    'Sign In'
+                                    &apo:Sign In&apo:
                                 )}
                             </motion.button>
                         </form>
@@ -256,7 +256,7 @@ export default function LoginPage() {
                         </div>
                         
                         <p className="text-center mt-8 text-gray-600">
-                            Don't have an account?{' '}
+                            Don&apo:t have an account?{&apo: &apo:}
                             <Link 
                                 href="/register" 
                                 className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline"
@@ -279,15 +279,15 @@ export default function LoginPage() {
                         
                         <div className="mt-8 pt-6 border-t border-gray-200">
                             <p className="text-xs text-gray-500 text-center">
-                                By signing in, you agree to our{' '}
+                                By signing in, you agree to our{&apo: &apo:}
                                 <a 
                                     href="#" 
                                     className="text-indigo-600 hover:underline focus:outline-none focus:underline"
                                     tabIndex={isLoading ? -1 : 0}
                                 >
                                     Terms of Service
-                                </a>{' '}
-                                and{' '}
+                                </a>{&apo: &apo:}
+                                and{&apo: &apo:}
                                 <a 
                                     href="#" 
                                     className="text-indigo-600 hover:underline focus:outline-none focus:underline"

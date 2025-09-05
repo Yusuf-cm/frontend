@@ -1,6 +1,6 @@
-'use client'; // <-- THIS IS THE FIX
+&apo:use client&apo:; // <-- THIS IS THE FIX
 
-import { useState } from 'react';
+import { useState } from &apo:react&apo:;
 
 async function getPublicStats() {
   try {
@@ -26,12 +26,12 @@ const ServiceCard = ({ icon, title, description, active, onClick }) => (
     onClick={onClick}
     className={`cursor-pointer p-8 rounded-2xl transition-all duration-300 border-2 ${
       active 
-        ? 'border-indigo-600 bg-indigo-50 shadow-lg transform -translate-y-2' 
-        : 'border-gray-200 hover:border-indigo-300'
+        ? &apo:border-indigo-600 bg-indigo-50 shadow-lg transform -translate-y-2&apo: 
+        : &apo:border-gray-200 hover:border-indigo-300&apo:
     }`}
   >
     <div className={`flex items-center justify-center h-20 w-20 rounded-full mx-auto ${
-      active ? 'bg-indigo-600 text-white' : 'bg-indigo-100 text-indigo-600'
+      active ? &apo:bg-indigo-600 text-white&apo: : &apo:bg-indigo-100 text-indigo-600&apo:
     }`}>
       {icon}
     </div>
@@ -63,7 +63,7 @@ const ServiceCard = ({ icon, title, description, active, onClick }) => (
     
     <div className="mt-6">
       <button className={`font-medium ${
-        active ? 'text-indigo-600' : 'text-gray-500 hover:text-indigo-600'
+        active ? &apo:text-indigo-600&apo: : &apo:text-gray-500 hover:text-indigo-600&apo:
       }`}>
         Learn more →
       </button>
@@ -220,7 +220,7 @@ export default function ServicesPage() {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-extrabold text-gray-900">What Our Clients Say</h2>
             <p className="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">
-              Don't just take our word for it - hear from our satisfied clients
+              Don&apo:t just take our word for it - hear from our satisfied clients
             </p>
           </div>
           

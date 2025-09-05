@@ -1,10 +1,10 @@
 // NO "use client" here. This remains a Server Component.
 
-import FeaturedProducts from '@/components/FeaturedProducts';
-import AnimatedDiv from '@/components/AnimatedDiv';
-import Link from 'next/link';
-import { FiArrowRight, FiCheck, FiShoppingBag, FiHome, FiTool } from 'react-icons/fi';
-import NewsletterForm from '@/components/NewsletterForm'; // <-- IMPORT the new Client Component
+import FeaturedProducts from &apo:@/components/FeaturedProducts&apo:;
+import AnimatedDiv from &apo:@/components/AnimatedDiv&apo:;
+import Link from &apo:next/link&apo:;
+import { FiArrowRight, FiCheck, FiShoppingBag, FiHome, FiTool } from &apo:react-icons/fi&apo:;
+import NewsletterForm from &apo:@/components/NewsletterForm&apo:; // <-- IMPORT the new Client Component
 
 // Reusable component for the service highlights
 const ServiceHighlight = ({ icon, title, description }) => (
@@ -45,7 +45,7 @@ export default function HomePage() {
         <div className="absolute inset-0 z-0">
           <div className="absolute top-0 left-0 w-full h-full bg-black opacity-30" />
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black to-transparent" />
-          <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
+          <div className="absolute inset-0 bg-[url(&apo:/pattern.svg&apo:)] opacity-10" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 py-32 sm:py-40 sm:px-6 lg:px-8">
           <AnimatedDiv 
@@ -153,7 +153,7 @@ export default function HomePage() {
           <AnimatedDiv className="text-center mb-16">
             <h2 className="text-3xl font-serif font-extrabold text-white sm:text-4xl">What Our Clients Say</h2>
             <p className="mt-4 max-w-2xl mx-auto text-xl text-indigo-200">
-              Don't just take our word for it
+              Don&apo:t just take our word for it
             </p>
           </AnimatedDiv>
           
@@ -217,7 +217,7 @@ export default function HomePage() {
           <AnimatedDiv className="text-center lg:text-left">
             <h2 className="text-3xl font-serif font-extrabold tracking-tight text-white sm:text-4xl">
               <span className="block">Ready to transform your space?</span>
-              <span className="block text-indigo-400">Let's create something beautiful together.</span>
+              <span className="block text-indigo-400">Let&apo:s create something beautiful together.</span>
             </h2>
           </AnimatedDiv>
           <AnimatedDiv className="mt-8 flex justify-center lg:mt-0 lg:flex-shrink-0">

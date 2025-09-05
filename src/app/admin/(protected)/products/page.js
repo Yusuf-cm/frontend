@@ -1,12 +1,12 @@
-'use client';
+&apo:use client&apo:;
 
-import { useEffect, useState, useCallback } from 'react';
-import { useAuth } from '@/auth/useAuth';
-import { getAuthenticatedApi } from '@/utils/api';
-import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FiEdit, FiTrash2, FiPlus, FiSearch } from 'react-icons/fi';
-import { useDebounce } from 'use-debounce';
+import { useEffect, useState, useCallback } from &apo:react&apo:;
+import { useAuth } from &apo:@/auth/useAuth&apo:;
+import { getAuthenticatedApi } from &apo:@/utils/api&apo:;
+import Link from &apo:next/link&apo:;
+import { motion, AnimatePresence } from &apo:framer-motion&apo:;
+import { FiEdit, FiTrash2, FiPlus, FiSearch } from &apo:react-icons/fi&apo:;
+import { useDebounce } from &apo:use-debounce&apo:;
 
 // Enhanced Product Row Component
 const ProductRow = ({ product, onDelete, index }) => (
@@ -21,20 +21,20 @@ const ProductRow = ({ product, onDelete, index }) => (
         <div className="flex-shrink-0 h-12 w-12 bg-gray-100 rounded-md overflow-hidden">
           <img 
             className="h-full w-full object-cover" 
-            src={product.images?.[0] || '/placeholder-image.png'} 
+            src={product.images?.[0] || &apo:/placeholder-image.png&apo:} 
             alt={product.name} 
-            onError={(e) => e.target.src = '/placeholder-image.png'}
+            onError={(e) => e.target.src = &apo:/placeholder-image.png&apo:}
           />
         </div>
         <div className="ml-4">
           <div className="font-medium text-gray-900">{product.name}</div>
-          <div className="text-sm text-gray-500 mt-1">SKU: {product.sku || 'N/A'}</div>
+          <div className="text-sm text-gray-500 mt-1">SKU: {product.sku || &apo:N/A&apo:}</div>
         </div>
       </div>
     </td>
     <td className="px-4 py-3 sm:px-6 text-sm text-gray-500 hidden md:table-cell">
       <span className="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">
-        {product.category?.name || 'Uncategorized'}
+        {product.category?.name || &apo:Uncategorized&apo:}
       </span>
     </td>
     <td className="px-4 py-3 sm:px-6 text-sm text-gray-900">
@@ -46,10 +46,10 @@ const ProductRow = ({ product, onDelete, index }) => (
     <td className="px-4 py-3 sm:px-6">
       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
         product.stock > 10 
-          ? 'bg-green-100 text-green-800' 
+          ? &apo:bg-green-100 text-green-800&apo: 
           : product.stock > 3 
-            ? 'bg-amber-100 text-amber-800' 
-            : 'bg-red-100 text-red-800'
+            ? &apo:bg-amber-100 text-amber-800&apo: 
+            : &apo:bg-red-100 text-red-800&apo:
       }`}>
         {product.stock} in stock
       </span>
@@ -57,7 +57,7 @@ const ProductRow = ({ product, onDelete, index }) => (
     <td className="px-4 py-3 sm:px-6 text-right text-sm font-medium">
       <div className="flex justify-end space-x-3">
         <Link 
-          href={`${process.env.NEXT_PUBLIC_DJANGO_ADMIN_URL || 'http://127.0.0.1:8000/admin'}/api/product/${product.id}/change/`}
+          href={`${process.env.NEXT_PUBLIC_DJANGO_ADMIN_URL || &apo:http://127.0.0.1:8000/admin&apo:}/api/product/${product.id}/change/`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-indigo-600 hover:text-indigo-900 flex items-center"
@@ -144,34 +144,34 @@ export default function AdminProductsPage() {
   const { authTokens, setAuthTokens, logoutUser } = useAuth();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [error, setError] = useState(&apo:&apo:);
+  const [searchQuery, setSearchQuery] = useState(&apo:&apo:);
   const [debouncedSearch] = useDebounce(searchQuery, 500);
   const [deleteModal, setDeleteModal] = useState({
     isOpen: false,
     productId: null,
-    productName: ''
+    productName: &apo:&apo:
   });
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [stockFilter, setStockFilter] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState(&apo:all&apo:);
+  const [stockFilter, setStockFilter] = useState(&apo:all&apo:);
   const [categories, setCategories] = useState([]);
 
   const fetchProducts = useCallback(async () => {
     if (!authTokens) return;
     setLoading(true);
-    setError('');
+    setError(&apo:&apo:);
     
     const params = new URLSearchParams();
-    if (debouncedSearch) params.append('search', debouncedSearch);
-    if (selectedCategory !== 'all') params.append('category', selectedCategory);
-    if (stockFilter !== 'all') params.append('stock', stockFilter);
+    if (debouncedSearch) params.append(&apo:search&apo:, debouncedSearch);
+    if (selectedCategory !== &apo:all&apo:) params.append(&apo:category&apo:, selectedCategory);
+    if (stockFilter !== &apo:all&apo:) params.append(&apo:stock&apo:, stockFilter);
 
     try {
       const api = getAuthenticatedApi({ authTokens, setAuthTokens, logoutUser });
       const productsData = await api(`/admin/products/all/?${params.toString()}`);
       setProducts(productsData);
     } catch (err) {
-      setError('Failed to load products. Please try again later.');
+      setError(&apo:Failed to load products. Please try again later.&apo:);
       console.error(err);
     } finally {
       setLoading(false);
@@ -182,7 +182,7 @@ export default function AdminProductsPage() {
     if (!authTokens) return;
     try {
         const api = getAuthenticatedApi({ authTokens, setAuthTokens, logoutUser });
-        const categoriesData = await api('/categories/'); // Assuming public endpoint doesn't need auth, but good practice
+        const categoriesData = await api(&apo:/categories/&apo:); // Assuming public endpoint doesn&apo:t need auth, but good practice
         setCategories(categoriesData);
     } catch (error) {
         console.error("Failed to fetch categories:", error);
@@ -204,15 +204,15 @@ export default function AdminProductsPage() {
     
     try {
       const api = getAuthenticatedApi({ authTokens, setAuthTokens, logoutUser });
-      await api(`/admin/products/${deleteModal.productId}/delete/`, { method: 'DELETE' });
+      await api(`/admin/products/${deleteModal.productId}/delete/`, { method: &apo:DELETE&apo: });
       
       setProducts(prev => prev.filter(p => p.id !== deleteModal.productId));
       
-      setDeleteModal({ isOpen: false, productId: null, productName: '' });
+      setDeleteModal({ isOpen: false, productId: null, productName: &apo:&apo: });
     } catch (err) {
-      setError('Failed to delete product. It might be part of an existing order.');
+      setError(&apo:Failed to delete product. It might be part of an existing order.&apo:);
       console.error(err);
-      setDeleteModal({ isOpen: false, productId: null, productName: '' });
+      setDeleteModal({ isOpen: false, productId: null, productName: &apo:&apo: });
     }
   };
 
@@ -240,7 +240,7 @@ export default function AdminProductsPage() {
         
         <div className="flex flex-wrap gap-3">
           <Link 
-            href={`${process.env.NEXT_PUBLIC_DJANGO_ADMIN_URL || 'http://127.0.0.1:8000/admin'}/api/product/add/`}
+            href={`${process.env.NEXT_PUBLIC_DJANGO_ADMIN_URL || &apo:http://127.0.0.1:8000/admin&apo:}/api/product/add/`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
@@ -324,21 +324,21 @@ export default function AdminProductsPage() {
                       <div className="flex-shrink-0 h-16 w-16 bg-gray-100 rounded-md overflow-hidden">
                         <img 
                           className="h-full w-full object-cover" 
-                          src={product.images?.[0] || '/placeholder-image.png'} 
+                          src={product.images?.[0] || &apo:/placeholder-image.png&apo:} 
                           alt={product.name} 
-                          onError={(e) => e.target.src = '/placeholder-image.png'}
+                          onError={(e) => e.target.src = &apo:/placeholder-image.png&apo:}
                         />
                       </div>
                       <div className="ml-4 flex-1">
                         <div className="font-medium text-gray-900">{product.name}</div>
-                        <div className="text-sm text-gray-500 mt-1">SKU: {product.sku || 'N/A'}</div>
+                        <div className="text-sm text-gray-500 mt-1">SKU: {product.sku || &apo:N/A&apo:}</div>
                         <div className="flex items-center mt-2">
                           <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                             product.stock > 10 
-                              ? 'bg-green-100 text-green-800' 
+                              ? &apo:bg-green-100 text-green-800&apo: 
                               : product.stock > 3 
-                                ? 'bg-amber-100 text-amber-800' 
-                                : 'bg-red-100 text-red-800'
+                                ? &apo:bg-amber-100 text-amber-800&apo: 
+                                : &apo:bg-red-100 text-red-800&apo:
                           }`}>
                             {product.stock} in stock
                           </span>
@@ -351,7 +351,7 @@ export default function AdminProductsPage() {
                   </div>
                   <div className="border-t border-gray-100 px-4 py-3 bg-gray-50 flex justify-end space-x-3">
                     <Link 
-                      href={`${process.env.NEXT_PUBLIC_DJANGO_ADMIN_URL || 'http://127.0.0.1:8000/admin'}/api/product/${product.id}/change/`}
+                      href={`${process.env.NEXT_PUBLIC_DJANGO_ADMIN_URL || &apo:http://127.0.0.1:8000/admin&apo:}/api/product/${product.id}/change/`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-indigo-600 hover:text-indigo-900 flex items-center text-sm"
@@ -428,7 +428,7 @@ export default function AdminProductsPage() {
 
       <DeleteModal 
         isOpen={deleteModal.isOpen}
-        onClose={() => setDeleteModal({ isOpen: false, productId: null, productName: '' })}
+        onClose={() => setDeleteModal({ isOpen: false, productId: null, productName: &apo:&apo: })}
         onConfirm={handleDelete}
         productName={deleteModal.productName}
       />

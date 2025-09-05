@@ -1,4 +1,4 @@
-import InfoPageLayout from '@/components/InfoPageLayout';
+import InfoPageLayout from &apo:@/components/InfoPageLayout&apo:;
 
 export default function PrivacyPage() {
   return (

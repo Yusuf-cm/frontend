@@ -1,23 +1,23 @@
-'use client';
+&apo:use client&apo:;
 
-import { useState, useEffect, useMemo, useCallback } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { format } from 'date-fns';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useMemo, useCallback } from &apo:react&apo:;
+import Link from &apo:next/link&apo:;
+import Image from &apo:next/image&apo:;
+import { format } from &apo:date-fns&apo:;
+import { motion, AnimatePresence } from &apo:framer-motion&apo:;
 
 // API base URL from environment variables
 const API_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api`;
 
 // --- PostCard Component ---
-const PostCard = ({ post, variant = 'regular' }) => {
-  const isFeatured = variant === 'featured';
+const PostCard = ({ post, variant = &apo:regular&apo: }) => {
+  const isFeatured = variant === &apo:featured&apo:;
   
   return (
-    <article className={`bg-white ${isFeatured ? 'rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100' : 'rounded-xl shadow-md hover:shadow-xl transition-all duration-300'}`}>
+    <article className={`bg-white ${isFeatured ? &apo:rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100&apo: : &apo:rounded-xl shadow-md hover:shadow-xl transition-all duration-300&apo:}`}>
       {post.featured_image && (
-        <Link href={`/blog/${post.slug}`} className={`block overflow-hidden ${isFeatured ? '' : 'mb-4'}`}>
-          <div className={`relative ${isFeatured ? 'aspect-w-16 aspect-h-9 rounded-xl' : 'aspect-video'} overflow-hidden`}>
+        <Link href={`/blog/${post.slug}`} className={`block overflow-hidden ${isFeatured ? &apo:&apo: : &apo:mb-4&apo:}`}>
+          <div className={`relative ${isFeatured ? &apo:aspect-w-16 aspect-h-9 rounded-xl&apo: : &apo:aspect-video&apo:} overflow-hidden`}>
             <Image 
               src={post.featured_image} 
               alt={post.title} 
@@ -30,7 +30,7 @@ const PostCard = ({ post, variant = 'regular' }) => {
         </Link>
       )}
       
-      <div className={isFeatured ? 'flex-1' : 'p-6'}>
+      <div className={isFeatured ? &apo:flex-1&apo: : &apo:p-6&apo:}>
         {post.category && (
           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 mb-3">
             {post.category.name}
@@ -39,18 +39,18 @@ const PostCard = ({ post, variant = 'regular' }) => {
         
         <Link href={`/blog/${post.slug}`}>
           <h3 className={`font-bold text-gray-900 hover:text-indigo-600 transition-colors font-serif ${
-            isFeatured ? 'text-2xl md:text-3xl mb-3' : 'text-lg mb-2'
+            isFeatured ? &apo:text-2xl md:text-3xl mb-3&apo: : &apo:text-lg mb-2&apo:
           }`}>
             {post.title}
           </h3>
         </Link>
         
-        <p className={`text-gray-600 ${isFeatured ? 'mb-4' : 'mb-4 text-sm'} line-clamp-3`}>
+        <p className={`text-gray-600 ${isFeatured ? &apo:mb-4&apo: : &apo:mb-4 text-sm&apo:} line-clamp-3`}>
           {post.excerpt}
         </p>
         
         <time className="text-sm text-gray-500">
-          {format(new Date(post.published_date), 'MMMM d, yyyy')}
+          {format(new Date(post.published_date), &apo:MMMM d, yyyy&apo:)}
         </time>
       </div>
     </article>
@@ -63,13 +63,13 @@ export default function BlogPage() {
   const [allPosts, setAllPosts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [error, setError] = useState(&apo:&apo:);
+  const [searchQuery, setSearchQuery] = useState(&apo:&apo:);
   const [activeCategory, setActiveCategory] = useState(null);
 
   const fetchBlogData = useCallback(async () => {
     setLoading(true);
-    setError('');
+    setError(&apo:&apo:);
     try {
       const res = await fetch(`${API_URL}/blog/`);
       if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
@@ -101,7 +101,7 @@ export default function BlogPage() {
   }, [allPosts, activeCategory, searchQuery]);
 
   const clearFilters = () => {
-    setSearchQuery('');
+    setSearchQuery(&apo:&apo:);
     setActiveCategory(null);
   };
 
@@ -165,7 +165,7 @@ export default function BlogPage() {
               />
               {searchQuery && (
                 <button 
-                  onClick={() => setSearchQuery('')}
+                  onClick={() => setSearchQuery(&apo:&apo:)}
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                   aria-label="Clear search"
                 >
@@ -203,8 +203,8 @@ export default function BlogPage() {
                 onClick={() => setActiveCategory(null)}
                 className={`px-3 py-1.5 text-sm rounded-full transition ${
                   !activeCategory 
-                    ? 'bg-indigo-600 text-white shadow' 
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? &apo:bg-indigo-600 text-white shadow&apo: 
+                    : &apo:bg-gray-100 text-gray-700 hover:bg-gray-200&apo:
                 }`}
                 aria-pressed={!activeCategory}
               >
@@ -217,8 +217,8 @@ export default function BlogPage() {
                   onClick={() => setActiveCategory(cat.slug)}
                   className={`px-3 py-1.5 text-sm rounded-full transition ${
                     activeCategory === cat.slug 
-                      ? 'bg-indigo-600 text-white shadow' 
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? &apo:bg-indigo-600 text-white shadow&apo: 
+                      : &apo:bg-gray-100 text-gray-700 hover:bg-gray-200&apo:
                   }`}
                   aria-pressed={activeCategory === cat.slug}
                 >
@@ -273,8 +273,8 @@ export default function BlogPage() {
                         onClick={() => setActiveCategory(cat.slug)}
                         className={`w-full text-left px-3 py-2 rounded-lg transition ${
                           activeCategory === cat.slug
-                            ? 'bg-indigo-50 text-indigo-700 font-medium'
-                            : 'text-gray-600 hover:bg-gray-50'
+                            ? &apo:bg-indigo-50 text-indigo-700 font-medium&apo:
+                            : &apo:text-gray-600 hover:bg-gray-50&apo:
                         }`}
                       >
                         <span className="mr-2 text-indigo-500">#</span>

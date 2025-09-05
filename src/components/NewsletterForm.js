@@ -1,10 +1,10 @@
-'use client'; // This is a Client Component because it uses state and form events
+&apo:use client&apo:; // This is a Client Component because it uses state and form events
 
-import { useState } from 'react';
-import { toast } from 'react-hot-toast';
+import { useState } from &apo:react&apo:;
+import { toast } from &apo:react-hot-toast&apo:;
 
 export default function NewsletterForm() {
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState(&apo:&apo:);
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (e) => {
@@ -22,9 +22,9 @@ export default function NewsletterForm() {
         await new Promise(resolve => setTimeout(resolve, 1000));
 
         console.log(`Subscribed with: ${email}`);
-        toast.success('Thank you for subscribing!');
+        toast.success(&apo:Thank you for subscribing!&apo:);
         
-        setEmail('');
+        setEmail(&apo:&apo:);
         setIsLoading(false);
     };
 
@@ -43,7 +43,7 @@ export default function NewsletterForm() {
               disabled={isLoading}
               className="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-r-lg font-medium transition-colors disabled:bg-indigo-400"
             >
-              {isLoading ? '...' : 'Join'}
+              {isLoading ? &apo:...&apo: : &apo:Join&apo:}
             </button>
         </form>
     );

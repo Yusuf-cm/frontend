@@ -1,11 +1,11 @@
-'use client';
+&apo:use client&apo:;
 
-import { useRouter } from 'next/navigation';
-import { FiSearch, FiArrowLeft } from 'react-icons/fi';
-import { useState } from 'react';
+import { useRouter } from &apo:next/navigation&apo:;
+import { FiSearch, FiArrowLeft } from &apo:react-icons/fi&apo:;
+import { useState } from &apo:react&apo:;
 
 export default function MobileSearchPage() {
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchTerm, setSearchTerm] = useState(&apo:&apo:);
     const router = useRouter();
 
     const handleSearch = (e) => {
@@ -37,7 +37,7 @@ export default function MobileSearchPage() {
             </div>
 
             <div className="text-center text-gray-500">
-                <p>Type a product name, category, or keyword to find what you're looking for.</p>
+                <p>Type a product name, category, or keyword to find what you&apo:re looking for.</p>
             </div>
         </div>
     );

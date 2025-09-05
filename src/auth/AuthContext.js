@@ -1,8 +1,8 @@
-'use client';
+&apo:use client&apo:;
 
-import { createContext, useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
-import { jwtDecode } from 'jwt-decode';
+import { createContext, useState, useEffect, useCallback } from &apo:react&apo:;
+import { useRouter } from &apo:next/navigation&apo:;
+import { jwtDecode } from &apo:jwt-decode&apo:;
 
 const AuthContext = createContext();
 
@@ -24,32 +24,32 @@ export const AuthProvider = ({ children }) => {
     const logoutUser = useCallback(() => {
         setAuthTokens(null);
         setUser(null);
-        localStorage.removeItem('authTokens');
-        router.push('/login');
+        localStorage.removeItem(&apo:authTokens&apo:);
+        router.push(&apo:/login&apo:);
     }, [router]);
 
     const loginUser = useCallback(async (username, password, nextUrl = null) => {
         const response = await fetch(`${API_URL}/auth/token/`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            method: &apo:POST&apo:,
+            headers: { &apo:Content-Type&apo:: &apo:application/json&apo: },
             body: JSON.stringify({ username, password }),
         });
         const data = await response.json();
 
         if (response.ok) {
             setAuthTokens(data);
-            localStorage.setItem('authTokens', JSON.stringify(data));
+            localStorage.setItem(&apo:authTokens&apo:, JSON.stringify(data));
             setUser(jwtDecode(data.access));
-            router.push(nextUrl || '/account');
+            router.push(nextUrl || &apo:/account&apo:);
         } else {
-            throw new Error(data.detail || 'Failed to login');
+            throw new Error(data.detail || &apo:Failed to login&apo:);
         }
     }, [router, API_URL]);
     
     const registerUser = useCallback(async (userData) => {
         const response = await fetch(`${API_URL}/auth/register/`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            method: &apo:POST&apo:,
+            headers: { &apo:Content-Type&apo:: &apo:application/json&apo: },
             body: JSON.stringify(userData),
         });
         
@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const verifyAndSetUser = async () => {
-            const storedTokens = localStorage.getItem('authTokens');
+            const storedTokens = localStorage.getItem(&apo:authTokens&apo:);
             
             if (storedTokens) {
                 try {
@@ -76,14 +76,14 @@ export const AuthProvider = ({ children }) => {
 
                     if (isExpired) {
                         const refreshResponse = await fetch(`${API_URL}/auth/token/refresh/`, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
+                            method: &apo:POST&apo:,
+                            headers: { &apo:Content-Type&apo:: &apo:application/json&apo: },
                             body: JSON.stringify({ refresh: tokens.refresh }),
                         });
                         const newTokens = await refreshResponse.json();
-                        if (!refreshResponse.ok) throw new Error('Refresh token invalid');
+                        if (!refreshResponse.ok) throw new Error(&apo:Refresh token invalid&apo:);
                         
-                        localStorage.setItem('authTokens', JSON.stringify(newTokens));
+                        localStorage.setItem(&apo:authTokens&apo:, JSON.stringify(newTokens));
                         setAuthTokens(newTokens);
                         setUser(jwtDecode(newTokens.access));
                     } else {

@@ -30,14 +30,14 @@ const CartProvider = ({ children })=>{
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "CartProvider.useEffect": ()=>{
             try {
-                const items = localStorage.getItem('cartItems');
+                const items = localStorage.getItem(&apo:cartItems&apo:);
                 if (items) {
                     setCartItems(JSON.parse(items));
                 }
             } catch (error) {
                 console.error("Failed to parse cart items from localStorage", error);
                 // Clear corrupted data
-                localStorage.removeItem('cartItems');
+                localStorage.removeItem(&apo:cartItems&apo:);
             }
         }
     }["CartProvider.useEffect"], []);
@@ -46,7 +46,7 @@ const CartProvider = ({ children })=>{
         "CartProvider.useEffect": ()=>{
             // Only run on client-side and after initial load
             if ("TURBOPACK compile-time truthy", 1) {
-                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                localStorage.setItem(&apo:cartItems&apo:, JSON.stringify(cartItems));
             }
         }
     }["CartProvider.useEffect"], [
@@ -91,7 +91,7 @@ const CartProvider = ({ children })=>{
     }["CartProvider.useCallback[removeFromCart]"], []); // Empty dependency array.
     const updateQuantity = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "CartProvider.useCallback[updateQuantity]": (productId, quantity)=>{
-            // We need to reference `removeFromCart` inside, so we must make sure it's stable.
+            // We need to reference `removeFromCart` inside, so we must make sure it&apo:s stable.
             // Since `removeFromCart` is now wrapped in useCallback, this is safe.
             if (quantity <= 0) {
                 removeFromCart(productId);
@@ -115,7 +115,7 @@ const CartProvider = ({ children })=>{
             // 1. Update the React state to an empty array
             setCartItems([]);
             // 2. Explicitly remove the item from localStorage immediately
-            localStorage.removeItem('cartItems');
+            localStorage.removeItem(&apo:cartItems&apo:);
         }
     }["CartProvider.useCallback[clearCart]"], []); // The dependency array remains empty
     // --- STEP 3: Memoize the calculated total (optional but good practice) ---
@@ -142,7 +142,7 @@ _s1(CartProvider, "9Uim6M+CAncSQU43Yy8X06ZUXeQ=");
 _c = CartProvider;
 var _c;
 __turbopack_context__.k.register(_c, "CartProvider");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+if (typeof globalThis.$RefreshHelpers$ === &apo:object&apo: && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
@@ -162,7 +162,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navi
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$jwt$2d$decode$2f$build$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/jwt-decode/build/esm/index.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
-'use client';
+&apo:use client&apo:;
 ;
 ;
 ;
@@ -186,8 +186,8 @@ const AuthProvider = ({ children })=>{
         "AuthProvider.useCallback[logoutUser]": ()=>{
             setAuthTokens(null);
             setUser(null);
-            localStorage.removeItem('authTokens');
-            router.push('/login');
+            localStorage.removeItem(&apo:authTokens&apo:);
+            router.push(&apo:/login&apo:);
         }
     }["AuthProvider.useCallback[logoutUser]"], [
         router
@@ -195,9 +195,9 @@ const AuthProvider = ({ children })=>{
     const loginUser = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "AuthProvider.useCallback[loginUser]": async (username, password, nextUrl = null)=>{
             const response = await fetch(`${API_URL}/auth/token/`, {
-                method: 'POST',
+                method: &apo:POST&apo:,
                 headers: {
-                    'Content-Type': 'application/json'
+                    &apo:Content-Type&apo:: &apo:application/json&apo:
                 },
                 body: JSON.stringify({
                     username,
@@ -207,11 +207,11 @@ const AuthProvider = ({ children })=>{
             const data = await response.json();
             if (response.ok) {
                 setAuthTokens(data);
-                localStorage.setItem('authTokens', JSON.stringify(data));
+                localStorage.setItem(&apo:authTokens&apo:, JSON.stringify(data));
                 setUser((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$jwt$2d$decode$2f$build$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jwtDecode"])(data.access));
-                router.push(nextUrl || '/account');
+                router.push(nextUrl || &apo:/account&apo:);
             } else {
-                throw new Error(data.detail || 'Failed to login');
+                throw new Error(data.detail || &apo:Failed to login&apo:);
             }
         }
     }["AuthProvider.useCallback[loginUser]"], [
@@ -221,9 +221,9 @@ const AuthProvider = ({ children })=>{
     const registerUser = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "AuthProvider.useCallback[registerUser]": async (userData)=>{
             const response = await fetch(`${API_URL}/auth/register/`, {
-                method: 'POST',
+                method: &apo:POST&apo:,
                 headers: {
-                    'Content-Type': 'application/json'
+                    &apo:Content-Type&apo:: &apo:application/json&apo:
                 },
                 body: JSON.stringify(userData)
             });
@@ -244,7 +244,7 @@ const AuthProvider = ({ children })=>{
         "AuthProvider.useEffect": ()=>{
             const verifyAndSetUser = {
                 "AuthProvider.useEffect.verifyAndSetUser": async ()=>{
-                    const storedTokens = localStorage.getItem('authTokens');
+                    const storedTokens = localStorage.getItem(&apo:authTokens&apo:);
                     if (storedTokens) {
                         try {
                             const tokens = JSON.parse(storedTokens);
@@ -252,17 +252,17 @@ const AuthProvider = ({ children })=>{
                             const isExpired = decodedToken.exp * 1000 < Date.now();
                             if (isExpired) {
                                 const refreshResponse = await fetch(`${API_URL}/auth/token/refresh/`, {
-                                    method: 'POST',
+                                    method: &apo:POST&apo:,
                                     headers: {
-                                        'Content-Type': 'application/json'
+                                        &apo:Content-Type&apo:: &apo:application/json&apo:
                                     },
                                     body: JSON.stringify({
                                         refresh: tokens.refresh
                                     })
                                 });
                                 const newTokens = await refreshResponse.json();
-                                if (!refreshResponse.ok) throw new Error('Refresh token invalid');
-                                localStorage.setItem('authTokens', JSON.stringify(newTokens));
+                                if (!refreshResponse.ok) throw new Error(&apo:Refresh token invalid&apo:);
+                                localStorage.setItem(&apo:authTokens&apo:, JSON.stringify(newTokens));
                                 setAuthTokens(newTokens);
                                 setUser((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$jwt$2d$decode$2f$build$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jwtDecode"])(newTokens.access));
                             } else {
@@ -317,7 +317,7 @@ _c = AuthProvider;
 const __TURBOPACK__default__export__ = AuthContext;
 var _c;
 __turbopack_context__.k.register(_c, "AuthProvider");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+if (typeof globalThis.$RefreshHelpers$ === &apo:object&apo: && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
@@ -338,12 +338,12 @@ const useAuth = ()=>{
     _s();
     const context = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useContext"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$auth$2f$AuthContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"]);
     if (context === undefined) {
-        throw new Error('useAuth must be used within an AuthProvider');
+        throw new Error(&apo:useAuth must be used within an AuthProvider&apo:);
     }
     return context;
 };
 _s(useAuth, "b9L3QQ+jgeyIrH0NfHrJ8nn7VMU=");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+if (typeof globalThis.$RefreshHelpers$ === &apo:object&apo: && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
@@ -363,12 +363,12 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$use$2d$debounce$2f$dist$2f$index$2e$module$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/use-debounce/dist/index.module.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
-'use client';
+&apo:use client&apo:;
 ;
 ;
 ;
 ;
-function SearchBar({ initialValue = '', placeholder = 'Search...' }) {
+function SearchBar({ initialValue = &apo:&apo:, placeholder = &apo:Search...&apo: }) {
     _s();
     const [searchTerm, setSearchTerm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(initialValue);
     const [debouncedValue] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$use$2d$debounce$2f$dist$2f$index$2e$module$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDebounce"])(searchTerm, 500);
@@ -379,13 +379,13 @@ function SearchBar({ initialValue = '', placeholder = 'Search...' }) {
         "SearchBar.useEffect": ()=>{
             if (debouncedValue) {
                 const params = new URLSearchParams(searchParams);
-                params.set('search', debouncedValue);
-                params.delete('page');
+                params.set(&apo:search&apo:, debouncedValue);
+                params.delete(&apo:page&apo:);
                 router.replace(`${pathname}?${params.toString()}`);
-            } else if (searchParams.get('search')) {
+            } else if (searchParams.get(&apo:search&apo:)) {
                 const params = new URLSearchParams(searchParams);
-                params.delete('search');
-                params.delete('page');
+                params.delete(&apo:search&apo:);
+                params.delete(&apo:page&apo:);
                 router.replace(`${pathname}?${params.toString()}`);
             }
         }
@@ -396,10 +396,10 @@ function SearchBar({ initialValue = '', placeholder = 'Search...' }) {
         searchParams
     ]);
     const clearSearch = ()=>{
-        setSearchTerm('');
+        setSearchTerm(&apo:&apo:);
         const params = new URLSearchParams(searchParams);
-        params.delete('search');
-        params.delete('page');
+        params.delete(&apo:search&apo:);
+        params.delete(&apo:page&apo:);
         router.replace(`${pathname}?${params.toString()}`);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -463,7 +463,7 @@ _s(SearchBar, "ipHmuhOBN22xQMrtuSl7W86LSOI=", false, function() {
 _c = SearchBar;
 var _c;
 __turbopack_context__.k.register(_c, "SearchBar");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+if (typeof globalThis.$RefreshHelpers$ === &apo:object&apo: && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
@@ -1047,7 +1047,7 @@ _s(Header, "Xp4ZKzLu/Z7wveo15rMezMWErtI=", false, function() {
 _c = Header;
 var _c;
 __turbopack_context__.k.register(_c, "Header");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+if (typeof globalThis.$RefreshHelpers$ === &apo:object&apo: && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
@@ -1064,7 +1064,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fi$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-icons/fi/index.mjs [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
-'use client'; // This is the Client Component
+&apo:use client&apo:; // This is the Client Component
 ;
 ;
 function BackToTopButton() {
@@ -1081,21 +1081,21 @@ function BackToTopButton() {
     // Set up the event listener
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "BackToTopButton.useEffect": ()=>{
-            window.addEventListener('scroll', toggleVisibility);
+            window.addEventListener(&apo:scroll&apo:, toggleVisibility);
             return ({
-                "BackToTopButton.useEffect": ()=>window.removeEventListener('scroll', toggleVisibility)
+                "BackToTopButton.useEffect": ()=>window.removeEventListener(&apo:scroll&apo:, toggleVisibility)
             })["BackToTopButton.useEffect"];
         }
     }["BackToTopButton.useEffect"], []);
     const scrollToTop = ()=>{
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: &apo:smooth&apo:
         });
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
         onClick: scrollToTop,
-        className: `fixed bottom-6 right-6 bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 z-40 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`,
+        className: `fixed bottom-6 right-6 bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 z-40 ${isVisible ? &apo:opacity-100 scale-100&apo: : &apo:opacity-0 scale-95 pointer-events-none&apo:}`,
         "aria-label": "Back to top",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fi$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FiArrowUp"], {
             className: "h-5 w-5"
@@ -1114,7 +1114,7 @@ _s(BackToTopButton, "J3yJOyGdBT4L7hs1p1XQYVGMdrY=");
 _c = BackToTopButton;
 var _c;
 __turbopack_context__.k.register(_c, "BackToTopButton");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+if (typeof globalThis.$RefreshHelpers$ === &apo:object&apo: && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
@@ -1131,12 +1131,12 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-hot-toast/dist/index.mjs [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
-'use client'; // This is a Client Component because it uses state and form events
+&apo:use client&apo:; // This is a Client Component because it uses state and form events
 ;
 ;
 function NewsletterForm() {
     _s();
-    const [email, setEmail] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
+    const [email, setEmail] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(&apo:&apo:);
     const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const handleSubmit = async (e)=>{
         e.preventDefault();
@@ -1149,8 +1149,8 @@ function NewsletterForm() {
         // For now, we simulate the action with a delay.
         await new Promise((resolve)=>setTimeout(resolve, 1000));
         console.log(`Subscribed with: ${email}`);
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success('Thank you for subscribing!');
-        setEmail('');
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success(&apo:Thank you for subscribing!&apo:);
+        setEmail(&apo:&apo:);
         setIsLoading(false);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -1173,7 +1173,7 @@ function NewsletterForm() {
                 type: "submit",
                 disabled: isLoading,
                 className: "bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-r-lg font-medium transition-colors disabled:bg-indigo-400",
-                children: isLoading ? '...' : 'Join'
+                children: isLoading ? &apo:...&apo: : &apo:Join&apo:
             }, void 0, false, {
                 fileName: "[project]/src/components/NewsletterForm.js",
                 lineNumber: 41,
@@ -1190,7 +1190,7 @@ _s(NewsletterForm, "7QVCGsm+XhRzAVbq7+X8gVhTQw8=");
 _c = NewsletterForm;
 var _c;
 __turbopack_context__.k.register(_c, "NewsletterForm");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+if (typeof globalThis.$RefreshHelpers$ === &apo:object&apo: && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
@@ -1208,7 +1208,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fi$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-icons/fi/index.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$BackToTopButton$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/BackToTopButton.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$NewsletterForm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/NewsletterForm.js [app-client] (ecmascript)");
-'use client';
+&apo:use client&apo:;
 ;
 ;
 ;
@@ -1643,10 +1643,10 @@ function Footer() {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex flex-wrap justify-center gap-4",
                                 children: [
-                                    'visa',
-                                    'mastercard',
-                                    'paypal',
-                                    'mpesa'
+                                    &apo:visa&apo:,
+                                    &apo:mastercard&apo:,
+                                    &apo:paypal&apo:,
+                                    &apo:mpesa&apo:
                                 ].map((method)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "bg-gray-800 rounded-lg h-10 w-16 flex items-center justify-center",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1713,7 +1713,7 @@ function Footer() {
 _c = Footer;
 var _c;
 __turbopack_context__.k.register(_c, "Footer");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+if (typeof globalThis.$RefreshHelpers$ === &apo:object&apo: && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),

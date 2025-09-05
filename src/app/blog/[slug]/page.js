@@ -1,17 +1,17 @@
-import { notFound } from 'next/navigation';
-import Image from 'next/image';
-import { format } from 'date-fns';
-import ShareButtons from '@/components/ShareButtons';
-import ReadingProgressBar from '@/components/ReadingProgressBar';
-import Link from 'next/link';
+import { notFound } from &apo:next/navigation&apo:;
+import Image from &apo:next/image&apo:;
+import { format } from &apo:date-fns&apo:;
+import ShareButtons from &apo:@/components/ShareButtons&apo:;
+import ReadingProgressBar from &apo:@/components/ReadingProgressBar&apo:;
+import Link from &apo:next/link&apo:;
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 async function getPost(slug) {
     try {
-        const res = await fetch(`${API_BASE_URL}/api/blog/${slug}/`, { cache: 'no-store' });
+        const res = await fetch(`${API_BASE_URL}/api/blog/${slug}/`, { cache: &apo:no-store&apo: });
         if (!res.ok && res.status === 404) return null;
-        if (!res.ok) throw new Error('Failed to fetch post');
+        if (!res.ok) throw new Error(&apo:Failed to fetch post&apo:);
         return res.json();
     } catch (error) {
         console.error("Fetch error for blog post:", error);
@@ -22,7 +22,7 @@ async function getPost(slug) {
 export async function generateMetadata({ params }) {
     const post = await getPost(params.slug);
     if (!post) {
-        return { title: 'Post Not Found' };
+        return { title: &apo:Post Not Found&apo: };
     }
     return {
         title: `${post.title} | Ronohs Decor Blog`,
@@ -56,7 +56,7 @@ export default async function BlogPostPage({ params }) {
                             <span>By {post.author.name}</span>
                             <span>•</span>
                             <time dateTime={post.published_date}>
-                                {format(new Date(post.published_date), 'MMMM d, yyyy')}
+                                {format(new Date(post.published_date), &apo:MMMM d, yyyy&apo:)}
                             </time>
                         </div>
                     </div>

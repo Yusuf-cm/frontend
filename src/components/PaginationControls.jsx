@@ -1,9 +1,9 @@
 // src/components/PaginationControls.jsx
-'use client';
+&apo:use client&apo:;
 
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import Link from &apo:next/link&apo:;
+import { useSearchParams } from &apo:next/navigation&apo:;
+import { FiChevronLeft, FiChevronRight } from &apo:react-icons/fi&apo:;
 
 export default function PaginationControls({
   hasNextPage,
@@ -16,15 +16,15 @@ export default function PaginationControls({
   filters
 }) {
   const searchParams = useSearchParams();
-  const currentPage = Number(searchParams.get('page') || 1);
+  const currentPage = Number(searchParams.get(&apo:page&apo:) || 1);
   
   const createPageUrl = (page) => {
     const params = new URLSearchParams();
     
     // Preserve existing parameters
-    if (searchQuery) params.set('search', searchQuery);
-    if (category) params.set('category', category);
-    if (sort) params.set('sort', sort);
+    if (searchQuery) params.set(&apo:search&apo:, searchQuery);
+    if (category) params.set(&apo:category&apo:, category);
+    if (sort) params.set(&apo:sort&apo:, sort);
     
     // Add filters
     Object.entries(filters).forEach(([key, values]) => {
@@ -32,7 +32,7 @@ export default function PaginationControls({
     });
     
     // Set page
-    params.set('page', page);
+    params.set(&apo:page&apo:, page);
     
     return `${path}?${params.toString()}`;
   };
@@ -40,7 +40,7 @@ export default function PaginationControls({
   return (
     <div className="flex items-center justify-between border-t border-gray-200 pt-8">
       <div className="text-sm text-gray-700">
-        Page <span className="font-medium">{currentPage}</span> of{' '}
+        Page <span className="font-medium">{currentPage}</span> of{&apo: &apo:}
         <span className="font-medium">{totalPages}</span>
       </div>
       

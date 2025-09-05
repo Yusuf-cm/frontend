@@ -144,7 +144,7 @@ function esmImport(sourceModule, id) {
     if (module.error) throw module.error;
     // any ES module has to have `module.namespaceObject` defined.
     if (module.namespaceObject) return module.namespaceObject;
-    // only ESM can be an async module, so we don't need to worry about exports being a promise here.
+    // only ESM can be an async module, so we don&apo:t need to worry about exports being a promise here.
     const raw = module.exports;
     return module.namespaceObject = interopEsm(raw, createNS(raw), raw && raw.__esModule);
 }
@@ -166,7 +166,7 @@ function commonJsRequire(sourceModule, id) {
         if (hasOwnProperty.call(map, id)) {
             return map[id].module();
         }
-        const e = new Error(`Cannot find module '${id}'`);
+        const e = new Error(`Cannot find module &apo:${id}&apo:`);
         e.code = "MODULE_NOT_FOUND";
         throw e;
     }
@@ -177,7 +177,7 @@ function commonJsRequire(sourceModule, id) {
         if (hasOwnProperty.call(map, id)) {
             return map[id].id();
         }
-        const e = new Error(`Cannot find module '${id}'`);
+        const e = new Error(`Cannot find module &apo:${id}&apo:`);
         e.code = "MODULE_NOT_FOUND";
         throw e;
     };
@@ -319,7 +319,7 @@ function asyncModule(module, body, hasAwait) {
  * runtime function to generate context-agnostic urls between different rendering context, i.e ssr / client to avoid
  * hydration mismatch.
  *
- * This is based on webpack's existing implementation:
+ * This is based on webpack&apo:s existing implementation:
  * https://github.com/webpack/webpack/blob/87660921808566ef3b8796f8df61bd79fc026108/lib/runtime/RelativeUrlRuntimeModule.js
  */ const relativeURL = function relativeURL(inputUrl) {
     const realUrl = new URL(inputUrl, "x:/");
@@ -357,14 +357,14 @@ relativeURL.prototype = URL.prototype;
 // Used in WebWorkers to tell the runtime about the chunk base path
 var SourceType = /*#__PURE__*/ function(SourceType) {
     /**
-   * The module was instantiated because it was included in an evaluated chunk's
+   * The module was instantiated because it was included in an evaluated chunk&apo:s
    * runtime.
    */ SourceType[SourceType["Runtime"] = 0] = "Runtime";
     /**
    * The module was instantiated because a parent module imported it.
    */ SourceType[SourceType["Parent"] = 1] = "Parent";
     /**
-   * The module was instantiated because it was included in a chunk's hot module
+   * The module was instantiated because it was included in a chunk&apo:s hot module
    * update.
    */ SourceType[SourceType["Update"] = 2] = "Update";
     return SourceType;
@@ -377,7 +377,7 @@ const moduleFactories = Object.create(null);
  * Map from module ID to the chunks that contain this module.
  *
  * In HMR, we need to keep track of which modules are contained in which so
- * chunks. This is so we don't eagerly dispose of a module when it is removed
+ * chunks. This is so we don&apo:t eagerly dispose of a module when it is removed
  * from chunk A, but still exists in chunk B.
  */ const moduleChunksMap = new Map();
 /**
@@ -385,7 +385,7 @@ const moduleFactories = Object.create(null);
  */ const chunkModulesMap = new Map();
 /**
  * Chunk lists that contain a runtime. When these chunk lists receive an update
- * that can't be reconciled with the current state of the page, we need to
+ * that can&apo:t be reconciled with the current state of the page, we need to
  * reload the runtime entirely.
  */ const runtimeChunkLists = new Set();
 /**
@@ -445,8 +445,8 @@ async function loadChunk(source, chunkData) {
     }
     for (const included of includedList){
         if (!availableModules.has(included)) {
-            // It might be better to race old and new promises, but it's rare that the new promise will be faster than a request started earlier.
-            // In production it's even more rare, because the chunk optimization tries to deduplicate modules anyway.
+            // It might be better to race old and new promises, but it&apo:s rare that the new promise will be faster than a request started earlier.
+            // In production it&apo:s even more rare, because the chunk optimization tries to deduplicate modules anyway.
             availableModules.set(included, promise);
         }
     }
@@ -528,7 +528,7 @@ importScripts(...self.TURBOPACK_NEXT_CHUNK_URLS.map(c => self.TURBOPACK_WORKER_L
 }
 /**
  * Returns the first chunk that included a module.
- * This is used by the Node.js backend, hence why it's marked as unused in this
+ * This is used by the Node.js backend, hence why it&apo:s marked as unused in this
  * file.
  */ function getFirstModuleChunk(moduleId) {
     const moduleChunkPaths = moduleChunksMap.get(moduleId);
@@ -760,7 +760,7 @@ function instantiateModule(id, source) {
 }
 /**
  * NOTE(alexkirsz) Webpack has a "module execution" interception hook that
- * Next.js' React Refresh runtime hooks into to add module context to the
+ * Next.js&apo: React Refresh runtime hooks into to add module context to the
  * refresh registry.
  */ function runModuleExecutionHooks(module, executeModule) {
     const cleanupReactRefreshIntercept = typeof globalThis.$RefreshInterceptModuleExecution$ === "function" ? globalThis.$RefreshInterceptModuleExecution$(module.id) : ()=>{};
@@ -791,7 +791,7 @@ function instantiateModule(id, source) {
         module.hot.dispose((data)=>{
             data.prevExports = currentExports;
         });
-        // Unconditionally accept an update to this module, we'll check if it's
+        // Unconditionally accept an update to this module, we&apo:ll check if it&apo:s
         // still a Refresh Boundary later.
         module.hot.accept();
         // This field is set when the previous version of this module was a
@@ -801,7 +801,7 @@ function instantiateModule(id, source) {
             // A boundary can become ineligible if its exports are incompatible
             // with the previous exports.
             //
-            // For example, if you add/remove/change exports, we'll want to
+            // For example, if you add/remove/change exports, we&apo:ll want to
             // re-execute the importing modules, and force those components to
             // re-render. Similarly, if you convert a class component to a
             // function, we want to invalidate the boundary.
@@ -812,7 +812,7 @@ function instantiateModule(id, source) {
             }
         }
     } else {
-        // Since we just executed the code for the module, it's possible that the
+        // Since we just executed the code for the module, it&apo:s possible that the
         // new exports made it ineligible for being a boundary.
         // We only care about the case when we were _previously_ a boundary,
         // because we already accepted this update (accidental side effect).
@@ -929,7 +929,7 @@ function disposePhase(outdatedModules, disposedModules) {
  * This must be done in a separate step afterwards.
  * This is important because all modules need to be disposed to update the
  * parent/child relationships before they are actually removed from the devModuleCache.
- * If this was done in this method, the following disposeModule calls won't find
+ * If this was done in this method, the following disposeModule calls won&apo:t find
  * the module from the module id in the cache.
  */ function disposeModule(moduleId, mode) {
     const module = devModuleCache[moduleId];
@@ -948,7 +948,7 @@ function disposePhase(outdatedModules, disposedModules) {
     module.hot.active = false;
     moduleHotState.delete(module);
     // TODO(alexkirsz) Dependencies: delete the module from outdated deps.
-    // Remove the disposed module from its children's parent list.
+    // Remove the disposed module from its children&apo:s parent list.
     // It will be added back once the module re-instantiates and imports its
     // children again.
     for (const childId of module.children){
@@ -1137,7 +1137,7 @@ function computeChangedModules(entries, updates) {
         }
     }
     for (const [moduleId, entry] of Object.entries(entries)){
-        // Modules that haven't been added to any chunk but have new code are considered
+        // Modules that haven&apo:t been added to any chunk but have new code are considered
         // to be modified.
         // This needs to be under the previous loop, as we need it to get rid of modules
         // that were added and deleted in the same update.
@@ -1170,7 +1170,7 @@ function getAffectedModuleEffects(moduleId) {
             }
             outdatedModules.add(moduleId);
         }
-        // We've arrived at the runtime of the chunk, which means that nothing
+        // We&apo:ve arrived at the runtime of the chunk, which means that nothing
         // else above can accept this update.
         if (moduleId === undefined) {
             return {
@@ -1303,14 +1303,14 @@ function createModuleHot(moduleId, hotData) {
             hotState.selfInvalidated = true;
             queuedInvalidatedModules.add(moduleId);
         },
-        // NOTE(alexkirsz) This is part of the management API, which we don't
+        // NOTE(alexkirsz) This is part of the management API, which we don&apo:t
         // implement, but the Next.js React Refresh runtime uses this to decide
         // whether to schedule an update.
         status: ()=>"idle",
         // NOTE(alexkirsz) Since we always return "idle" for now, these are no-ops.
         addStatusHandler: (_handler)=>{},
         removeStatusHandler: (_handler)=>{},
-        // NOTE(jridgewell) Check returns the list of updated modules, but we don't
+        // NOTE(jridgewell) Check returns the list of updated modules, but we don&apo:t
         // want the webpack code paths to ever update (the turbopack paths handle
         // this already).
         check: ()=>Promise.resolve(null)
@@ -1354,7 +1354,7 @@ function createModuleHot(moduleId, hotData) {
             disposeChunk(chunkPath);
         }
     }
-    // We must also dispose of the chunk list's chunk itself to ensure it may
+    // We must also dispose of the chunk list&apo:s chunk itself to ensure it may
     // be reloaded properly in the future.
     const chunkListUrl = getChunkRelativeUrl(chunkListPath);
     DEV_BACKEND.unloadChunk?.(chunkListUrl);
@@ -1506,7 +1506,7 @@ async function loadWebAssemblyModule(_source, wasmChunkPath) {
             return resolver.promise;
         }
         if (source.type === SourceType.Runtime) {
-            // We don't need to load chunks references from runtime code, as they're already
+            // We don&apo:t need to load chunks references from runtime code, as they&apo:re already
             // present in the DOM.
             if (isCss(chunkUrl)) {
                 // CSS chunks do not register themselves, and as such must be marked as
@@ -1519,14 +1519,14 @@ async function loadWebAssemblyModule(_source, wasmChunkPath) {
             return resolver.promise;
         }
         if (typeof importScripts === "function") {
-            // We're in a web worker
+            // We&apo:re in a web worker
             if (isCss(chunkUrl)) {
             // ignore
             } else if (isJs(chunkUrl)) {
                 self.TURBOPACK_NEXT_CHUNK_URLS.push(chunkUrl);
                 importScripts(TURBOPACK_WORKER_LOCATION + chunkUrl);
             } else {
-                throw new Error(`can't infer type of chunk from URL ${chunkUrl} in worker`);
+                throw new Error(`can&apo:t infer type of chunk from URL ${chunkUrl} in worker`);
             }
         } else {
             // TODO(PACK-2140): remove this once all filenames are guaranteed to be escaped.
@@ -1555,7 +1555,7 @@ async function loadWebAssemblyModule(_source, wasmChunkPath) {
                 const previousScripts = document.querySelectorAll(`script[src="${chunkUrl}"],script[src^="${chunkUrl}?"],script[src="${decodedChunkUrl}"],script[src^="${decodedChunkUrl}?"]`);
                 if (previousScripts.length > 0) {
                     // There is this edge where the script already failed loading, but we
-                    // can't detect that. The Promise will never resolve in this case.
+                    // can&apo:t detect that. The Promise will never resolve in this case.
                     for (const script of Array.from(previousScripts)){
                         script.addEventListener("error", ()=>{
                             resolver.reject();
@@ -1564,7 +1564,7 @@ async function loadWebAssemblyModule(_source, wasmChunkPath) {
                 } else {
                     const script = document.createElement("script");
                     script.src = chunkUrl;
-                    // We'll only mark the chunk as loaded once the script has been executed,
+                    // We&apo:ll only mark the chunk as loaded once the script has been executed,
                     // which happens in `registerChunk`. Hence the absence of `resolve()` in
                     // this branch.
                     script.onerror = ()=>{
@@ -1573,7 +1573,7 @@ async function loadWebAssemblyModule(_source, wasmChunkPath) {
                     document.body.appendChild(script);
                 }
             } else {
-                throw new Error(`can't infer type of chunk from URL ${chunkUrl}`);
+                throw new Error(`can&apo:t infer type of chunk from URL ${chunkUrl}`);
             }
         }
         return resolver.promise;
@@ -1604,13 +1604,13 @@ let DEV_BACKEND;
                 // Unloading a JS chunk would have no effect, as it lives in the JS
                 // runtime once evaluated.
                 // However, we still want to remove the script tag from the DOM to keep
-                // the HTML somewhat consistent from the user's perspective.
+                // the HTML somewhat consistent from the user&apo:s perspective.
                 const scripts = document.querySelectorAll(`script[src="${chunkUrl}"],script[src^="${chunkUrl}?"],script[src="${decodedChunkUrl}"],script[src^="${decodedChunkUrl}?"]`);
                 for (const script of Array.from(scripts)){
                     script.remove();
                 }
             } else {
-                throw new Error(`can't infer type of chunk from URL ${chunkUrl}`);
+                throw new Error(`can&apo:t infer type of chunk from URL ${chunkUrl}`);
             }
         },
         reloadChunk (chunkUrl) {
@@ -1628,7 +1628,7 @@ let DEV_BACKEND;
                 const link = document.createElement("link");
                 link.rel = "stylesheet";
                 if (navigator.userAgent.includes("Firefox")) {
-                    // Firefox won't reload CSS files that were previously loaded on the current page,
+                    // Firefox won&apo:t reload CSS files that were previously loaded on the current page,
                     // we need to add a query param to make sure CSS is actually reloaded from the server.
                     //
                     // I believe this is this issue: https://bugzilla.mozilla.org/show_bug.cgi?id=1037506
@@ -1665,7 +1665,7 @@ let DEV_BACKEND;
 function _eval({ code, url, map }) {
     code += `\n\n//# sourceURL=${encodeURI(location.origin + CHUNK_BASE_PATH + url + CHUNK_SUFFIX_PATH)}`;
     if (map) {
-        code += `\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,${btoa(// btoa doesn't handle nonlatin characters, so escape them as \x sequences
+        code += `\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,${btoa(// btoa doesn&apo:t handle nonlatin characters, so escape them as \x sequences
         // See https://stackoverflow.com/a/26603875
         unescape(encodeURIComponent(map)))}`;
     }

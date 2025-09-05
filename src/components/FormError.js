@@ -1,6 +1,6 @@
 // src/components/FormError.js
 
-import { motion } from 'framer-motion';
+import { motion } from &apo:framer-motion&apo:;
 
 export default function FormError({ message }) {
   if (!message) return null;

@@ -1,19 +1,19 @@
-'use client';
+&apo:use client&apo:;
 
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { FiMove } from 'react-icons/fi';
+import Image from &apo:next/image&apo:;
+import { motion } from &apo:framer-motion&apo:;
+import { FiMove } from &apo:react-icons/fi&apo:;
 
 export default function ProjectCard({ project }) {
   // Graceful fallback for missing images to prevent crashes
-  const beforeImage = project.before_image || '/placeholder-image.png';
-  const afterImage = project.after_image || '/placeholder-image.png';
+  const beforeImage = project.before_image || &apo:/placeholder-image.png&apo:;
+  const afterImage = project.after_image || &apo:/placeholder-image.png&apo:;
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      transition={{ duration: 0.5, ease: &apo:easeOut&apo: }}
       className="group bg-white rounded-2xl shadow-md overflow-hidden flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
     >
       {/* Image container with the hover effect */}
@@ -36,8 +36,8 @@ export default function ProjectCard({ project }) {
         <motion.div
           className="absolute inset-0"
           // Animate the clipPath for a smooth wipe effect from right to left on hover
-          initial={{ clipPath: 'inset(0 0 0 0)' }}
-          whileHover={{ clipPath: 'inset(0 100% 0 0)' }}
+          initial={{ clipPath: &apo:inset(0 0 0 0)&apo: }}
+          whileHover={{ clipPath: &apo:inset(0 100% 0 0)&apo: }}
           transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }} // A smoother, more elegant ease
         >
           <Image
@@ -55,8 +55,8 @@ export default function ProjectCard({ project }) {
         {/* Layer 3: The draggable-style handle that follows the wipe effect */}
         <motion.div
           className="absolute top-0 bottom-0 w-[3px] bg-white bg-opacity-75 shadow-lg cursor-ew-resize backdrop-blur-sm"
-          initial={{ left: '100%', x: '-50%' }}
-          whileHover={{ left: '0%', x: '-50%' }}
+          initial={{ left: &apo:100%&apo:, x: &apo:-50%&apo: }}
+          whileHover={{ left: &apo:0%&apo:, x: &apo:-50%&apo: }}
           transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
         >
           <div className="absolute top-1/2 -translate-y-1/2 -left-[18px] w-10 h-10 rounded-full bg-white shadow-2xl flex items-center justify-center border-2 border-gray-200">
@@ -74,7 +74,7 @@ export default function ProjectCard({ project }) {
               {project.title}
             </h3>
             <p className="text-sm text-gray-500 mt-1">
-              {project.category?.name || 'General Project'}
+              {project.category?.name || &apo:General Project&apo:}
             </p>
           </div>
           {project.is_featured && (

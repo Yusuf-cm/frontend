@@ -1350,7 +1350,7 @@ function DragHandler(axis, rootNode, ownerDocument, ownerWindow, target, dragTra
         dragEvents.add(node, 'touchmove', move, nonPassiveEvent).add(node, 'touchend', up).add(node, 'mousemove', move, nonPassiveEvent).add(node, 'mouseup', up);
     }
     function isFocusNode(node) {
-        const nodeName = node.nodeName || '';
+        const nodeName = node.nodeName || &quot;;
         return focusNodes.includes(nodeName);
     }
     function forceBoost() {
@@ -1963,7 +1963,7 @@ function Translate(axis, container) {
     }
     function clear() {
         if (disabled) return;
-        containerStyle.transform = '';
+        containerStyle.transform = &quot;;
         if (!container.getAttribute('style')) container.removeAttribute('style');
     }
     const self = {

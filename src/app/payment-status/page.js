@@ -1,43 +1,43 @@
 // src/app/payment-status/page.js
-'use client';
+&apo:use client&apo:;
 
-import React, { useEffect, useState, Suspense } from 'react';
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-import { useCart } from '@/context/CartContext';
-import { useAuth } from '@/auth/useAuth';
-import { getAuthenticatedApi } from '@/utils/api';
-import { FiCheckCircle, FiClock, FiXCircle, FiShoppingBag, FiTruck, FiMail, FiPhone } from 'react-icons/fi';
-import Image from 'next/image';
-import { format } from 'date-fns';
+import React, { useEffect, useState, Suspense } from &apo:react&apo:;
+import Link from &apo:next/link&apo:;
+import { useSearchParams } from &apo:next/navigation&apo:;
+import { useCart } from &apo:@/context/CartContext&apo:;
+import { useAuth } from &apo:@/auth/useAuth&apo:;
+import { getAuthenticatedApi } from &apo:@/utils/api&apo:;
+import { FiCheckCircle, FiClock, FiXCircle, FiShoppingBag, FiTruck, FiMail, FiPhone } from &apo:react-icons/fi&apo:;
+import Image from &apo:next/image&apo:;
+import { format } from &apo:date-fns&apo:;
 
 function StatusPageContent() {
   const searchParams = useSearchParams();
   const { clearCart } = useCart();
   const { authTokens, setAuthTokens, logoutUser, loading: authLoading } = useAuth();
 
-  const [status, setStatus] = useState('loading'); // 'loading', 'success', 'processing', 'error'
-  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState(&apo:loading&apo:); // &apo:loading&apo:, &apo:success&apo:, &apo:processing&apo:, &apo:error&apo:
+  const [message, setMessage] = useState(&apo:&apo:);
   const [orderDetails, setOrderDetails] = useState(null);
   const [isProcessed, setIsProcessed] = useState(false); // To prevent re-processing on re-renders
 
   useEffect(() => {
-    // Only proceed if authTokens are loaded and it hasn't been processed yet
+    // Only proceed if authTokens are loaded and it hasn&apo:t been processed yet
     if (authLoading || isProcessed || !authTokens) {
         // If authLoading is true, wait. If no authTokens after loading, something is wrong.
         if (!authLoading && !authTokens) {
-            setStatus('error');
-            setMessage('You must be logged in to view order details. Please log in.');
+            setStatus(&apo:error&apo:);
+            setMessage(&apo:You must be logged in to view order details. Please log in.&apo:);
         }
         return;
     }
 
-    const orderId = searchParams.get('order_id');
-    const paymentStatus = searchParams.get('redirect_status'); // 'succeeded', 'processing', 'requires_payment_method', etc.
+    const orderId = searchParams.get(&apo:order_id&apo:);
+    const paymentStatus = searchParams.get(&apo:redirect_status&apo:); // &apo:succeeded&apo:, &apo:processing&apo:, &apo:requires_payment_method&apo:, etc.
 
     if (!orderId) {
-      setStatus('error');
-      setMessage('No order information found in the URL. This page might have been accessed incorrectly.');
+      setStatus(&apo:error&apo:);
+      setMessage(&apo:No order information found in the URL. This page might have been accessed incorrectly.&apo:);
       setIsProcessed(true); // Mark as processed even if error, to prevent infinite loops
       return;
     }
@@ -49,26 +49,26 @@ function StatusPageContent() {
         setOrderDetails(data);
         
         // Determine final status based on Stripe redirect_status and fetched order data
-        if (paymentStatus === 'succeeded' && data.paid) {
-          setStatus('success');
-          setMessage('Your payment was successful and your order is confirmed!');
+        if (paymentStatus === &apo:succeeded&apo: && data.paid) {
+          setStatus(&apo:success&apo:);
+          setMessage(&apo:Your payment was successful and your order is confirmed!&apo:);
           clearCart(); // Clear cart only after successful confirmation and data fetch
-        } else if (paymentStatus === 'processing' && !data.paid) {
-          setStatus('processing');
-          setMessage('Your payment is processing. We will notify you when it is confirmed.');
-        } else if (paymentStatus === 'requires_payment_method' || paymentStatus === 'requires_action') {
-            setStatus('error');
-            setMessage('Your payment could not be completed. Please try again or contact support.');
+        } else if (paymentStatus === &apo:processing&apo: && !data.paid) {
+          setStatus(&apo:processing&apo:);
+          setMessage(&apo:Your payment is processing. We will notify you when it is confirmed.&apo:);
+        } else if (paymentStatus === &apo:requires_payment_method&apo: || paymentStatus === &apo:requires_action&apo:) {
+            setStatus(&apo:error&apo:);
+            setMessage(&apo:Your payment could not be completed. Please try again or contact support.&apo:);
         }
         else {
           // Fallback for any other status or mismatch between Stripe status and DB status
-          setStatus('error');
-          setMessage('There was an issue with your payment. Please try again or contact support.');
-          console.warn('Payment status mismatch or unhandled case:', {paymentStatus, orderPaid: data.paid});
+          setStatus(&apo:error&apo:);
+          setMessage(&apo:There was an issue with your payment. Please try again or contact support.&apo:);
+          console.warn(&apo:Payment status mismatch or unhandled case:&apo:, {paymentStatus, orderPaid: data.paid});
         }
       } catch (err) {
-        setStatus('error');
-        setMessage('Could not retrieve your order details. Please check your account order history or contact support.');
+        setStatus(&apo:error&apo:);
+        setMessage(&apo:Could not retrieve your order details. Please check your account order history or contact support.&apo:);
         console.error("Fetch order error:", err);
       } finally {
         setIsProcessed(true); // Mark as processed once the API call is done
@@ -80,11 +80,11 @@ function StatusPageContent() {
 
   const renderStatusIcon = () => {
     switch (status) {
-      case 'success':
+      case &apo:success&apo::
         return <FiCheckCircle className="h-16 w-16 text-green-500 mx-auto animate-bounce" />;
-      case 'processing':
+      case &apo:processing&apo::
         return <FiClock className="h-16 w-16 text-yellow-500 mx-auto animate-pulse" />;
-      case 'error':
+      case &apo:error&apo::
         return <FiXCircle className="h-16 w-16 text-red-500 mx-auto animate-shake" />;
       default:
         return <div className="inline-block animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-indigo-600"></div>;
@@ -110,7 +110,7 @@ function StatusPageContent() {
               ))}
               {orderDetails.discount > 0 && (
                 <li className="flex justify-between text-sm text-green-600">
-                  <span>Discount ({orderDetails.coupon_code || 'Applied'})</span>
+                  <span>Discount ({orderDetails.coupon_code || &apo:Applied&apo:})</span>
                   <span>-Ksh{Number(orderDetails.discount).toFixed(2)}</span>
                 </li>
               )}
@@ -139,7 +139,7 @@ function StatusPageContent() {
               </div>
               <div>
                 <p className="text-gray-500">Estimated Delivery Date</p>
-                <p className="font-medium">{orderDetails.estimated_delivery ? format(new Date(orderDetails.estimated_delivery), 'PPP') : 'Not yet specified'}</p>
+                <p className="font-medium">{orderDetails.estimated_delivery ? format(new Date(orderDetails.estimated_delivery), &apo:PPP&apo:) : &apo:Not yet specified&apo:}</p>
               </div>
               <div>
                 <p className="text-gray-500">Shipping Address</p>
@@ -169,7 +169,7 @@ function StatusPageContent() {
   const renderActionButtons = () => {
     return (
       <div className="mt-10 flex flex-wrap justify-center gap-4">
-        {status === 'success' && (
+        {status === &apo:success&apo: && (
           <>
             <Link 
               href="/products" 
@@ -186,7 +186,7 @@ function StatusPageContent() {
           </>
         )}
         
-        {status === 'processing' && (
+        {status === &apo:processing&apo: && (
           <Link 
             href="/account/orders" 
             className="px-8 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-colors shadow-md"
@@ -195,7 +195,7 @@ function StatusPageContent() {
           </Link>
         )}
         
-        {status === 'error' && (
+        {status === &apo:error&apo: && (
           <>
             <Link 
               href="/cart/checkout" 
@@ -229,14 +229,14 @@ function StatusPageContent() {
           {renderStatusIcon()}
           
           <h1 className={`mt-6 text-3xl font-bold ${
-            status === 'success' ? 'text-green-600' : 
-            status === 'processing' ? 'text-yellow-600' : 
-            status === 'error' ? 'text-red-600' : 'text-gray-900'
+            status === &apo:success&apo: ? &apo:text-green-600&apo: : 
+            status === &apo:processing&apo: ? &apo:text-yellow-600&apo: : 
+            status === &apo:error&apo: ? &apo:text-red-600&apo: : &apo:text-gray-900&apo:
           }`}>
-            {status === 'success' && 'Order Confirmed!'}
-            {status === 'processing' && 'Payment Processing'}
-            {status === 'error' && 'Payment Failed'}
-            {status === 'loading' && 'Processing Payment...'}
+            {status === &apo:success&apo: && &apo:Order Confirmed!&apo:}
+            {status === &apo:processing&apo: && &apo:Payment Processing&apo:}
+            {status === &apo:error&apo: && &apo:Payment Failed&apo:}
+            {status === &apo:loading&apo: && &apo:Processing Payment...&apo:}
           </h1>
           
           <p className="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">

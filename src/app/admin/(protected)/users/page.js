@@ -1,13 +1,13 @@
-'use client';
+&apo:use client&apo:;
 
-import { useEffect, useState, useCallback, useMemo } from 'react';
-import { useAuth } from '@/auth/useAuth';
-import { getAuthenticatedApi } from '@/utils/api';
-import { format } from 'date-fns';
-import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
-import { FiSearch, FiFilter, FiUserX, FiUserCheck, FiMail, FiUser, FiEdit2, FiChevronDown, FiChevronUp } from 'react-icons/fi';
-import { useDebounce } from 'use-debounce';
+import { useEffect, useState, useCallback, useMemo } from &apo:react&apo:;
+import { useAuth } from &apo:@/auth/useAuth&apo:;
+import { getAuthenticatedApi } from &apo:@/utils/api&apo:;
+import { format } from &apo:date-fns&apo:;
+import { motion, AnimatePresence } from &apo:framer-motion&apo:;
+import Link from &apo:next/link&apo:;
+import { FiSearch, FiFilter, FiUserX, FiUserCheck, FiMail, FiUser, FiEdit2, FiChevronDown, FiChevronUp } from &apo:react-icons/fi&apo:;
+import { useDebounce } from &apo:use-debounce&apo:;
 
 // User Row Component
 const UserRow = ({ user, index }) => (
@@ -37,20 +37,20 @@ const UserRow = ({ user, index }) => (
       </a>
     </td>
     <td className="px-4 py-3 sm:px-6 text-sm text-gray-500 hidden md:table-cell">
-      {format(new Date(user.date_joined), 'MMM d, yyyy')}
+      {format(new Date(user.date_joined), &apo:MMM d, yyyy&apo:)}
     </td>
     <td className="px-4 py-3 sm:px-6">
       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
         user.is_active 
-          ? 'bg-green-100 text-green-800' 
-          : 'bg-red-100 text-red-800'
+          ? &apo:bg-green-100 text-green-800&apo: 
+          : &apo:bg-red-100 text-red-800&apo:
       }`}>
-        {user.is_active ? 'Active' : 'Inactive'}
+        {user.is_active ? &apo:Active&apo: : &apo:Inactive&apo:}
       </span>
     </td>
     <td className="px-4 py-3 sm:px-6 text-right">
       <a 
-        href={`${process.env.NEXT_PUBLIC_DJANGO_ADMIN_URL || 'http://127.0.0.1:8000/admin'}/auth/user/${user.id}/change/`}
+        href={`${process.env.NEXT_PUBLIC_DJANGO_ADMIN_URL || &apo:http://127.0.0.1:8000/admin&apo:}/auth/user/${user.id}/change/`}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center text-indigo-600 hover:text-indigo-900 text-sm"
@@ -87,9 +87,9 @@ const StatusFilter = ({ statusFilter, setStatusFilter }) => {
   const [isOpen, setIsOpen] = useState(false);
   
   const options = [
-    { value: 'all', label: 'All Statuses', icon: <FiFilter className="mr-2" /> },
-    { value: 'active', label: 'Active Users', icon: <FiUserCheck className="mr-2 text-green-600" /> },
-    { value: 'inactive', label: 'Inactive Users', icon: <FiUserX className="mr-2 text-red-600" /> }
+    { value: &apo:all&apo:, label: &apo:All Statuses&apo:, icon: <FiFilter className="mr-2" /> },
+    { value: &apo:active&apo:, label: &apo:Active Users&apo:, icon: <FiUserCheck className="mr-2 text-green-600" /> },
+    { value: &apo:inactive&apo:, label: &apo:Inactive Users&apo:, icon: <FiUserX className="mr-2 text-red-600" /> }
   ];
   
   const selectedOption = options.find(opt => opt.value === statusFilter) || options[0];
@@ -125,8 +125,8 @@ const StatusFilter = ({ statusFilter, setStatusFilter }) => {
                   }}
                   className={`flex items-center w-full px-4 py-2 text-sm ${
                     statusFilter === option.value
-                      ? 'bg-indigo-100 text-indigo-700'
-                      : 'text-gray-700 hover:bg-gray-100'
+                      ? &apo:bg-indigo-100 text-indigo-700&apo:
+                      : &apo:text-gray-700 hover:bg-gray-100&apo:
                   }`}
                 >
                   {option.icon}
@@ -147,27 +147,27 @@ export default function AdminUsersPage() {
   const [totalUsers, setTotalUsers] = useState(0);
   const [activeUsers, setActiveUsers] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [error, setError] = useState(&apo:&apo:);
+  const [searchQuery, setSearchQuery] = useState(&apo:&apo:);
   const [debouncedSearch] = useDebounce(searchQuery, 500);
-  const [statusFilter, setStatusFilter] = useState('all');
+  const [statusFilter, setStatusFilter] = useState(&apo:all&apo:);
 
   const fetchUsers = useCallback(async () => {
     if (!authTokens) return;
     setLoading(true);
-    setError('');
+    setError(&apo:&apo:);
 
     const params = new URLSearchParams();
-    if (debouncedSearch) params.append('search', debouncedSearch);
-    if (statusFilter === 'active') params.append('is_active', 'true');
-    if (statusFilter === 'inactive') params.append('is_active', 'false');
+    if (debouncedSearch) params.append(&apo:search&apo:, debouncedSearch);
+    if (statusFilter === &apo:active&apo:) params.append(&apo:is_active&apo:, &apo:true&apo:);
+    if (statusFilter === &apo:inactive&apo:) params.append(&apo:is_active&apo:, &apo:false&apo:);
 
     try {
       const api = getAuthenticatedApi({ authTokens, setAuthTokens, logoutUser });
       const data = await api(`/admin/users/all/?${params.toString()}`);
       setUsers(data);
     } catch (err) {
-      setError('Failed to load users. Please try again later.');
+      setError(&apo:Failed to load users. Please try again later.&apo:);
       console.error(err);
     } finally {
       setLoading(false);
@@ -179,7 +179,7 @@ export default function AdminUsersPage() {
     try {
         const api = getAuthenticatedApi({ authTokens, setAuthTokens, logoutUser });
         // Fetch all users without filters just to get stats
-        const allUsers = await api('/admin/users/all/');
+        const allUsers = await api(&apo:/admin/users/all/&apo:);
         setTotalUsers(allUsers.length);
         setActiveUsers(allUsers.filter(u => u.is_active).length);
     } catch(err) {
@@ -219,7 +219,7 @@ export default function AdminUsersPage() {
         
         <div className="flex items-center">
           <Link 
-            href={`${process.env.NEXT_PUBLIC_DJANGO_ADMIN_URL || 'http://127.0.0.1:8000/admin'}/auth/user/add/`}
+            href={`${process.env.NEXT_PUBLIC_DJANGO_ADMIN_URL || &apo:http://127.0.0.1:8000/admin&apo:}/auth/user/add/`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
@@ -341,13 +341,13 @@ export default function AdminUsersPage() {
                         <div className="mt-2">
                           <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                             user.is_active 
-                              ? 'bg-green-100 text-green-800' 
-                              : 'bg-red-100 text-red-800'
+                              ? &apo:bg-green-100 text-green-800&apo: 
+                              : &apo:bg-red-100 text-red-800&apo:
                           }`}>
-                            {user.is_active ? 'Active' : 'Inactive'}
+                            {user.is_active ? &apo:Active&apo: : &apo:Inactive&apo:}
                           </span>
                           <span className="text-xs text-gray-500 ml-2">
-                            Joined {format(new Date(user.date_joined), 'MMM d, yyyy')}
+                            Joined {format(new Date(user.date_joined), &apo:MMM d, yyyy&apo:)}
                           </span>
                         </div>
                       </div>
@@ -355,7 +355,7 @@ export default function AdminUsersPage() {
                   </div>
                   <div className="border-t border-gray-100 px-4 py-3 bg-gray-50 flex justify-end">
                     <a 
-                      href={`${process.env.NEXT_PUBLIC_DJANGO_ADMIN_URL || 'http://127.0.0.1:8000/admin'}/auth/user/${user.id}/change/`}
+                      href={`${process.env.NEXT_PUBLIC_DJANGO_ADMIN_URL || &apo:http://127.0.0.1:8000/admin&apo:}/auth/user/${user.id}/change/`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-indigo-600 hover:text-indigo-900 flex items-center text-sm"

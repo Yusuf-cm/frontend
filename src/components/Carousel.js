@@ -1,20 +1,20 @@
-'use client'; // This MUST be a client component
+&apo:use client&apo:; // This MUST be a client component
 
-import React, { useCallback } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import { flushSync } from 'react-dom';
+import React, { useCallback } from &apo:react&apo:;
+import useEmblaCarousel from &apo:embla-carousel-react&apo:;
+import { flushSync } from &apo:react-dom&apo:;
 
 // A simple SVG arrow component
 const Arrow = ({ direction, onClick }) => (
   <button
     onClick={onClick}
     className={`absolute top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-white/80 shadow-md backdrop-blur-sm flex items-center justify-center text-gray-700 hover:bg-white transition-all z-10 ${
-      direction === 'left' ? 'left-2' : 'right-2'
+      direction === &apo:left&apo: ? &apo:left-2&apo: : &apo:right-2&apo:
     }`}
-    aria-label={direction === 'left' ? 'Previous slide' : 'Next slide'}
+    aria-label={direction === &apo:left&apo: ? &apo:Previous slide&apo: : &apo:Next slide&apo:}
   >
     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      {direction === 'left' ? (
+      {direction === &apo:left&apo: ? (
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
       ) : (
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -26,8 +26,8 @@ const Arrow = ({ direction, onClick }) => (
 
 export default function Carousel({ children }) {
   // 1. Initialize Embla Carousel
-  // The second argument is options. 'loop: true' makes it an infinite carousel.
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
+  // The second argument is options. &apo:loop: true&apo: makes it an infinite carousel.
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: &apo:start&apo: });
 
   // 2. Functions to scroll to the previous or next slide
   // We use flushSync to ensure the DOM is updated synchronously, which can

@@ -1,20 +1,20 @@
 // src/app/reset-password/[uid]/[token]/page.js
-'use client';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { FiEye, FiEyeOff, FiLock, FiCheck } from 'react-icons/fi';
-import PasswordStrengthBar from 'react-password-strength-bar';
+&apo:use client&apo:;
+import { useState, useEffect } from &apo:react&apo:;
+import { useRouter } from &apo:next/navigation&apo:;
+import { FiEye, FiEyeOff, FiLock, FiCheck } from &apo:react-icons/fi&apo:;
+import PasswordStrengthBar from &apo:react-password-strength-bar&apo:;
 
 export default function ResetPasswordConfirmPage({ params }) {
     const { uid, token } = params;
     const router = useRouter();
     
     const [formData, setFormData] = useState({
-        newPassword1: '',
-        newPassword2: ''
+        newPassword1: &apo:&apo:,
+        newPassword2: &apo:&apo:
     });
-    const [message, setMessage] = useState('');
-    const [error, setError] = useState('');
+    const [message, setMessage] = useState(&apo:&apo:);
+    const [error, setError] = useState(&apo:&apo:);
     const [isLoading, setIsLoading] = useState(false);
     const [showPasswords, setShowPasswords] = useState([false, false]);
     const [passwordScore, setPasswordScore] = useState(0);
@@ -26,20 +26,20 @@ export default function ResetPasswordConfirmPage({ params }) {
         const checkTokenValidity = async () => {
             try {
                 const res = await fetch(`${API_BASE_URL}/auth/password-reset/validate-token/`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    method: &apo:POST&apo:,
+                    headers: { &apo:Content-Type&apo:: &apo:application/json&apo: },
                     body: JSON.stringify({ uid, token }),
                 });
 
                 if (!res.ok) {
                     const data = await res.json();
-                    if (data.code === 'token_expired') {
+                    if (data.code === &apo:token_expired&apo:) {
                         setExpiredToken(true);
-                        setError('This password reset link has expired. Please request a new one.');
+                        setError(&apo:This password reset link has expired. Please request a new one.&apo:);
                     }
                 }
             } catch (err) {
-                console.error('Token validation error:', err);
+                console.error(&apo:Token validation error:&apo:, err);
             }
         };
 
@@ -65,8 +65,8 @@ export default function ResetPasswordConfirmPage({ params }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        setMessage('');
-        setError('');
+        setMessage(&apo:&apo:);
+        setError(&apo:&apo:);
 
         if (formData.newPassword1 !== formData.newPassword2) {
             setError("Passwords do not match.");
@@ -82,8 +82,8 @@ export default function ResetPasswordConfirmPage({ params }) {
         
         try {
             const res = await fetch(`${API_BASE_URL}/auth/password-reset/confirm/`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                method: &apo:POST&apo:,
+                headers: { &apo:Content-Type&apo:: &apo:application/json&apo: },
                 body: JSON.stringify({ 
                     uid, 
                     token, 
@@ -97,16 +97,16 @@ export default function ResetPasswordConfirmPage({ params }) {
             if (!res.ok) {
                 // Handle specific errors
                 if (data.new_password2) {
-                    throw new Error(data.new_password2.join(' '));
+                    throw new Error(data.new_password2.join(&apo: &apo:));
                 }
-                throw new Error(data.detail || 'Something went wrong');
+                throw new Error(data.detail || &apo:Something went wrong&apo:);
             }
             
             setMessage(data.detail);
-            setTimeout(() => router.push('/login'), 3000);
+            setTimeout(() => router.push(&apo:/login&apo:), 3000);
 
         } catch (err) {
-            setError(err.message || 'An unexpected error occurred');
+            setError(err.message || &apo:An unexpected error occurred&apo:);
         } finally {
             setIsLoading(false);
         }
@@ -124,7 +124,7 @@ export default function ResetPasswordConfirmPage({ params }) {
                         This password reset link has expired. Please request a new password reset.
                     </p>
                     <button
-                        onClick={() => router.push('/forgot-password')}
+                        onClick={() => router.push(&apo:/forgot-password&apo:)}
                         className="w-full bg-indigo-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-indigo-700 transition-colors"
                     >
                         Request New Reset Link
@@ -156,7 +156,7 @@ export default function ResetPasswordConfirmPage({ params }) {
                         {message} Redirecting to login...
                     </p>
                     <button
-                        onClick={() => router.push('/login')}
+                        onClick={() => router.push(&apo:/login&apo:)}
                         className="text-indigo-600 hover:underline font-medium"
                     >
                         Go to Login Now
@@ -247,8 +247,8 @@ export default function ResetPasswordConfirmPage({ params }) {
                         disabled={isLoading || passwordScore < 2}
                         className={`w-full py-3 px-4 rounded-lg font-bold transition-all duration-300 flex items-center justify-center
                             ${isLoading || passwordScore < 2
-                                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                                : 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-md hover:shadow-lg'
+                                ? &apo:bg-gray-300 text-gray-500 cursor-not-allowed&apo:
+                                : &apo:bg-indigo-600 text-white hover:bg-indigo-700 shadow-md hover:shadow-lg&apo:
                             }`}
                     >
                         {isLoading ? (
@@ -260,14 +260,14 @@ export default function ResetPasswordConfirmPage({ params }) {
                                 Resetting Password...
                             </>
                         ) : (
-                            'Reset Password'
+                            &apo:Reset Password&apo:
                         )}
                     </button>
                     
                     <div className="text-center mt-4">
                         <button
                             type="button"
-                            onClick={() => router.push('/login')}
+                            onClick={() => router.push(&apo:/login&apo:)}
                             className="text-indigo-600 hover:underline font-medium text-sm"
                         >
                             Back to Login
